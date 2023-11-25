@@ -3,6 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/core/constants.dart';
 
 class Txtstyle {
+  static TextStyle style34({required BuildContext context}) {
+    return TextStyle(
+      fontFamily: Constants.relwayFamily,
+      fontSize: 34.sp,
+    );
+  }
+
   static TextStyle style30({required BuildContext context}) {
     return TextStyle(
       fontFamily: Constants.relwayFamily,
