@@ -13,7 +13,7 @@ class NikeStoreApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(pxToDp(context, 375), pxToDp(context, 812)),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: false,
       builder: (_, child) {

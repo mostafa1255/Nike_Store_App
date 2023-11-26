@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen1.dart';
+import '../views/widgets/DotcontrollerOnBoarding.dart';
 
 abstract class Approuter {
   static const onboarding = "/";
@@ -8,7 +8,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const OnBoarding_Screen1(),
+        builder: (context, state) => DotcontrollerOnBoarding(),
       ),
     ],
   );

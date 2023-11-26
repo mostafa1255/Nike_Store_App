@@ -63,6 +63,14 @@ flutter:
 
     - family: Raleway
       fonts:
+        - asset: fonts/Raleway-Black.ttf
         - asset: fonts/Raleway-Bold.ttf
         - asset: fonts/Raleway-SemiBold.ttf
+
+# Flutter assets gen extension
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/app/core/styles/
+  filename: App_Image.dart
+  field_prefix:
   
