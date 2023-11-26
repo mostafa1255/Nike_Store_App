@@ -4,6 +4,8 @@ import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen1.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../screens/onBoarding_Screens/onBoarding_Screen2.dart';
+
 class DotcontrollerOnBoarding extends StatelessWidget {
   DotcontrollerOnBoarding({super.key});
   final controller = PageController();
@@ -19,14 +21,14 @@ class DotcontrollerOnBoarding extends StatelessWidget {
                 child: PageView(
                   controller: controller,
                   children: [
-                    OnBoardingScreen1(controller: controller),
+                    OnBoardingScreen2(controller: controller),
                     OnBoardingScreen1(controller: controller),
                     OnBoardingScreen1(controller: controller)
                   ],
                 ),
               ),
               Positioned(
-                bottom: 210.h,
+                bottom: 190.h,
                 left: 140.w,
                 child: SmoothPageIndicator(
                   controller: controller,
