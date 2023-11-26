@@ -17,8 +17,8 @@ class OnBoardingScreen1Body extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           Positioned(
-            bottom: 655.h,
-            left: 77.w,
+            bottom: 645.h,
+            left: 70.w,
             child: SizedBox(
               width: 220.w,
               child: Text("WELLCOM TO NIKE",
@@ -28,7 +28,7 @@ class OnBoardingScreen1Body extends StatelessWidget {
             ),
           ),
           Positioned(
-              left: 10.w,
+              left: 18.w,
               bottom: 60.h,
               child: CustomMainButton(
                 color: Colors.white,

@@ -10,7 +10,7 @@ class CustomMainButton extends StatelessWidget {
     required this.txt,
     this.onPressed,
     required this.color,
-    this.width = 350,
+    this.width = 335,
   });
 
   final String txt;
