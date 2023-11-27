@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nike_store_app/app/views/screens/Login_Screen/login_screen.dart';
+import 'package:nike_store_app/app/views/screens/auth/forget_password_Screen.dart';
 import 'package:nike_store_app/app/views/screens/auth/register_screen.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen2.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen3%20copy.dart';
@@ -16,7 +16,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: initial,
-        builder: (context, state) => RegisterScreen(),
+        builder: (context, state) => ForgetPasswordScreen(),
       ),
       GoRoute(
         path: pageview,

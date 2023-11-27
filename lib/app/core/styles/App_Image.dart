@@ -19,6 +19,6 @@ class AppImages {
   /// assets/images/onboarding1.png
   static const String imagesOnboarding1 = "assets/images/onboarding1.png";
   static const String iconeyePassword = "assets/icons/EyePassword.png";
-    static const String iconGoogle = "assets/icons/googleicon.png";
-
+  static const String iconGoogle = "assets/icons/googleicon.png";
+  static const String iconEmail = "assets/icons/email1.png";
 }
