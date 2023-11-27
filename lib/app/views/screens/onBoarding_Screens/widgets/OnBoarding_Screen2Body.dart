@@ -5,7 +5,9 @@ import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 
 class OnBoardingScreen2Body extends StatelessWidget {
-  const OnBoardingScreen2Body({Key? key}) : super(key: key);
+  const OnBoardingScreen2Body({Key? key, required this.controller})
+      : super(key: key);
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,11 @@ class OnBoardingScreen2Body extends StatelessWidget {
               child: CustomMainButton(
                 color: Colors.white,
                 txt: "Next",
+                onPressed: () {
+                  controller.nextPage(
+                      duration: const Duration(milliseconds: 600),
+                      curve: Curves.easeInOut);
+                },
               )),
         ],
       ),

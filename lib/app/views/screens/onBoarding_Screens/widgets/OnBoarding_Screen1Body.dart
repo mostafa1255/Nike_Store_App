@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 
+import '../../../../router/app_router.dart';
+
 class OnBoardingScreen1Body extends StatelessWidget {
-  const OnBoardingScreen1Body({Key? key}) : super(key: key);
+  const OnBoardingScreen1Body({Key? key, required this.controller})
+      : super(key: key);
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,11 @@ class OnBoardingScreen1Body extends StatelessWidget {
               child: CustomMainButton(
                 color: Colors.white,
                 txt: "Get Started",
+                onPressed: () {
+                  controller.nextPage(
+                      duration: const Duration(milliseconds: 600),
+                      curve: Curves.easeInOut);
+                },
               )),
         ],
       ),

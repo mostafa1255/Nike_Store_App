@@ -11,8 +11,8 @@ class OnBoardingScreen2 extends StatelessWidget {
   final PageController controller;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
         backgroundColor: AppColors.kSecondaryColor,
-        body: OnBoardingScreen2Body());
+        body: OnBoardingScreen2Body(controller: controller,));
   }
 }

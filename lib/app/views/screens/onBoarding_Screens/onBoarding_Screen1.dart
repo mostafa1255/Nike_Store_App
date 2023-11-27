@@ -14,6 +14,8 @@ class OnBoardingScreen1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.kSecondaryColor,
-        body: OnBoardingScreen1Body());
+        body: OnBoardingScreen1Body(
+          controller: controller,
+        ));
   }
 }
