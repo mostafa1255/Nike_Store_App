@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToHomePage() {
     Future.delayed(const Duration(milliseconds: 1500), () {
-      GoRouter.of(context).push(Approuter.dotcontroller);
+      GoRouter.of(context).push(Approuter.pageview);
     });
   }
 }

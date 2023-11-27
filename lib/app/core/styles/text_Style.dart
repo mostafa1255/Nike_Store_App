@@ -10,6 +10,13 @@ class Txtstyle {
         color: Colors.white);
   }
 
+  static TextStyle style32({required BuildContext context}) {
+    return TextStyle(
+        fontFamily: Constants.relwayFamily,
+        fontSize: 32.sp,
+        color: Colors.white);
+  }
+
   static TextStyle style30({required BuildContext context}) {
     return TextStyle(
         fontFamily: Constants.relwayFamily,

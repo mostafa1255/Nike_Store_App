@@ -7,30 +7,35 @@ import 'package:nike_store_app/app/core/styles/text_Style.dart';
 class CustomMainButton extends StatelessWidget {
   CustomMainButton({
     super.key,
-    required this.txt,
+    this.txt,
     this.onPressed,
     required this.color,
-    this.width = 335,
+    this.widget,
+    this.fcolorWhite,
   });
 
-  final String txt;
+  final String? txt;
   final void Function()? onPressed;
   final Color color;
-  final double width;
-
+  final Widget? widget;
+  final bool? fcolorWhite;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ButtonStyle(
+            shadowColor: const MaterialStatePropertyAll<Color>(Colors.white),
             backgroundColor: MaterialStatePropertyAll(color),
-            minimumSize: MaterialStatePropertyAll(Size(width.w, 55.h)),
+            minimumSize: MaterialStatePropertyAll(Size(double.infinity, 55.h)),
             shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(11.r)))),
         onPressed: onPressed,
-        child: Text(
-          txt,
-          style: Txtstyle.style14(context: context).copyWith(
-              color: AppColors.kFontColor, fontFamily: Constants.relwayFamily),
-        ));
+        child: widget ??
+            Text(
+              txt!,
+              style: Txtstyle.style14(context: context).copyWith(
+                  color:
+                      fcolorWhite == true ? Colors.white : AppColors.kFontColor,
+                  fontFamily: Constants.relwayFamily),
+            ));
   }
 }

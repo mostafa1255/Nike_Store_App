@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/views/screens/Login_Screen/login_screen.dart';
 import 'package:nike_store_app/app/views/screens/Splash_Screen/splash_Screen.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen1.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen2.dart';
@@ -7,19 +8,19 @@ import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_S
 import '../views/widgets/DotcontrollerOnBoarding.dart';
 
 abstract class Approuter {
-  static const pageview = "/";
-  static const dotcontroller = "/dotcontrolleronboarding";
+  static const initial = "/";
+  static const pageview = "/dotcontrolleronboarding";
   static const onboarding2 = "/onboarding2";
   static const onboarding3 = "/onboarding3";
 
   static final router = GoRouter(
     routes: [
       GoRoute(
-        path: pageview,
-        builder: (context, state) => SplashScreen(),
+        path: initial,
+        builder: (context, state) => LoginScreen(),
       ),
       GoRoute(
-        path: dotcontroller,
+        path: pageview,
         builder: (context, state) => DotcontrollerOnBoarding(),
       ),
       GoRoute(

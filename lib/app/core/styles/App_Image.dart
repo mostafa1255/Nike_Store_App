@@ -1,3 +1,4 @@
+// ignore: file_names
 class AppImages {
   AppImages._();
 
@@ -17,4 +18,7 @@ class AppImages {
   /// Assets for imagesOnboarding1
   /// assets/images/onboarding1.png
   static const String imagesOnboarding1 = "assets/images/onboarding1.png";
+  static const String iconeyePassword = "assets/icons/EyePassword.png";
+    static const String iconGoogle = "assets/icons/googleicon.png";
+
 }
