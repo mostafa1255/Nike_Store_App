@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/views/screens/Login_Screen/login_screen.dart';
-import 'package:nike_store_app/app/views/screens/Splash_Screen/splash_Screen.dart';
-import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen1.dart';
+import 'package:nike_store_app/app/views/screens/auth/register_screen.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen2.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen3%20copy.dart';
 import '../views/widgets/DotcontrollerOnBoarding.dart';
@@ -17,7 +16,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: initial,
-        builder: (context, state) => LoginScreen(),
+        builder: (context, state) => RegisterScreen(),
       ),
       GoRoute(
         path: pageview,

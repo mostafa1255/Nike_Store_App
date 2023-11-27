@@ -8,6 +8,7 @@ import 'package:nike_store_app/app/views/widgets/CustomTextFormField.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 import '../../../widgets/HsizedBox.dart';
 import '../../../widgets/VsizedBox.dart';
+import 'CustomAuthHaveaccount.dart';
 
 class LoginScreenBody extends StatelessWidget {
   const LoginScreenBody({super.key});
@@ -16,7 +17,7 @@ class LoginScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Padding(
-      padding: EdgeInsets.only(top: 18.h, left: 14.w, right: 14.w),
+      padding: EdgeInsets.only(top: 15.h, left: 14.w, right: 14.w),
       child: SingleChildScrollView(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +29,7 @@ class LoginScreenBody extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(Icons.arrow_back_ios_rounded)),
           ),
-          const VsizedBox(height: 15),
+          const VsizedBox(height: 8),
           Align(
             alignment: Alignment.center,
             child: Text(
@@ -37,7 +38,7 @@ class LoginScreenBody extends StatelessWidget {
                   color: AppColors.kFontColor, fontWeight: FontWeight.bold),
             ),
           ),
-          const VsizedBox(height: 12),
+          const VsizedBox(height: 8),
           Align(
             alignment: Alignment.center,
             child: SizedBox(
@@ -50,7 +51,7 @@ class LoginScreenBody extends StatelessWidget {
               ),
             ),
           ),
-          const VsizedBox(height: 35),
+          const VsizedBox(height: 27),
           Text(
             "Email Address",
             style: Txtstyle.style16(context: context).copyWith(
@@ -58,14 +59,14 @@ class LoginScreenBody extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontFamily: Constants.relwayFamily),
           ),
-          const VsizedBox(height: 12),
+          const VsizedBox(height: 8),
           CustomTextFormField(
             hinttext: "xyz@gmail.com",
             securPass: false,
             width: double.infinity,
             height: 80.h,
           ),
-          const VsizedBox(height: 17),
+          const VsizedBox(height: 12),
           Text(
             "Password",
             style: Txtstyle.style16(context: context).copyWith(
@@ -73,7 +74,7 @@ class LoginScreenBody extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontFamily: Constants.relwayFamily),
           ),
-          const VsizedBox(height: 12),
+          const VsizedBox(height: 8),
           CustomTextFormField(
             widget: IconButton(
                 onPressed: () {}, icon: Image.asset(AppImages.iconeyePassword)),
@@ -120,27 +121,9 @@ class LoginScreenBody extends StatelessWidget {
             onPressed: () {},
           ),
           const VsizedBox(height: 80),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "New User?",
-                style: Txtstyle.style16(context: context).copyWith(
-                    fontFamily: Constants.relwayFamily,
-                    fontWeight: FontWeight.w300,
-                    color: AppColors.kDeepGreyColor),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Create Account",
-                  style: Txtstyle.style16(context: context).copyWith(
-                      fontFamily: Constants.relwayFamily,
-                      fontWeight: FontWeight.w100,
-                      color: AppColors.kFontColor),
-                ),
-              )
-            ],
+          const CustomAuthHaveaccount(
+            accountType: "New User?",
+            createOrLogin: "Create Account",
           )
         ],
       )),
