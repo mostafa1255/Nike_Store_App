@@ -21,4 +21,11 @@ class AppImages {
   static const String iconeyePassword = "assets/icons/EyePassword.png";
   static const String iconGoogle = "assets/icons/googleicon.png";
   static const String iconEmail = "assets/icons/email1.png";
+  static const String iconHomeappBarIcon = "assets/icons/HomeappBarIcon.png";
+  static const String iconcart = "assets/icons/cartIcon.png";
+  static const String iconhomeleading = "assets/icons/iconhomeleading.png";
+  static const String iconordervan = "assets/icons/iconordervan.png";
+    static const String iconsettings = "assets/icons/iconsettings.png";
+    static const String iconSignOut = "assets/icons/iconSignOut.png";
+
 }
