@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
-
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../widgets/HsizedBox.dart';
 
 PreferredSizeWidget homeAppBar(BuildContext context) {
   return AppBar(
+    surfaceTintColor: Colors.transparent,
     backgroundColor: AppColors.kOfWhiteColor,
     leading: Builder(
       builder: (context) => IconButton(
@@ -37,6 +37,15 @@ PreferredSizeWidget homeAppBar(BuildContext context) {
         ],
       ),
     ),
-    actions: [Image.asset(AppImages.iconcart), HsizedBox(width: 15.w)],
+    actions: [
+      SizedBox(
+          width: 45.w,
+          height: 55.h,
+          child: IconButton(
+            onPressed: () {},
+            icon: Image.asset(AppImages.iconcart),
+          )),
+      HsizedBox(width: 15.w)
+    ],
   );
 }

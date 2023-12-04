@@ -50,7 +50,7 @@ class CustomHomeCardListView extends StatelessWidget {
                         const FavoriteIconAction(),
                         SizedBox(
                             width: 160.w,
-                            height: 120.h,
+                            height: 110.h,
                             child: Image.asset(
                               productImage,
                               fit: BoxFit.cover,
@@ -76,7 +76,6 @@ class CustomHomeCardListView extends StatelessWidget {
                         const VsizedBox(height: 5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Flexible(
                               child: Text(
@@ -106,7 +105,7 @@ class CustomHomeCardListView extends StatelessWidget {
                                     icon: Icon(
                                       Icons.add,
                                       color: Colors.white,
-                                      size: 23.sp,
+                                      size: 21.sp,
                                     )),
                               ),
                             )
