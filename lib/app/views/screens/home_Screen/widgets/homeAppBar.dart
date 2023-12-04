@@ -8,6 +8,7 @@ import '../../../widgets/HsizedBox.dart';
 
 PreferredSizeWidget homeAppBar(BuildContext context) {
   return AppBar(
+    backgroundColor: AppColors.kOfWhiteColor,
     leading: Builder(
       builder: (context) => IconButton(
           onPressed: () => Scaffold.of(context).openDrawer(),

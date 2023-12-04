@@ -51,6 +51,10 @@ flutter:
         - asset: fonts/Raleway-Bold.ttf
         - asset: fonts/Raleway-SemiBold.ttf
 
+    - family: AlfaSlabOne
+      fonts:
+        - asset: fonts/AlfaSlabOne-Regular.ttf
+
 # Flutter assets gen extension
 flutter_assets:
   assets_path: assets/images/
