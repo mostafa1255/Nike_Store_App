@@ -20,7 +20,7 @@ class ForgetPasswordScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundColor: AppColors.kLightGreyColor,
+            backgroundColor: AppColors.kOfWhiteColor,
             child: IconButton(
                 iconSize: 17.sp,
                 onPressed: () {},

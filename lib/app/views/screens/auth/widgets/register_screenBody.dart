@@ -23,7 +23,7 @@ class RegisterScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundColor: AppColors.kLightGreyColor,
+            backgroundColor: AppColors.kOfWhiteColor,
             child: IconButton(
                 iconSize: 17.sp,
                 onPressed: () {},
@@ -121,7 +121,7 @@ class RegisterScreenBody extends StatelessWidget {
               ],
             ),
             fcolorWhite: true,
-            color: AppColors.kLightGreyColor,
+            color: AppColors.kOfWhiteColor,
             onPressed: () {},
           ),
           const VsizedBox(height: 20),

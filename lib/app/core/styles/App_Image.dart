@@ -25,7 +25,12 @@ class AppImages {
   static const String iconcart = "assets/icons/cartIcon.png";
   static const String iconhomeleading = "assets/icons/iconhomeleading.png";
   static const String iconordervan = "assets/icons/iconordervan.png";
-    static const String iconsettings = "assets/icons/iconsettings.png";
-    static const String iconSignOut = "assets/icons/iconSignOut.png";
-
+  static const String iconsettings = "assets/icons/iconsettings.png";
+  static const String iconSignOut = "assets/icons/iconSignOut.png";
+  static const String iconserach = "assets/icons/iconserach.png";
+  static const String iconFilter = "assets/icons/iconFilter.png";
+  static const String imagenikeshoes = "assets/images/nikeshoes.png";
+  static const String iconstarhome = "assets/icons/iconstarhome.png";
+  static const String imageshoes2 = "assets/images/imageshoes2.png";
+  static const String imageshadowshoes = "assets/images/imageshadowshoes.png";
 }
