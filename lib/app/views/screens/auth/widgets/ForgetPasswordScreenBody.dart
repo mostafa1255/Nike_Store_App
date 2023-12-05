@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
+import '../../../widgets/CustomBackIcon.dart';
 import '../../../widgets/CustomTextFormField.dart';
 import '../../../widgets/VsizedBox.dart';
 import '../../../widgets/customMainButton.dart';
@@ -19,13 +20,7 @@ class ForgetPasswordScreenBody extends StatelessWidget {
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            backgroundColor: AppColors.kOfWhiteColor,
-            child: IconButton(
-                iconSize: 17.sp,
-                onPressed: () {},
-                icon: const Icon(Icons.arrow_back_ios_rounded)),
-          ),
+          const CustomBackIcon(),
           const VsizedBox(height: 8),
           Align(
             alignment: Alignment.center,

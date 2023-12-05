@@ -12,8 +12,9 @@ class CustomMainButton extends StatelessWidget {
     required this.color,
     this.widget,
     this.fcolorWhite,
+    this.width,
   });
-
+  final double? width;
   final String? txt;
   final void Function()? onPressed;
   final Color color;
@@ -25,7 +26,8 @@ class CustomMainButton extends StatelessWidget {
         style: ButtonStyle(
             shadowColor: const MaterialStatePropertyAll<Color>(Colors.white),
             backgroundColor: MaterialStatePropertyAll(color),
-            minimumSize: MaterialStatePropertyAll(Size(double.infinity, 55.h)),
+            fixedSize:
+                MaterialStatePropertyAll(Size(width ?? double.infinity, 55.h)),
             shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(11.r)))),
         onPressed: onPressed,

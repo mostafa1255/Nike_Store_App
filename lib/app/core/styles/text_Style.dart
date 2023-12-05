@@ -24,10 +24,26 @@ class Txtstyle {
         color: Colors.white);
   }
 
+  static TextStyle style26({required BuildContext context}) {
+    return TextStyle(
+        fontFamily: Constants.relwayFamily,
+        fontSize: 26.sp,
+        color: Colors.white,
+        fontWeight: FontWeight.bold);
+  }
+
   static TextStyle style25({required BuildContext context}) {
     return TextStyle(
         fontFamily: Constants.relwayFamily,
         fontSize: 25.sp,
+        color: Colors.white,
+        fontWeight: FontWeight.bold);
+  }
+
+  static TextStyle style24({required BuildContext context}) {
+    return TextStyle(
+        fontFamily: Constants.relwayFamily,
+        fontSize: 24.sp,
         color: Colors.white,
         fontWeight: FontWeight.bold);
   }
@@ -39,13 +55,15 @@ class Txtstyle {
         fontSize: 22.sp,
         fontWeight: FontWeight.bold);
   }
- static TextStyle style20({required BuildContext context}) {
+
+  static TextStyle style20({required BuildContext context}) {
     return TextStyle(
         fontFamily: Constants.relwayFamily,
         color: Colors.white,
         fontSize: 20.sp,
         fontWeight: FontWeight.bold);
   }
+
   static TextStyle style16({required BuildContext context}) {
     return TextStyle(
         fontSize: 16.sp,

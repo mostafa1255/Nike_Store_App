@@ -33,4 +33,6 @@ class AppImages {
   static const String iconstarhome = "assets/icons/iconstarhome.png";
   static const String imageshoes2 = "assets/images/imageshoes2.png";
   static const String imageshadowshoes = "assets/images/imageshadowshoes.png";
+    static const String imagenikeshoes3 = "assets/images/imagenikeshoes3.png";
+
 }

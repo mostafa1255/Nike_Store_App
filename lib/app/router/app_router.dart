@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/views/screens/details_Screen/details_screen.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/home_screen.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen2.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen3%20copy.dart';
@@ -15,7 +16,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: initial,
-        builder: (context, state) => HomeScreen(),
+        builder: (context, state) => DetailsScreen(),
       ),
       GoRoute(
         path: pageview,
