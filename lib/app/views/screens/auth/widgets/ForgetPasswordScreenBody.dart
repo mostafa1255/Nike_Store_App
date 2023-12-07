@@ -20,7 +20,7 @@ class ForgetPasswordScreenBody extends StatelessWidget {
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomBackIcon(),
+          const CustomBackAndFavIcon(),
           const VsizedBox(height: 8),
           Align(
             alignment: Alignment.center,
