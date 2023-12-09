@@ -3,6 +3,7 @@ import 'package:nike_store_app/app/views/widgets/CustomBackIcon.dart';
 import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
+import 'widgets/BottomNavBarOfMyCartScreen.dart';
 import 'widgets/MyCartScreenBody.dart';
 
 class MyCartScreen extends StatelessWidget {
@@ -11,6 +12,7 @@ class MyCartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const BottomNavBarOfMyCartScreen(),
       backgroundColor: AppColors.kOfWhiteColor,
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
@@ -25,7 +27,7 @@ class MyCartScreen extends StatelessWidget {
               fontFamily: Constants.relwayFamily),
         ),
       ),
-      body: const MyCartScreenBody(),
+      body: MyCartScreenBody(),
     );
   }
 }
