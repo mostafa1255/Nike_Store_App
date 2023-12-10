@@ -68,7 +68,7 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
               "Total Cost",
               style: Txtstyle.style16(context: context).copyWith(
                   fontFamily: Constants.relwayFamily,
-                  color: AppColors.kDeepGreyColor),
+                  color: AppColors.kFontColor),
             ),
             trailing: Text(
               "\$814.15",

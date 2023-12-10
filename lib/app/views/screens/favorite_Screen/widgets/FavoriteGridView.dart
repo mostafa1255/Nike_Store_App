@@ -21,10 +21,10 @@ class FavoriteGridView extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           itemCount: 20,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 14,
-              childAspectRatio: 3 / 3.8,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisSpacing: 10.h,
+              mainAxisSpacing: 14.w,
+              childAspectRatio: 3.h / 3.8.h,
               crossAxisCount: 2),
           itemBuilder: (context, index) {
             return SizedBox(
