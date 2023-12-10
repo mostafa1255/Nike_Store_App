@@ -37,6 +37,7 @@ class AppImages {
   static const String iconemail2 = "assets/icons/iconemail.png";
   static const String iconEdit = "assets/icons/IconEdit.png";
   static const String iconPhone = "assets/icons/iconPhone.png";
-    static const String imageMap = "assets/images/imageMap.png";
-
+  static const String imageMap = "assets/images/imageMap.png";
+  static const String imagecheckOutSucsess =
+      "assets/images/checkOutSucsess.png";
 }

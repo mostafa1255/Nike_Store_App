@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:nike_store_app/app/views/widgets/CustomBackIcon.dart';
 import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
-import 'widgets/BottomNavBarOfMyCartScreen.dart';
-import 'widgets/MyCartScreenBody.dart';
+import '../../widgets/CustomBackIcon.dart';
+import 'widgets/MapUserScreenBody.dart';
 
-class MyCartScreen extends StatelessWidget {
-  const MyCartScreen({super.key});
+class MapUserScreen extends StatelessWidget {
+  const MapUserScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavBarOfMyCartScreen(
-        onPressed: () {},
-      ),
       backgroundColor: AppColors.kOfWhiteColor,
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
@@ -22,14 +18,14 @@ class MyCartScreen extends StatelessWidget {
         leading: CustomBackAndFavIcon(onPressed: () {}),
         centerTitle: true,
         title: Text(
-          "My Cart",
+          "My Location",
           style: Txtstyle.style16(context: context).copyWith(
               color: AppColors.kFontColor,
               fontWeight: FontWeight.w500,
               fontFamily: Constants.relwayFamily),
         ),
       ),
-      body: MyCartScreenBody(),
+      //  body: const MapUserScreenBody(),
     );
   }
 }

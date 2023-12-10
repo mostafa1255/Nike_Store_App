@@ -59,7 +59,7 @@ class ForgetPasswordScreenBody extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return const CustomAlertDialog();
+                  return const CustomForgetPasswordAlertDialog();
                 },
               );
             },

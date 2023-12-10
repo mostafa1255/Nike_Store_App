@@ -7,8 +7,8 @@ import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../widgets/VsizedBox.dart';
 
-class CustomAlertDialog extends StatelessWidget {
-  const CustomAlertDialog({super.key});
+class CustomForgetPasswordAlertDialog extends StatelessWidget {
+  const CustomForgetPasswordAlertDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

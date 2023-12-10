@@ -4,6 +4,7 @@ import 'package:nike_store_app/app/views/screens/check_Out_Screen/check_Out_scre
 import 'package:nike_store_app/app/views/screens/details_Screen/details_screen.dart';
 import 'package:nike_store_app/app/views/screens/favorite_Screen/favorite_screen.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/home_screen.dart';
+import 'package:nike_store_app/app/views/screens/map_Screen/map_screen.dart';
 import 'package:nike_store_app/app/views/screens/my_cart_Screen/my_Cart_Screen.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen2.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen3%20copy.dart';

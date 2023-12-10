@@ -9,8 +9,9 @@ import '../../../widgets/customMainButton.dart';
 class BottomNavBarOfMyCartScreen extends StatelessWidget {
   const BottomNavBarOfMyCartScreen({
     super.key,
+    this.onPressed,
   });
-
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,7 +83,7 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
             width: 350.w,
             color: AppColors.kPrimaryColor,
             fcolorWhite: true,
-            onPressed: () {},
+            onPressed: onPressed,
             txt: "Checkout",
           )
         ],
