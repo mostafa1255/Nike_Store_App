@@ -39,7 +39,7 @@ class ForgetPasswordScreenBody extends StatelessWidget {
                 "Enter your Email account to reset your password",
                 textAlign: TextAlign.center,
                 style: Txtstyle.style16(context: context)
-                    .copyWith(color: AppColors.kGreyColor),
+                    .copyWith(color: AppColors.kGreyColorB81),
               ),
             ),
           ),

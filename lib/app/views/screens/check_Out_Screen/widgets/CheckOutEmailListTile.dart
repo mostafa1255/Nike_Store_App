@@ -35,7 +35,7 @@ class CheckOutEmailListTile extends StatelessWidget {
           "Email",
           style: Txtstyle.style12(context: context).copyWith(
               fontWeight: FontWeight.w500,
-              color: AppColors.kDeepGreyColor,
+              color: AppColors.kDeepGreyColorA6A,
               fontFamily: Constants.popinsFamily),
         ),
         trailing:

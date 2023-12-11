@@ -69,7 +69,7 @@ class CustomHomeCardListView extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             style: Txtstyle.style16(context: context).copyWith(
                                 fontFamily: Constants.relwayFamily,
-                                color: AppColors.kDeepGreyColor,
+                                color: AppColors.kDeepGreyColorA6A,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),

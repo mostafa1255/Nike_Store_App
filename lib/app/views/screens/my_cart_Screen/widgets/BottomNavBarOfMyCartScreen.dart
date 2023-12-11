@@ -29,7 +29,7 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
                 "Subtotal",
                 style: Txtstyle.style16(context: context).copyWith(
                     fontFamily: Constants.relwayFamily,
-                    color: AppColors.kDeepGreyColor),
+                    color: AppColors.kDeepGreyColorA6A),
               ),
               trailing: Text(
                 "\$753.95",
@@ -47,7 +47,7 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
                 "Delivery",
                 style: Txtstyle.style16(context: context).copyWith(
                     fontFamily: Constants.relwayFamily,
-                    color: AppColors.kDeepGreyColor),
+                    color: AppColors.kDeepGreyColorA6A),
               ),
               trailing: Text(
                 "\$60.20",

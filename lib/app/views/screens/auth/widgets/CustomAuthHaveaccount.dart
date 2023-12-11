@@ -22,7 +22,7 @@ class CustomAuthHaveaccount extends StatelessWidget {
           style: Txtstyle.style16(context: context).copyWith(
               fontFamily: Constants.relwayFamily,
               fontWeight: FontWeight.w300,
-              color: AppColors.kDeepGreyColor),
+              color: AppColors.kDeepGreyColorA6A),
         ),
         Text(
           createOrLogin,

@@ -49,7 +49,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
                           const BorderSide(width: 0, style: BorderStyle.none)),
                   hintText: "Looking for shoes",
                   hintStyle: Txtstyle.style12(context: context).copyWith(
-                    color: AppColors.kDeepGreyColor,
+                    color: AppColors.kDeepGreyColorA6A,
                   ),
                   prefixIcon: IconButton(
                       onPressed: () {},

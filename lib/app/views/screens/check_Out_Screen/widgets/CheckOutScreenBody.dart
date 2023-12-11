@@ -57,7 +57,7 @@ class CheckOutScreenBody extends StatelessWidget {
                       style: Txtstyle.style12(context: context).copyWith(
                           fontWeight: FontWeight.w600,
                           //  overflow: TextOverflow.ellipsis,
-                          color: AppColors.kDeepGreyColor.withOpacity(0.7),
+                          color: AppColors.kDeepGreyColorA6A.withOpacity(0.7),
                           fontFamily: Constants.popinsFamily),
                     ),
                   ),

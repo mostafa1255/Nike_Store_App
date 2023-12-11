@@ -42,7 +42,7 @@ class CustomForgetPasswordAlertDialog extends StatelessWidget {
                 "We have send link to your email to reset password",
                 textAlign: TextAlign.center,
                 style: Txtstyle.style16(context: context).copyWith(
-                    color: AppColors.kGreyColor,
+                    color: AppColors.kGreyColorB81,
                     fontWeight: FontWeight.w400,
                     fontFamily: Constants.popinsFamily),
               ),

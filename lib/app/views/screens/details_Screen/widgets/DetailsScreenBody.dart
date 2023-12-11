@@ -37,7 +37,7 @@ class DetailsScreenBody extends StatelessWidget {
             child: Text(
               "Men's Shoes",
               style: Txtstyle.style16(context: context).copyWith(
-                  color: AppColors.kGreyColor,
+                  color: AppColors.kGreyColorB81,
                   fontFamily: Constants.relwayFamily),
             ),
           ),
@@ -85,7 +85,7 @@ class DetailsScreenBody extends StatelessWidget {
           Text(
             "The Max Air 270 unit delivers unrivaled, all-day comfort. The sleek, running-inspired design roots you to everything Nike",
             style: Txtstyle.style14(context: context).copyWith(
-                color: AppColors.kGreyColor.withOpacity(0.8),
+                color: AppColors.kGreyColorB81.withOpacity(0.8),
                 fontFamily: Constants.popinsFamily),
           ),
           const VsizedBox(height: 55),
@@ -95,7 +95,7 @@ class DetailsScreenBody extends StatelessWidget {
               const HsizedBox(width: 0),
               CircleAvatar(
                 radius: 24.r,
-                backgroundColor: AppColors.kDeepGreyColor.withOpacity(0.08),
+                backgroundColor: AppColors.kDeepGreyColorA6A.withOpacity(0.08),
                 child: const FavoriteIconAction(),
               ),
               const HsizedBox(width: 25),

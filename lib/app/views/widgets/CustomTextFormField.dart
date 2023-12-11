@@ -10,7 +10,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.securPass,
     this.stringController,
     required this.width,
-    required this.height, this.widget,
+    required this.height,
+    this.widget,
   });
   final bool securPass;
   final TextEditingController? stringController;
@@ -34,7 +35,7 @@ class CustomTextFormField extends StatelessWidget {
             hintText: hinttext,
             hintStyle: Txtstyle.style14(
               context: context,
-            ).copyWith(color: AppColors.kDeepGreyColor),
+            ).copyWith(color: AppColors.kDeepGreyColorA6A),
             border: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(10.r))),

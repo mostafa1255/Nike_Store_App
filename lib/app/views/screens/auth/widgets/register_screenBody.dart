@@ -47,7 +47,7 @@ class RegisterScreenBody extends StatelessWidget {
                 "Fill your details or continue with social media",
                 textAlign: TextAlign.center,
                 style: Txtstyle.style16(context: context)
-                    .copyWith(color: AppColors.kGreyColor),
+                    .copyWith(color: AppColors.kGreyColorB81),
               ),
             ),
           ),

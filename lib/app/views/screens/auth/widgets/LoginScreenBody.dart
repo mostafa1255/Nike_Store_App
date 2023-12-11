@@ -47,7 +47,7 @@ class LoginScreenBody extends StatelessWidget {
                 "Fill your details or continue with social media",
                 textAlign: TextAlign.center,
                 style: Txtstyle.style16(context: context)
-                    .copyWith(color: AppColors.kGreyColor),
+                    .copyWith(color: AppColors.kGreyColorB81),
               ),
             ),
           ),
@@ -89,7 +89,7 @@ class LoginScreenBody extends StatelessWidget {
             child: Text(
               "Recovery Password",
               style: Txtstyle.style12(context: context).copyWith(
-                  color: AppColors.kGreyColor,
+                  color: AppColors.kGreyColorB81,
                   fontWeight: FontWeight.w500,
                   fontFamily: Constants.popinsFamily),
             ),
