@@ -9,6 +9,7 @@ import 'package:nike_store_app/app/views/screens/my_cart_Screen/my_Cart_Screen.d
 import 'package:nike_store_app/app/views/screens/notifications_Screen/notifications_screen.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen2.dart';
 import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen3%20copy.dart';
+import 'package:nike_store_app/app/views/screens/profile_Screen/profile_screen.dart';
 import '../views/widgets/DotcontrollerOnBoarding.dart';
 
 abstract class Approuter {
@@ -21,7 +22,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: initial,
-        builder: (context, state) => NotificationScreen(),
+        builder: (context, state) => ProfileScreen(),
       ),
       GoRoute(
         path: pageview,
