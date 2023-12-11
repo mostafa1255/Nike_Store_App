@@ -64,6 +64,14 @@ class Txtstyle {
         fontWeight: FontWeight.bold);
   }
 
+  static TextStyle style18({required BuildContext context}) {
+    return TextStyle(
+        fontFamily: Constants.relwayFamily,
+        color: Colors.white,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.bold);
+  }
+
   static TextStyle style16({required BuildContext context}) {
     return TextStyle(
         fontSize: 16.sp,

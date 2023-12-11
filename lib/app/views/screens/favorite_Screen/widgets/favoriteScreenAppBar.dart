@@ -6,15 +6,20 @@ import '../../../../core/styles/text_Style.dart';
 import '../../../widgets/CustomBackIcon.dart';
 import '../../../widgets/HsizedBox.dart';
 
-AppBar favoriteScreenAppBar(BuildContext context) {
+AppBar favAndNotifScreenAppBar(
+    BuildContext context,
+    String title,
+    void Function()? onPressed1,
+    void Function()? onPressed2,
+    IconData? iconData) {
   return AppBar(
     surfaceTintColor: Colors.transparent,
     backgroundColor: AppColors.kOfWhiteColor,
     leading: CustomBackAndFavIcon(
-      onPressed: () {},
+      onPressed: onPressed1,
     ),
     title: Text(
-      "Favourite",
+      title,
       style: Txtstyle.style16(context: context).copyWith(
           color: AppColors.kFontColor,
           fontWeight: FontWeight.w500,
@@ -23,8 +28,8 @@ AppBar favoriteScreenAppBar(BuildContext context) {
     centerTitle: true,
     actions: [
       CustomBackAndFavIcon(
-        onPressed: () {},
-        iconData: Icons.favorite_border,
+        onPressed: onPressed2,
+        iconData: iconData,
       ),
       HsizedBox(width: 15.w)
     ],

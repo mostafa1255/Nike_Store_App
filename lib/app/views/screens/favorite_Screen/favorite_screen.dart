@@ -10,7 +10,8 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kOfWhiteColor,
-      appBar: favoriteScreenAppBar(context),
+      appBar: favAndNotifScreenAppBar(
+          context, "Favorite", () {}, () {}, Icons.favorite_border),
       body: const FavoriteScreenBody(),
     );
   }
