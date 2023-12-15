@@ -12,6 +12,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.width,
     required this.height,
     this.widget,
+    this.fontcolor,
+    this.enableWriting,
   });
   final bool securPass;
   final TextEditingController? stringController;
@@ -19,12 +21,15 @@ class CustomTextFormField extends StatelessWidget {
   final double height;
   final String hinttext;
   final Widget? widget;
+  final Color? fontcolor;
+  final bool? enableWriting;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
       width: width,
       child: TextFormField(
+        enabled: enableWriting ?? true,
         style: const TextStyle(color: Colors.black),
         controller: stringController,
         obscureText: securPass,
@@ -35,7 +40,7 @@ class CustomTextFormField extends StatelessWidget {
             hintText: hinttext,
             hintStyle: Txtstyle.style14(
               context: context,
-            ).copyWith(color: AppColors.kDeepGreyColorA6A),
+            ).copyWith(color: fontcolor ?? AppColors.kDeepGreyColorA6A),
             border: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(10.r))),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
@@ -12,6 +11,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.kOfWhiteColor,
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
         backgroundColor: AppColors.kOfWhiteColor,
