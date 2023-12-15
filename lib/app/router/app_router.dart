@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/views/screens/check_Out_Screen/check_Out_screen.dart';
 import 'package:nike_store_app/app/views/screens/details_Screen/details_screen.dart';
+import 'package:nike_store_app/app/views/screens/edit_Profile_Screen/edit_profile_screen.dart';
 import 'package:nike_store_app/app/views/screens/favorite_Screen/favorite_screen.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/home_screen.dart';
 import 'package:nike_store_app/app/views/screens/map_Screen/map_screen.dart';
@@ -22,7 +23,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: initial,
-        builder: (context, state) => ProfileScreen(),
+        builder: (context, state) => EditProfileScreen(),
       ),
       GoRoute(
         path: pageview,
