@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -9,11 +10,18 @@ import 'package:nike_store_app/app/router/app_router.dart';
 import 'package:nike_store_app/app/views/widgets/CustomTextFormField.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 import '../../../widgets/HsizedBox.dart';
+import '../../../widgets/SecurePasswordTextField.dart';
 import '../../../widgets/VsizedBox.dart';
 import 'CustomAuthHaveaccount.dart';
 
 class RegisterScreenBody extends StatelessWidget {
-  const RegisterScreenBody({super.key});
+  RegisterScreenBody({super.key});
+
+  final nameController = TextEditingController();
+
+  final emailController = TextEditingController();
+
+  final passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +71,7 @@ class RegisterScreenBody extends StatelessWidget {
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
+            stringController: nameController,
             hinttext: "x x x x x x x ",
             securPass: false,
             width: double.infinity,
@@ -78,6 +87,7 @@ class RegisterScreenBody extends StatelessWidget {
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
+            stringController: emailController,
             hinttext: "xyz@gmail.com",
             securPass: false,
             width: double.infinity,
@@ -92,14 +102,7 @@ class RegisterScreenBody extends StatelessWidget {
                 fontFamily: Constants.relwayFamily),
           ),
           const VsizedBox(height: 8),
-          CustomTextFormField(
-            widget: IconButton(
-                onPressed: () {}, icon: Image.asset(AppImages.iconeyePassword)),
-            hinttext: "Password",
-            securPass: true,
-            width: double.infinity,
-            height: 80.h,
-          ),
+          SecurePasswordTextField(passController: passController),
           const VsizedBox(height: 15),
           CustomMainButton(
             width: 375.w,
@@ -107,7 +110,7 @@ class RegisterScreenBody extends StatelessWidget {
             txt: "Sign Up",
             color: AppColors.kPrimaryColor,
             onPressed: () {
-              GoRouter.of(context).push(Approuter.homescreen);
+              //      GoRouter.of(context).push(Approuter.homescreen);
             },
           ),
           const VsizedBox(height: 25),
