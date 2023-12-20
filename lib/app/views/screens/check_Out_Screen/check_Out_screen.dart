@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/router/app_router.dart';
 import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
@@ -18,7 +20,11 @@ class CheckOutScreen extends StatelessWidget {
           showDialog(
             context: context,
             builder: (BuildContext context) {
-              return const CheckOutAlertDialog();
+              return CheckOutAlertDialog(
+                onPressed: () {
+                  GoRouter.of(context).push(Approuter.homescreen);
+                },
+              );
             },
           );
         },
@@ -27,7 +33,9 @@ class CheckOutScreen extends StatelessWidget {
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
         backgroundColor: AppColors.kOfWhiteColor,
-        leading: CustomBackAndFavIcon(onPressed: () {}),
+        leading: CustomBackAndFavIcon(onPressed: () {
+          GoRouter.of(context).pop();
+        }),
         centerTitle: true,
         title: Text(
           "Check Out",

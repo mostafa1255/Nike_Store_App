@@ -44,6 +44,7 @@ class OnBoardingScreen2Body extends StatelessWidget {
               left: 18.w,
               bottom: 20.h,
               child: CustomMainButton(
+                width: 340.w,
                 color: Colors.white,
                 txt: "Next",
                 onPressed: () {

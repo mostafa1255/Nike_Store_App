@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/router/app_router.dart';
 import 'package:nike_store_app/app/views/widgets/HsizedBox.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
@@ -12,7 +14,9 @@ AppBar detailsScreenAppBar(BuildContext context) {
       surfaceTintColor: Colors.transparent,
       backgroundColor: AppColors.kOfWhiteColor,
       leading: CustomBackAndFavIcon(
-        onPressed: () {},
+        onPressed: () {
+          GoRouter.of(context).pop();
+        },
       ),
       title: Text(
         "Sneaker Shop",
@@ -24,7 +28,9 @@ AppBar detailsScreenAppBar(BuildContext context) {
       centerTitle: true,
       actions: [
         CustomCartIcon(
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).push(Approuter.mycartscreen);
+          },
         ),
         HsizedBox(width: 15.w)
       ]);

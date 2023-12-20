@@ -9,8 +9,8 @@ import '../../../widgets/VsizedBox.dart';
 import '../../../widgets/customMainButton.dart';
 
 class CheckOutAlertDialog extends StatelessWidget {
-  const CheckOutAlertDialog({super.key});
-
+  const CheckOutAlertDialog({super.key, this.onPressed});
+ final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -52,7 +52,7 @@ class CheckOutAlertDialog extends StatelessWidget {
               color: AppColors.kPrimaryColor,
               txt: "Back To Shopping",
               fcolorWhite: true,
-              onPressed: () {},
+              onPressed:onPressed,
             )
           ],
         ),

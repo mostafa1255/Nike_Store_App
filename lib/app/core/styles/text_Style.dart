@@ -79,6 +79,14 @@ class Txtstyle {
         color: Colors.white);
   }
 
+  static TextStyle style15({required BuildContext context}) {
+    return TextStyle(
+        fontSize: 15.sp,
+        fontFamily: Constants.popinsFamily,
+        fontWeight: FontWeight.bold,
+        color: Colors.white);
+  }
+
   static TextStyle style14({required BuildContext context}) {
     return TextStyle(
         fontSize: 14.sp,

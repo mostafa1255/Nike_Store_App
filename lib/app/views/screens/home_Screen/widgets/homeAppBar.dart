@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
+import 'package:nike_store_app/app/router/app_router.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../widgets/CustomCartIcon.dart';
@@ -38,7 +40,11 @@ PreferredSizeWidget homeAppBar(BuildContext context) {
         ],
       ),
     ),
-    actions: [ CustomCartIcon(onPressed:(){} ), HsizedBox(width: 15.w)],
+    actions: [
+      CustomCartIcon(onPressed: () {
+        GoRouter.of(context).push(Approuter.mycartscreen);
+      }),
+      HsizedBox(width: 15.w)
+    ],
   );
 }
-

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/constants.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
+import 'package:nike_store_app/app/router/app_router.dart';
 import 'package:nike_store_app/app/views/widgets/CustomTextFormField.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 import '../../../widgets/HsizedBox.dart';
@@ -100,10 +102,13 @@ class RegisterScreenBody extends StatelessWidget {
           ),
           const VsizedBox(height: 15),
           CustomMainButton(
+            width: 375.w,
             fcolorWhite: true,
-            txt: "Sign In",
+            txt: "Sign Up",
             color: AppColors.kPrimaryColor,
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).push(Approuter.homescreen);
+            },
           ),
           const VsizedBox(height: 25),
           CustomMainButton(
@@ -125,7 +130,10 @@ class RegisterScreenBody extends StatelessWidget {
             onPressed: () {},
           ),
           const VsizedBox(height: 20),
-          const CustomAuthHaveaccount(
+          CustomAuthHaveaccount(
+            onTap: () {
+              GoRouter.of(context).push(Approuter.loginescreen);
+            },
             accountType: "Already Have Account?",
             createOrLogin: " Log In",
           )

@@ -12,7 +12,7 @@ import 'NewArrivalsAndOffersHomeListView.dart';
 import 'TabBarWidget.dart';
 
 class HomeScreenBody extends StatefulWidget {
-  HomeScreenBody({super.key});
+  const HomeScreenBody({super.key});
 
   @override
   State<HomeScreenBody> createState() => _HomeScreenBodyState();
@@ -56,7 +56,8 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
                       icon: CircleAvatar(
                           backgroundColor: Colors.transparent,
                           radius: 10.r,
-                          child: Image.asset(AppImages.iconserach))),
+                          child: SizedBox(
+                              child: Image.asset(AppImages.iconserach)))),
                 ),
                 searchList: list,
                 searchQueryBuilder: (query, list) {
@@ -91,12 +92,13 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
               Positioned(
                   right: 0.w,
                   top: 12.h,
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          radius: 32.r,
-                          child: Image.asset(AppImages.iconFilter))))
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: 35.r,
+                        child: Image.asset(AppImages.iconFilter)),
+                  ))
             ],
           ),
           const VsizedBox(height: 10),

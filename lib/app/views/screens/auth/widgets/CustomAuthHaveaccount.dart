@@ -8,10 +8,11 @@ class CustomAuthHaveaccount extends StatelessWidget {
   const CustomAuthHaveaccount({
     super.key,
     required this.accountType,
-    required this.createOrLogin,
+    required this.createOrLogin, this.onTap,
   });
   final String accountType;
   final String createOrLogin;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -24,12 +25,15 @@ class CustomAuthHaveaccount extends StatelessWidget {
               fontWeight: FontWeight.w300,
               color: AppColors.kDeepGreyColorA6A),
         ),
-        Text(
-          createOrLogin,
-          style: Txtstyle.style16(context: context).copyWith(
-              fontFamily: Constants.relwayFamily,
-              fontWeight: FontWeight.w100,
-              color: AppColors.kFontColor),
+        GestureDetector(
+          onTap: onTap,
+          child: Text(
+            createOrLogin,
+            style: Txtstyle.style16(context: context).copyWith(
+                fontFamily: Constants.relwayFamily,
+                fontWeight: FontWeight.w100,
+                color: AppColors.kFontColor),
+          ),
         )
       ],
     );

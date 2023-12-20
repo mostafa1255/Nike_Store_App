@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
+import 'package:nike_store_app/app/router/app_router.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 
 class OnBoardingScreen3Body extends StatelessWidget {
-  const OnBoardingScreen3Body({Key? key, required this.controller}) : super(key: key);
+  const OnBoardingScreen3Body({Key? key, required this.controller})
+      : super(key: key);
   final PageController controller;
 
   @override
@@ -44,12 +47,14 @@ class OnBoardingScreen3Body extends StatelessWidget {
               left: 18.w,
               bottom: 20.h,
               child: CustomMainButton(
+                width: 340.w,
                 color: Colors.white,
                 txt: "Next",
                 onPressed: () {
                   controller.nextPage(
                       duration: const Duration(milliseconds: 600),
                       curve: Curves.easeInOut);
+                  GoRouter.of(context).push(Approuter.loginescreen);
                 },
               )),
         ],

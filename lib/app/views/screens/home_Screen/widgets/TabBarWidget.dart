@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
+import 'package:nike_store_app/app/router/app_router.dart';
 import 'package:nike_store_app/app/views/widgets/VsizedBox.dart';
 import 'CustomHeaderofHomeItemListView.dart';
 import 'CustomHomeCardListView.dart';
@@ -41,7 +43,7 @@ class TabBarWidget extends StatelessWidget {
             height: 330.h,
             child: Padding(
               padding: EdgeInsets.only(top: 25.h),
-              child: const TabBarView(
+              child: TabBarView(
                 physics: BouncingScrollPhysics(),
                 children: [
                   Column(
@@ -50,10 +52,15 @@ class TabBarWidget extends StatelessWidget {
                         popularOrNewarrival: 'Popular Shoes',
                       ),
                       VsizedBox(height: 15),
-                      CustomHomeCardListView(
-                        productImage: AppImages.imagenikeshoes,
-                        productName: "Nike Jordan",
-                        productPrice: "302.00",
+                      GestureDetector(
+                        onTap: () {
+                          GoRouter.of(context).push(Approuter.detailsscreen);
+                        },
+                        child: CustomHomeCardListView(
+                          productImage: AppImages.imagenikeshoes,
+                          productName: "Nike Jordan",
+                          productPrice: "302.00",
+                        ),
                       )
                     ],
                   ),
@@ -63,10 +70,15 @@ class TabBarWidget extends StatelessWidget {
                       CustomHeaderofHomeItemListView(
                           popularOrNewarrival: "Popular Shoes"),
                       VsizedBox(height: 15),
-                      CustomHomeCardListView(
-                        productImage: AppImages.imagenikeshoes,
-                        productName: "Nike Jordan",
-                        productPrice: "302.00",
+                      GestureDetector(
+                        onTap: () {
+                          GoRouter.of(context).push(Approuter.detailsscreen);
+                        },
+                        child: CustomHomeCardListView(
+                          productImage: AppImages.imagenikeshoes,
+                          productName: "Nike Jordan",
+                          productPrice: "302.00",
+                        ),
                       )
                     ],
                   ),
@@ -76,10 +88,15 @@ class TabBarWidget extends StatelessWidget {
                       CustomHeaderofHomeItemListView(
                           popularOrNewarrival: "Popular Shoes"),
                       VsizedBox(height: 15),
-                      CustomHomeCardListView(
-                        productImage: AppImages.imagenikeshoes,
-                        productName: "Nike Jordan",
-                        productPrice: "302.00",
+                      GestureDetector(
+                        onTap: () {
+                          GoRouter.of(context).push(Approuter.detailsscreen);
+                        },
+                        child: CustomHomeCardListView(
+                          productImage: AppImages.imagenikeshoes,
+                          productName: "Nike Jordan",
+                          productPrice: "302.00",
+                        ),
                       )
                     ],
                   ),

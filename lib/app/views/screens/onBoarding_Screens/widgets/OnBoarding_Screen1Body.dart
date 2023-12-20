@@ -37,6 +37,7 @@ class OnBoardingScreen1Body extends StatelessWidget {
               bottom: 60.h,
               child: CustomMainButton(
                 color: Colors.white,
+                width: 340.w,
                 txt: "Get Started",
                 onPressed: () {
                   controller.nextPage(

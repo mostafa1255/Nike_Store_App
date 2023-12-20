@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
-
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../widgets/VsizedBox.dart';
@@ -16,6 +15,7 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: 260.w,
       backgroundColor: AppColors.kSecondaryColor,
       child: Padding(
         padding: EdgeInsets.only(left: 25.w, top: 75.h),
@@ -103,4 +103,3 @@ class HomeDrawer extends StatelessWidget {
     );
   }
 }
-
