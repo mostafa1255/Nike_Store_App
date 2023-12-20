@@ -6,7 +6,7 @@ import 'package:nike_store_app/app/core/styles/text_Style.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
-    required this.hinttext,
+    this.hinttext,
     required this.securPass,
     this.stringController,
     required this.width,
@@ -14,21 +14,24 @@ class CustomTextFormField extends StatelessWidget {
     this.widget,
     this.fontcolor,
     this.enableWriting,
+    this.initialValue,
   });
   final bool securPass;
   final TextEditingController? stringController;
   final double width;
   final double height;
-  final String hinttext;
+  final String? hinttext;
   final Widget? widget;
   final Color? fontcolor;
   final bool? enableWriting;
+  final String? initialValue;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
       width: width,
       child: TextFormField(
+        initialValue: initialValue,
         enabled: enableWriting ?? true,
         style: const TextStyle(color: Colors.black),
         controller: stringController,

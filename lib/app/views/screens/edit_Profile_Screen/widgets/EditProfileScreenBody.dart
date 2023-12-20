@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/Functions/changePhotoBottomSheet.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
@@ -34,12 +36,17 @@ class EditProfileScreenBody extends StatelessWidget {
                       fontFamily: Constants.relwayFamily),
                 ),
                 const VsizedBox(height: 4),
-                Text(
-                  "Change Profile Picture",
-                  style: Txtstyle.style12(context: context).copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.kPrimaryColor,
-                      fontFamily: Constants.relwayFamily),
+                GestureDetector(
+                  onTap: () {
+                    changePhotoBottomSheet(context);
+                  },
+                  child: Text(
+                    "Change Profile Picture",
+                    style: Txtstyle.style12(context: context).copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.kPrimaryColor,
+                        fontFamily: Constants.relwayFamily),
+                  ),
                 ),
               ],
             ),
@@ -54,7 +61,7 @@ class EditProfileScreenBody extends StatelessWidget {
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
-            hinttext: "Mostafa Yasser",
+            initialValue: "Mostafa Yasser",
             fontcolor: AppColors.kFontColor,
             securPass: false,
             width: double.infinity,
@@ -70,7 +77,7 @@ class EditProfileScreenBody extends StatelessWidget {
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
-            hinttext: "XYZ@gmail.com",
+            initialValue: "XYZ@gmail.com",
             fontcolor: AppColors.kFontColor,
             securPass: false,
             width: double.infinity,
@@ -86,7 +93,7 @@ class EditProfileScreenBody extends StatelessWidget {
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
-            hinttext: "01289880177",
+            initialValue: "01289880177",
             securPass: false,
             fontcolor: AppColors.kFontColor,
             width: double.infinity,

@@ -9,13 +9,9 @@ import 'package:nike_store_app/app/views/screens/details_Screen/details_screen.d
 import 'package:nike_store_app/app/views/screens/edit_Profile_Screen/edit_profile_screen.dart';
 import 'package:nike_store_app/app/views/screens/favorite_Screen/favorite_screen.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/home_screen.dart';
-import 'package:nike_store_app/app/views/screens/map_Screen/map_screen.dart';
 import 'package:nike_store_app/app/views/screens/my_cart_Screen/my_Cart_Screen.dart';
 import 'package:nike_store_app/app/views/screens/notifications_Screen/notifications_screen.dart';
-import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen2.dart';
-import 'package:nike_store_app/app/views/screens/onBoarding_Screens/onBoarding_Screen3%20copy.dart';
 import 'package:nike_store_app/app/views/screens/profile_Screen/profile_screen.dart';
-import 'package:nike_store_app/app/views/screens/search_Screen/search_screen.dart';
 import '../views/widgets/DotcontrollerOnBoarding.dart';
 
 abstract class Approuter {
@@ -37,7 +33,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: initial,
-        builder: (context, state) => SplashScreen(),
+        builder: (context, state) => EditProfileScreen(),
       ),
       GoRoute(
         path: pageview,
@@ -72,7 +68,7 @@ abstract class Approuter {
         builder: (context, state) => ProfileScreen(),
       ),
       GoRoute(
-        path: profilescreen,
+        path: editprofilescreen,
         builder: (context, state) => EditProfileScreen(),
       ),
       GoRoute(

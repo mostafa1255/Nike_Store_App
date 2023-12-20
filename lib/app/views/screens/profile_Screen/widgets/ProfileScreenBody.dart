@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/router/app_router.dart';
 import 'package:nike_store_app/app/views/widgets/VsizedBox.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 import '../../../../core/constants.dart';
@@ -33,7 +35,9 @@ class ProfileScreenBody extends StatelessWidget {
                   radius: 13.r,
                   backgroundColor: AppColors.kPrimaryColor,
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        GoRouter.of(context).push(Approuter.editprofilescreen);
+                      },
                       icon: Icon(
                         FontAwesomeIcons.pen,
                         size: 10.sp,
