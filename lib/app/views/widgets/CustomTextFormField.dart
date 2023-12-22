@@ -4,7 +4,7 @@ import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
+  CustomTextFormField({
     super.key,
     this.hinttext,
     required this.securPass,
@@ -12,6 +12,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.width,
     required this.height,
     this.widget,
+    this.validator,
     this.fontcolor,
     this.enableWriting,
     this.initialValue,
@@ -25,18 +26,26 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fontcolor;
   final bool? enableWriting;
   final String? initialValue;
+  String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
       width: width,
       child: TextFormField(
+        validator: validator,
         initialValue: initialValue,
         enabled: enableWriting ?? true,
         style: const TextStyle(color: Colors.black),
         controller: stringController,
         obscureText: securPass,
         decoration: InputDecoration(
+            errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.red,
+                ),
+                borderRadius: BorderRadius.circular(10.r)),
             suffixIcon: widget,
             fillColor: const Color(0xffF7F7F9),
             filled: true,
