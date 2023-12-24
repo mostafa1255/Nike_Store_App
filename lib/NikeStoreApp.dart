@@ -1,22 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
+import 'package:nike_store_app/app/data/repos/register_Repo/register_repo.dart';
+import 'package:nike_store_app/app/data/repos/register_Repo/register_repo_Imp.dart';
 import 'app/router/app_router.dart';
 
 class NikeStoreApp extends StatelessWidget {
   const NikeStoreApp({Key? key}) : super(key: key);
 
-  double pxToDp(BuildContext context, double pixel) {
-    final double devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
-    return pixel / devicePixelRatio;
-  }
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => RegisterCubit()),
+        BlocProvider(create: (_) => RegisterCubit(RegisterRepoImpl())),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -32,3 +30,7 @@ class NikeStoreApp extends StatelessWidget {
     );
   }
 }
+/*double pxToDp(BuildContext context, double pixel) {
+    final double devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    return pixel / devicePixelRatio;
+  } */

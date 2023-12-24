@@ -17,4 +17,14 @@ class RegisterFailure extends RegisterState {
 
 class EmailVerificationSuccess extends RegisterState {}
 
-class EmailVerificationFailure extends RegisterState {}
+class EmailVerificationLoading extends RegisterState {
+  final String errMessage;
+
+  EmailVerificationLoading({required this.errMessage});
+}
+
+class EmailVerificationFailure extends RegisterState {
+  final String errMessage;
+
+  EmailVerificationFailure({required this.errMessage});
+}

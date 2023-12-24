@@ -9,7 +9,6 @@ Future<UserCredential?> signInWithGoogle(
   emitFunctionLoading();
   try {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
 

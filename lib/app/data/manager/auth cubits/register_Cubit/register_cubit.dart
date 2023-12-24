@@ -1,83 +1,62 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nike_store_app/app/data/repos/register_Repo/register_repo.dart';
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit() : super(RegisterInitial());
+  RegisterCubit(
+    this.registerrepo,
+  ) : super(RegisterInitial());
   final auth = FirebaseAuth.instance;
+  Registerrepo registerrepo;
+  // ignore: prefer_typing_uninitialized_variables
+  var userCredential;
   GlobalKey<FormState> formKey = GlobalKey();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passController = TextEditingController();
+
 //Email and Password Auth
-  void register({required String email, required String password}) async {
+  Future<void> signUpwithEmailandPassword(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
     emit(RegisterLoading());
-    try {
-      print("in register function");
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
-
-  print(userCredential.user?.uid);
-
+    var result = await registerrepo.signUpwithEmailandPassword(
+        email: email, password: password, context: context);
+    result.fold((faliure) {
+      emit(RegisterFailure(errMessage: faliure.errmessage));
+    }, (usercredential) {
+      userCredential = usercredential;
       emit(RegisterSuccess());
-    } on FirebaseAuthException catch (e) {
-      emit(RegisterFailure(errMessage: '${e.message}'));
-    }
+    });
   }
 
 //Google Auth
-  Future<UserCredential?> signInWithGoogle() async {
+  Future<void> signInWithGoogle() async {
     emit(RegisterLoading());
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
+    var result = await registerrepo.signUpwithGoogle();
+    result.fold((faliure) {
+      emit(RegisterFailure(errMessage: faliure.errmessage));
+    }, (usercredential) {
+      userCredential = usercredential;
       emit(RegisterSuccess());
-      return await FirebaseAuth.instance.signInWithCredential(credential);
-    } on FirebaseAuthException catch (e) {
-      emit(RegisterFailure(errMessage: e.message!));
-      return null;
-    }
-  }
-
-//is User Already Registered ?
-  Future<bool> isUserAlreadyRegistered(String? email) async {
-    if (email == null) {
-      return false;
-    }
-    try {
-      final result =
-          await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
-      return result.isNotEmpty;
-    } catch (e) {
-      return false;
-    }
-  }
-
-//Verify Email
-  Future<void> verifyEmail() async {
-    try {
-      auth.currentUser!.sendEmailVerification();
-    } catch (e) {
-      print(e.toString());
-    }
+    });
   }
 
 //Is Email Verified
   Future<void> isEmailVerified() async {
-    if (auth.currentUser!.emailVerified) {
-      emit(EmailVerificationSuccess());
-    } else {
-      emit(EmailVerificationFailure());
+    try {
+      if (auth.currentUser!.emailVerified) {
+        emit(EmailVerificationSuccess());
+      } else {
+        auth.currentUser!.sendEmailVerification();
+        emit(EmailVerificationLoading(errMessage: "please verify your email"));
+      }
+    } on FirebaseAuthException catch (e) {
+      emit(EmailVerificationFailure(errMessage: e.message.toString()));
     }
   }
 }

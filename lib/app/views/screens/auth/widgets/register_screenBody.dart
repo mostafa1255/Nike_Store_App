@@ -1,25 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/constants.dart';
-import 'package:nike_store_app/app/core/styles/App_Colors.dart';
-import 'package:nike_store_app/app/core/styles/App_Image.dart';
-import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
-import 'package:nike_store_app/app/router/app_router.dart';
+import 'package:nike_store_app/app/views/screens/auth/widgets/reg_imp.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
-import '../../../widgets/HsizedBox.dart';
-import '../../../widgets/VsizedBox.dart';
 import 'CustomAuthHaveaccount.dart';
+import 'RegisterBlocListener.dart';
 import 'RegisterFormField.dart';
 
 class RegisterScreenBody extends StatelessWidget {
-  RegisterScreenBody({super.key});
+  const RegisterScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    print("mostfa");
     var cubitRead = context.read<RegisterCubit>();
     return SafeArea(
         child: Padding(
@@ -31,9 +22,10 @@ class RegisterScreenBody extends StatelessWidget {
           CircleAvatar(
             backgroundColor: AppColors.kOfWhiteColor,
             child: IconButton(
-                iconSize: 17.sp,
-                onPressed: () {},
-                icon: const Icon(Icons.arrow_back_ios_rounded)),
+              iconSize: 17.sp,
+              onPressed: () {},
+              icon: const Icon(Icons.arrow_back_ios_rounded),
+            ),
           ),
           const VsizedBox(height: 8),
           Align(
@@ -67,25 +59,16 @@ class RegisterScreenBody extends StatelessWidget {
             color: AppColors.kPrimaryColor,
             onPressed: () {
               if (cubitRead.formKey.currentState!.validate()) {
-                BlocProvider.of<RegisterCubit>(context).register(
+                BlocProvider.of<RegisterCubit>(context)
+                    .signUpwithEmailandPassword(
+                  context: context,
                   email: cubitRead.emailController.text,
                   password: cubitRead.passController.text,
                 );
-              } else {
-                print("Uncorrect");
               }
             },
           ),
-          BlocListener<RegisterCubit, RegisterState>(
-            child: const SizedBox.shrink(),
-            listener: (context, state) {
-              if (state is RegisterSuccess) {
-                GoRouter.of(context).push(Approuter.homescreen);
-              } else if (state is RegisterFailure) {
-                print("Register Faliure with${state.errMessage}");
-              }
-            },
-          ),
+          const RegisterBlocListener(),
           const VsizedBox(height: 25),
           CustomMainButton(
             widget: Row(
@@ -103,7 +86,9 @@ class RegisterScreenBody extends StatelessWidget {
             ),
             fcolorWhite: true,
             color: AppColors.kOfWhiteColor,
-            onPressed: () {},
+            onPressed: () {
+              cubitRead.signInWithGoogle();
+            },
           ),
           const VsizedBox(height: 20),
           CustomAuthHaveaccount(
