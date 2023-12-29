@@ -35,7 +35,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
 //Google Auth
-  Future<void> signInWithGoogle() async {
+  Future<void> signUpWithGoogle() async {
     emit(RegisterLoading());
     var result = await registerrepo.signUpwithGoogle();
     result.fold((faliure) {
@@ -44,19 +44,5 @@ class RegisterCubit extends Cubit<RegisterState> {
       userCredential = usercredential;
       emit(RegisterSuccess());
     });
-  }
-
-//Is Email Verified
-  Future<void> isEmailVerified() async {
-    try {
-      if (auth.currentUser!.emailVerified) {
-        emit(EmailVerificationSuccess());
-      } else {
-        auth.currentUser!.sendEmailVerification();
-        emit(EmailVerificationLoading(errMessage: "please verify your email"));
-      }
-    } on FirebaseAuthException catch (e) {
-      emit(EmailVerificationFailure(errMessage: e.message.toString()));
-    }
   }
 }

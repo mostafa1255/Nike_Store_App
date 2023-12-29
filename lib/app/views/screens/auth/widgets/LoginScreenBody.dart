@@ -1,22 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/constants.dart';
-import 'package:nike_store_app/app/core/styles/App_Colors.dart';
-import 'package:nike_store_app/app/core/styles/App_Image.dart';
-import 'package:nike_store_app/app/core/styles/text_Style.dart';
-import 'package:nike_store_app/app/router/app_router.dart';
-import 'package:nike_store_app/app/views/widgets/CustomTextFormField.dart';
+import 'package:nike_store_app/app/core/tools/reg_imp.dart';
+import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
-import '../../../widgets/HsizedBox.dart';
-import '../../../widgets/VsizedBox.dart';
 import 'CustomAuthHaveaccount.dart';
+import 'LoginForm.dart';
 
 class LoginScreenBody extends StatelessWidget {
   const LoginScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var logCubit = context.read<LoginCubit>();
     return SafeArea(
         child: Padding(
       padding: EdgeInsets.only(top: 15.h, left: 14.w, right: 14.w),
@@ -28,7 +22,9 @@ class LoginScreenBody extends StatelessWidget {
             backgroundColor: AppColors.kOfWhiteColor,
             child: IconButton(
                 iconSize: 17.sp,
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context).pop();
+                },
                 icon: const Icon(Icons.arrow_back_ios_rounded)),
           ),
           const VsizedBox(height: 8),
@@ -54,38 +50,8 @@ class LoginScreenBody extends StatelessWidget {
             ),
           ),
           const VsizedBox(height: 27),
-          Text(
-            "Email Address",
-            style: Txtstyle.style16(context: context).copyWith(
-                color: AppColors.kFontColor,
-                fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
-          ),
-          const VsizedBox(height: 8),
-          CustomTextFormField(
-            hinttext: "xyz@gmail.com",
-            securPass: false,
-            width: double.infinity,
-            height: 80.h,
-          ),
-          const VsizedBox(height: 12),
-          Text(
-            "Password",
-            style: Txtstyle.style16(context: context).copyWith(
-                color: AppColors.kFontColor,
-                fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
-          ),
-          const VsizedBox(height: 8),
-          CustomTextFormField(
-            widget: IconButton(
-                onPressed: () {}, icon: Image.asset(AppImages.iconeyePassword)),
-            hinttext: "Password",
-            securPass: true,
-            width: double.infinity,
-            height: 80.h,
-          ),
           const VsizedBox(height: 3),
+          const LoginForm(),
           Align(
             alignment: Alignment.centerRight,
             child: Text(
@@ -103,7 +69,13 @@ class LoginScreenBody extends StatelessWidget {
             txt: "Sign In",
             color: AppColors.kPrimaryColor,
             onPressed: () {
-              GoRouter.of(context).push(Approuter.homescreen);
+              if (logCubit.formKey.currentState!.validate()) {
+                BlocProvider.of<LoginCubit>(context).signInwithEmailandPassword(
+                  context: context,
+                  email: logCubit.emailController.text,
+                  password: logCubit.passController.text,
+                );
+              }
             },
           ),
           const VsizedBox(height: 25),
@@ -123,14 +95,16 @@ class LoginScreenBody extends StatelessWidget {
             ),
             fcolorWhite: true,
             color: AppColors.kOfWhiteColor,
-            onPressed: () {},
+            onPressed: () {
+              logCubit.signInWithGoogle();
+            },
           ),
           const VsizedBox(height: 80),
           CustomAuthHaveaccount(
             onTap: () {
               GoRouter.of(context).push(Approuter.registerscreen);
             },
-            accountType: "New User?",
+            accountType: "New User? ",
             createOrLogin: "Create Account",
           )
         ],

@@ -12,6 +12,7 @@ class RegisterScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubitRead = context.read<RegisterCubit>();
+    var regCubit = BlocProvider.of<RegisterCubit>(context);
     return SafeArea(
         child: Padding(
       padding: EdgeInsets.only(top: 15.h, left: 14.w, right: 14.w),
@@ -23,7 +24,9 @@ class RegisterScreenBody extends StatelessWidget {
             backgroundColor: AppColors.kOfWhiteColor,
             child: IconButton(
               iconSize: 17.sp,
-              onPressed: () {},
+              onPressed: () {
+                //       GoRouter.of(context);
+              },
               icon: const Icon(Icons.arrow_back_ios_rounded),
             ),
           ),
@@ -87,7 +90,7 @@ class RegisterScreenBody extends StatelessWidget {
             fcolorWhite: true,
             color: AppColors.kOfWhiteColor,
             onPressed: () {
-              cubitRead.signInWithGoogle();
+              regCubit.signUpWithGoogle();
             },
           ),
           const VsizedBox(height: 20),
