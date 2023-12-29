@@ -1,6 +1,6 @@
 import 'package:nike_store_app/app/core/constants.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
-import 'package:nike_store_app/app/views/screens/auth/widgets/reg_imp.dart';
+import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 import 'CustomAuthHaveaccount.dart';
 import 'RegisterBlocListener.dart';

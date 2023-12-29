@@ -15,17 +15,20 @@ class RegisterBlocListener extends StatelessWidget {
     return BlocListener<RegisterCubit, RegisterState>(
       child: const SizedBox.shrink(),
       listener: (context, state) {
-        if (state is EmailVerificationSuccess) {
+        if (state is RegisterSuccess) {
           customsnackBar(context, "Account Created Successfully", Colors.green);
           GoRouter.of(context).push(Approuter.homescreen);
         } else if (state is RegisterFailure) {
           customsnackBar(context, state.errMessage, Colors.red);
-        } else if (state is EmailVerificationFailure) {
-          customsnackBar(context, state.errMessage, Colors.red);
-        } else if (state is EmailVerificationLoading) {
-          customsnackBar(context, state.errMessage, Colors.blue);
         }
       },
     );
   }
 }
+/*else if (state is EmailVerificationFailure) {
+          customsnackBar(context, state.errMessage, Colors.red);
+        
+        } else if (state is EmailVerificationLoading) {
+            customsnackBar(context, state.errMessage, Colors.blue);
+            
+        }* */

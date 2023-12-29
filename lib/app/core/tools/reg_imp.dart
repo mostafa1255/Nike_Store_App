@@ -6,5 +6,5 @@ export 'package:nike_store_app/app/core/styles/App_Colors.dart';
 export 'package:nike_store_app/app/core/styles/App_Image.dart';
 export 'package:nike_store_app/app/core/styles/text_Style.dart';
 export 'package:nike_store_app/app/router/app_router.dart';
-export '../../../widgets/HsizedBox.dart';
-export '../../../widgets/VsizedBox.dart';
+export '../../views/widgets/HsizedBox.dart';
+export '../../views/widgets/VsizedBox.dart';

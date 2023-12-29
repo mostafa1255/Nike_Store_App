@@ -44,8 +44,19 @@ class RegisterRepoImpl extends Registerrepo {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      return right(
-          await FirebaseAuth.instance.signInWithCredential(credential));
+
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Check if the user is new
+      final isAlreadyRegistered = userCredential.additionalUserInfo!.isNewUser;
+
+      if (!isAlreadyRegistered) {
+        return left(FirebaseFailure.fromFirebaseError(
+            errorCode: "Email already used. Go to the login page."));
+      } else {
+        return right(userCredential);
+      }
     } on Exception catch (e) {
       if (e is FirebaseAuthException) {
         return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
@@ -55,3 +66,26 @@ class RegisterRepoImpl extends Registerrepo {
     }
   }
 }
+
+/*@override
+  Future<Either<Faliures, UserCredential>> signUpwithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      return right(
+          await FirebaseAuth.instance.signInWithCredential(credential));
+    } on Exception catch (e) {
+      if (e is FirebaseAuthException) {
+        return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
+      } else {
+        return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
+      }
+    }
+  }* */
