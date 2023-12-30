@@ -3,6 +3,7 @@ import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
 import 'CustomAuthHaveaccount.dart';
+import 'LoginBlocListener.dart';
 import 'LoginForm.dart';
 
 class LoginScreenBody extends StatelessWidget {
@@ -52,6 +53,7 @@ class LoginScreenBody extends StatelessWidget {
           const VsizedBox(height: 27),
           const VsizedBox(height: 3),
           const LoginForm(),
+          const LoginBlocListener(),
           Align(
             alignment: Alignment.centerRight,
             child: Text(

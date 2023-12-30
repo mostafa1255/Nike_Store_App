@@ -17,7 +17,7 @@ class RegisterBlocListener extends StatelessWidget {
       listener: (context, state) {
         if (state is RegisterSuccess) {
           customsnackBar(context, "Account Created Successfully", Colors.green);
-          GoRouter.of(context).push(Approuter.homescreen);
+          GoRouter.of(context).push(Approuter.loginescreen);
         } else if (state is RegisterFailure) {
           customsnackBar(context, state.errMessage, Colors.red);
         }
@@ -25,10 +25,3 @@ class RegisterBlocListener extends StatelessWidget {
     );
   }
 }
-/*else if (state is EmailVerificationFailure) {
-          customsnackBar(context, state.errMessage, Colors.red);
-        
-        } else if (state is EmailVerificationLoading) {
-            customsnackBar(context, state.errMessage, Colors.blue);
-            
-        }* */
