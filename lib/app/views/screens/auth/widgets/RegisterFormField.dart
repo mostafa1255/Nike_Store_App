@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nike_store_app/app/core/tools/global_keys.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
@@ -26,7 +27,7 @@ class _RegisterFormFieldState extends State<RegisterFormField> {
     var regCubit = BlocProvider.of<RegisterCubit>(context);
 
     return Form(
-        key: context.read<RegisterCubit>().formKey,
+        key: GlobalKeys.riKey2,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 
+// ignore: must_be_immutable
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField({
     super.key,
@@ -42,7 +43,7 @@ class CustomTextFormField extends StatelessWidget {
         obscureText: securPass,
         decoration: InputDecoration(
             errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.red,
                 ),
                 borderRadius: BorderRadius.circular(10.r)),

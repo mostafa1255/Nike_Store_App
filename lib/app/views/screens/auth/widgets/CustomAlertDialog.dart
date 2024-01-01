@@ -14,8 +14,7 @@ class CustomForgetPasswordAlertDialog extends StatelessWidget {
     return AlertDialog(
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.circular(25.r), // Adjust the border radius as needed
+        borderRadius: BorderRadius.circular(25.r),
       ),
       title: CircleAvatar(
         radius: 25.r,

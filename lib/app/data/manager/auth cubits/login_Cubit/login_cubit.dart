@@ -10,7 +10,7 @@ class LoginCubit extends Cubit<LoginState> {
   final auth = FirebaseAuth.instance;
   LoginRepo loginRepo;
   UserCredential? userCredential;
-  GlobalKey<FormState> formKey = GlobalKey();
+
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passController = TextEditingController();
@@ -39,6 +39,16 @@ class LoginCubit extends Cubit<LoginState> {
     }, (usercredential) {
       userCredential = usercredential;
       emit(LoginSuccess());
+    });
+  }
+
+// reset password
+  Future<void> resetPassword({required String email}) async {
+    var result = await loginRepo.resetPassword(email: email);
+    result.fold((faliure) {
+      emit(ResetPasswordFailure(errMessage: faliure.errmessage));
+    }, (voidreturn) {
+      emit(ResetPasswordsucsess());
     });
   }
 

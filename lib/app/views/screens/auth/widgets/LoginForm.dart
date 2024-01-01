@@ -1,3 +1,5 @@
+import 'package:nike_store_app/app/core/tools/global_keys.dart';
+
 import '../../../../core/constants.dart';
 import '../../../../core/tools/App_Regex.dart';
 import '../../../../core/tools/reg_imp.dart';
@@ -16,7 +18,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     var logCubit = BlocProvider.of<LoginCubit>(context);
     return Form(
-      key: logCubit.formKey,
+      key: GlobalKeys.riKey1,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,6 +31,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
+            stringController: logCubit.emailController,
             validator: (value) {
               if (value == null ||
                   value.isEmpty ||
@@ -51,6 +54,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
+            stringController: logCubit.passController,
             widget: IconButton(
                 onPressed: () {}, icon: Image.asset(AppImages.iconeyePassword)),
             hinttext: "Password",

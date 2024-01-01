@@ -13,7 +13,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   Registerrepo registerrepo;
   // ignore: prefer_typing_uninitialized_variables
   var userCredential;
-  GlobalKey<FormState> formKey = GlobalKey();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passController = TextEditingController();

@@ -1,4 +1,5 @@
 import 'package:nike_store_app/app/core/constants.dart';
+import 'package:nike_store_app/app/core/tools/global_keys.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
@@ -61,7 +62,7 @@ class RegisterScreenBody extends StatelessWidget {
             txt: "Sign Up",
             color: AppColors.kPrimaryColor,
             onPressed: () {
-              if (cubitRead.formKey.currentState!.validate()) {
+              if (GlobalKeys.riKey2.currentState!.validate()) {
                 BlocProvider.of<RegisterCubit>(context)
                     .signUpwithEmailandPassword(
                   context: context,
@@ -96,7 +97,7 @@ class RegisterScreenBody extends StatelessWidget {
           const VsizedBox(height: 20),
           CustomAuthHaveaccount(
             onTap: () {
-              GoRouter.of(context).push(Approuter.loginescreen);
+              GoRouter.of(context).pushReplacement(Approuter.loginescreen);
             },
             accountType: "Already Have Account?",
             createOrLogin: " Log In",

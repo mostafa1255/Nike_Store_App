@@ -35,7 +35,7 @@ class FirebaseFailure extends Faliures {
           return "Email address is invalid.";
 
         default:
-          return "Registeration failed. Please try again.";
+          return errorCode;
       }
     }
 

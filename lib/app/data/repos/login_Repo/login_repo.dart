@@ -10,4 +10,6 @@ abstract class LoginRepo {
     required BuildContext context,
   });
   Future<Either<Faliures, UserCredential>> signInwithGoogle();
+
+  Future<Either<Faliures, void>> resetPassword({required String email});
 }

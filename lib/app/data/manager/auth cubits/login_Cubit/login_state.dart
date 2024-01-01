@@ -28,3 +28,11 @@ class EmailVerificationFailure extends LoginState {
 
   EmailVerificationFailure({required this.errMessage});
 }
+
+class ResetPasswordsucsess extends LoginState {}
+
+class ResetPasswordFailure extends LoginState {
+  final String errMessage;
+
+  ResetPasswordFailure({required this.errMessage});
+}

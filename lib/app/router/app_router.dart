@@ -19,7 +19,7 @@ abstract class Approuter {
   static const pageview = "/dotcontrolleronboarding";
   static const loginescreen = "/loginescreen";
   static const registerscreen = "/registerscreen";
-  static const forgetpassword = "/forgetpassword";
+  static const forgetpasswordscreen = "/forgetpasswordscreen";
   static const homescreen = "/homescreen";
   static const detailsscreen = "/detailsscreen";
   static const mycartscreen = "/mycartscreen";
@@ -33,7 +33,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: initial,
-        builder: (context, state) => LoginScreen(),
+        builder: (context, state) => ForgetPasswordScreen(),
       ),
       GoRoute(
         path: pageview,
@@ -48,7 +48,7 @@ abstract class Approuter {
         builder: (context, state) => RegisterScreen(),
       ),
       GoRoute(
-        path: forgetpassword,
+        path: forgetpasswordscreen,
         builder: (context, state) => ForgetPasswordScreen(),
       ),
       GoRoute(

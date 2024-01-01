@@ -1,16 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nike_store_app/app/core/styles/App_Colors.dart';
-import '../../../../core/styles/text_Style.dart';
+import 'package:nike_store_app/app/core/tools/reg_imp.dart';
+import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
+import 'package:nike_store_app/app/views/screens/auth/widgets/ForgetPasswordBlocListener.dart';
+import '../../../../core/tools/App_Regex.dart';
 import '../../../widgets/CustomBackIcon.dart';
 import '../../../widgets/CustomTextFormField.dart';
-import '../../../widgets/VsizedBox.dart';
 import '../../../widgets/customMainButton.dart';
-import 'CustomAlertDialog.dart';
 
 class ForgetPasswordScreenBody extends StatelessWidget {
-  const ForgetPasswordScreenBody({super.key});
-
+  ForgetPasswordScreenBody({super.key});
+  final emailcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,6 +29,8 @@ class ForgetPasswordScreenBody extends StatelessWidget {
             ),
           ),
           const VsizedBox(height: 8),
+          //Bloc Listener
+          const ForgetPasswordBlocListener(),
           Align(
             alignment: Alignment.center,
             child: SizedBox(
@@ -45,7 +45,8 @@ class ForgetPasswordScreenBody extends StatelessWidget {
           ),
           const VsizedBox(height: 27),
           CustomTextFormField(
-            hinttext: "x x x x x x x ",
+            stringController: emailcontroller,
+            hinttext: "XYZ@gmail.com",
             securPass: true,
             width: double.infinity,
             height: 80.h,
@@ -55,13 +56,12 @@ class ForgetPasswordScreenBody extends StatelessWidget {
             fcolorWhite: true,
             txt: "Reset password",
             color: AppColors.kPrimaryColor,
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return const CustomForgetPasswordAlertDialog();
-                },
-              );
+            onPressed: () async {
+              if (emailcontroller.text.isNotEmpty &&
+                  AppRegex.isEmailValid(emailcontroller.text)) {
+                await BlocProvider.of<LoginCubit>(context)
+                    .resetPassword(email: emailcontroller.text);
+              }
             },
           ),
         ],

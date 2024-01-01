@@ -11,15 +11,17 @@ import '../../../core/errors/firebase_faliure.dart';
 import '../../../core/tools/reg_imp.dart';
 
 class LoginRepoImpl extends LoginRepo {
+  final auth = FirebaseAuth.instance;
+
   @override
   Future<Either<Faliures, UserCredential>> signInwithEmailandPassword(
       {required String email,
       required String password,
       required BuildContext context}) async {
     try {
-      print("in register function");
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      print("in Login function");
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
       print(userCredential.user?.uid);
       await BlocProvider.of<LoginCubit>(context).isEmailVerified();
       return right(userCredential);
@@ -46,7 +48,7 @@ class LoginRepoImpl extends LoginRepo {
       );
 
       UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
+          await auth.signInWithCredential(credential);
 
       // Check if the user is new
       final isNewUser = userCredential.additionalUserInfo!.isNewUser;
@@ -57,6 +59,24 @@ class LoginRepoImpl extends LoginRepo {
       } else {
         return right(userCredential);
       }
+    } on Exception catch (e) {
+      if (e is FirebaseAuthException) {
+        return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
+      } else {
+        return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
+      }
+    }
+  }
+
+// reset password
+  @override
+  Future<Either<Faliures, void>> resetPassword({required String email}) async {
+    try {
+      if (email != "") {
+        return right(await auth.sendPasswordResetEmail(email: email));
+      }
+      return left(
+          FirebaseFailure.fromFirebaseError(errorCode: "Email is empty"));
     } on Exception catch (e) {
       if (e is FirebaseAuthException) {
         return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
