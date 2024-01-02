@@ -1,14 +1,13 @@
+import 'package:nike_store_app/app/core/tools/global_keys.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
 import 'package:nike_store_app/app/views/screens/auth/widgets/ForgetPasswordBlocListener.dart';
-import '../../../../core/tools/App_Regex.dart';
 import '../../../widgets/CustomBackIcon.dart';
-import '../../../widgets/CustomTextFormField.dart';
 import '../../../widgets/customMainButton.dart';
+import 'ForgetPasswordForm.dart';
 
 class ForgetPasswordScreenBody extends StatelessWidget {
-  ForgetPasswordScreenBody({super.key});
-  final emailcontroller = TextEditingController();
+  const ForgetPasswordScreenBody({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,7 +17,11 @@ class ForgetPasswordScreenBody extends StatelessWidget {
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomBackAndFavIcon(),
+          CustomBackAndFavIcon(
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
+          ),
           const VsizedBox(height: 8),
           Align(
             alignment: Alignment.center,
@@ -44,23 +47,21 @@ class ForgetPasswordScreenBody extends StatelessWidget {
             ),
           ),
           const VsizedBox(height: 27),
-          CustomTextFormField(
-            stringController: emailcontroller,
-            hinttext: "XYZ@gmail.com",
-            securPass: true,
-            width: double.infinity,
-            height: 80.h,
-          ),
+          const ForgetPasswordForm(),
           const VsizedBox(height: 40),
           CustomMainButton(
+            width: 375.w,
             fcolorWhite: true,
             txt: "Reset password",
             color: AppColors.kPrimaryColor,
             onPressed: () async {
-              if (emailcontroller.text.isNotEmpty &&
-                  AppRegex.isEmailValid(emailcontroller.text)) {
-                await BlocProvider.of<LoginCubit>(context)
-                    .resetPassword(email: emailcontroller.text);
+              if (GlobalKeys.riKey3.currentState!.validate()) {
+                await BlocProvider.of<LoginCubit>(context).resetPassword(
+                    email: BlocProvider.of<LoginCubit>(context)
+                        .emailController
+                        .text);
+              } else {
+                debugPrint("Not valid");
               }
             },
           ),

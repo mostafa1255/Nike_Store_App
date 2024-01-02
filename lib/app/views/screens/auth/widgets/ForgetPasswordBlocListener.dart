@@ -11,7 +11,11 @@ class ForgetPasswordBlocListener extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       child: const SizedBox.shrink(),
       listener: (context, state) {
-        if (state is ResetPasswordsucsess) {
+        if (state is ResetPasswordFailure) {
+          const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is ResetPasswordsucsess) {
           showDialog(
             context: context,
             builder: (BuildContext context) {

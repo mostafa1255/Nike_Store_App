@@ -44,6 +44,7 @@ class LoginCubit extends Cubit<LoginState> {
 
 // reset password
   Future<void> resetPassword({required String email}) async {
+    emit(ResetPasswordLoading());
     var result = await loginRepo.resetPassword(email: email);
     result.fold((faliure) {
       emit(ResetPasswordFailure(errMessage: faliure.errmessage));

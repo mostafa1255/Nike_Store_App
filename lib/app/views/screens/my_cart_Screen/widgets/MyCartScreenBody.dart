@@ -18,7 +18,7 @@ class MyCartScreenBody extends StatefulWidget {
 
 class _MyCartScreenBodyState extends State<MyCartScreenBody> {
   final List<String> list = [
-    "mostafa",
+    "Nike Vapor Edge Pro 360 2 (Team)",
     "Yasser",
     "Abdlehamed",
     "mostafa",

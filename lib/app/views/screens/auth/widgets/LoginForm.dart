@@ -1,5 +1,4 @@
 import 'package:nike_store_app/app/core/tools/global_keys.dart';
-
 import '../../../../core/constants.dart';
 import '../../../../core/tools/App_Regex.dart';
 import '../../../../core/tools/reg_imp.dart';
@@ -64,10 +63,6 @@ class _LoginFormState extends State<LoginForm> {
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return "Please enter correct Password";
-              } else if (!AppRegex.hasUpperCase(value) ||
-                  !AppRegex.hasLowerCase(value) ||
-                  !AppRegex.hasMinLength(value)) {
-                return " Please Enter Your Correct Password";
               }
             },
           ),

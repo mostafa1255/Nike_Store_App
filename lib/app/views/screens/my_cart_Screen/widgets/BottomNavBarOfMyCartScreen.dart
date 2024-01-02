@@ -32,7 +32,7 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
                     color: AppColors.kDeepGreyColorA6A),
               ),
               trailing: Text(
-                "\$753.95",
+                "\$584.95",
                 style: Txtstyle.style16(context: context).copyWith(
                     fontFamily: Constants.popinsFamily,
                     color: AppColors.kSecondFontColor,
@@ -72,7 +72,7 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
                   color: AppColors.kFontColor),
             ),
             trailing: Text(
-              "\$814.15",
+              "\$645.15",
               style: Txtstyle.style16(context: context).copyWith(
                   fontFamily: Constants.popinsFamily,
                   color: AppColors.kPrimaryColor,
