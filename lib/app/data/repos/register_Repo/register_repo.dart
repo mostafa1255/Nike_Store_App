@@ -10,4 +10,9 @@ abstract class Registerrepo {
     required BuildContext context,
   });
   Future<Either<Faliures, UserCredential>> signUpwithGoogle();
+  Future<Either<Faliures, void>> sendUserInfotoFirestore({
+    required String name,
+    required String email,
+    required String userid,
+  });
 }

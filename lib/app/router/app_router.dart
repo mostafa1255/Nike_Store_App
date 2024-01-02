@@ -32,7 +32,7 @@ abstract class Approuter {
     routes: [
       GoRoute(
         path: initial,
-        builder: (context, state) => ForgetPasswordScreen(),
+        builder: (context, state) => RegisterScreen(),
       ),
       GoRoute(
         path: pageview,

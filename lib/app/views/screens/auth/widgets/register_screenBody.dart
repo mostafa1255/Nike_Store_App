@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nike_store_app/app/core/constants.dart';
 import 'package:nike_store_app/app/core/tools/global_keys.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
@@ -61,10 +62,11 @@ class RegisterScreenBody extends StatelessWidget {
             fcolorWhite: true,
             txt: "Sign Up",
             color: AppColors.kPrimaryColor,
-            onPressed: () {
+            onPressed: () async {
               if (GlobalKeys.riKey2.currentState!.validate()) {
-                BlocProvider.of<RegisterCubit>(context)
+                await BlocProvider.of<RegisterCubit>(context)
                     .signUpwithEmailandPassword(
+                  name: cubitRead.nameController.text,
                   context: context,
                   email: cubitRead.emailController.text,
                   password: cubitRead.passController.text,

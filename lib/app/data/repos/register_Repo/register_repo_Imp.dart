@@ -1,11 +1,14 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/core/errors/firebase_faliure.dart';
+import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/repos/register_Repo/register_repo.dart';
+import '../../models/User_Model.dart';
 
 class RegisterRepoImpl extends Registerrepo {
   final auth = FirebaseAuth.instance;
@@ -54,6 +57,8 @@ class RegisterRepoImpl extends Registerrepo {
         return left(FirebaseFailure.fromFirebaseError(
             errorCode: "Email already used. Go to the login page."));
       } else {
+        // Uplaod User Info to firestore
+
         return right(userCredential);
       }
     } on Exception catch (e) {
@@ -64,22 +69,19 @@ class RegisterRepoImpl extends Registerrepo {
       }
     }
   }
-}
 
-/*@override
-  Future<Either<Faliures, UserCredential>> signUpwithGoogle() async {
+  @override
+  Future<Either<Faliures, void>> sendUserInfotoFirestore({
+    required String name,
+    required String email,
+    required String userid,
+  }) async {
+    UserModel usermodel = UserModel(email: email, userid: userid, name: name);
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
-      return right(
-          await FirebaseAuth.instance.signInWithCredential(credential));
+      return right(await FirebaseFirestore.instance
+          .collection("users")
+          .doc(userid)
+          .set(usermodel.toJcon()));
     } on Exception catch (e) {
       if (e is FirebaseAuthException) {
         return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
@@ -87,4 +89,5 @@ class RegisterRepoImpl extends Registerrepo {
         return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
       }
     }
-  }* */
+  }
+}

@@ -15,16 +15,12 @@ class RegisterFailure extends RegisterState {
   RegisterFailure({required this.errMessage});
 }
 
-class EmailVerificationSuccess extends RegisterState {}
+class UserInfoUploadedLoading extends RegisterState {}
 
-class EmailVerificationLoading extends RegisterState {
+class UserInfoUploadedSuccsess extends RegisterState {}
+
+class UserInfoUploadedFaliure extends RegisterState {
   final String errMessage;
 
-  EmailVerificationLoading({required this.errMessage});
-}
-
-class EmailVerificationFailure extends RegisterState {
-  final String errMessage;
-
-  EmailVerificationFailure({required this.errMessage});
+  UserInfoUploadedFaliure({required this.errMessage});
 }

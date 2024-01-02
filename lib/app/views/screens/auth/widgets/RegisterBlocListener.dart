@@ -15,10 +15,20 @@ class RegisterBlocListener extends StatelessWidget {
     return BlocListener<RegisterCubit, RegisterState>(
       child: const SizedBox.shrink(),
       listener: (context, state) {
-        if (state is RegisterSuccess) {
+        if (state is RegisterLoading) {
+          const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is RegisterSuccess) {
           customsnackBar(context, "Account Created Successfully", Colors.green);
           GoRouter.of(context).push(Approuter.loginescreen);
         } else if (state is RegisterFailure) {
+          customsnackBar(context, state.errMessage, Colors.red);
+        } else if (state is UserInfoUploadedLoading) {
+          const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is UserInfoUploadedFaliure) {
           customsnackBar(context, state.errMessage, Colors.red);
         }
       },

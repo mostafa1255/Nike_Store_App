@@ -21,6 +21,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   Future<void> signUpwithEmailandPassword(
       {required String email,
       required String password,
+      required String name,
       required BuildContext context}) async {
     emit(RegisterLoading());
     var result = await registerrepo.signUpwithEmailandPassword(
@@ -30,6 +31,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     }, (usercredential) {
       userCredential = usercredential;
       emit(RegisterSuccess());
+      sendUserInfotoFirestore(
+          name: name, email: email, userid: auth.currentUser!.uid);
     });
   }
 
@@ -42,6 +45,26 @@ class RegisterCubit extends Cubit<RegisterState> {
     }, (usercredential) {
       userCredential = usercredential;
       emit(RegisterSuccess());
+      sendUserInfotoFirestore(
+          name: userCredential.user!.displayName!,
+          email: userCredential.user!.email!,
+          userid: userCredential.user!.uid);
+    });
+  }
+
+// Upload User Info
+  Future<void> sendUserInfotoFirestore({
+    required String name,
+    required String email,
+    required String userid,
+  }) async {
+    emit(UserInfoUploadedLoading());
+    var result = await registerrepo.sendUserInfotoFirestore(
+        name: name, email: email, userid: userid);
+    result.fold((faliure) {
+      emit(UserInfoUploadedFaliure(errMessage: faliure.errmessage));
+    }, (usercredential) {
+      emit(UserInfoUploadedSuccsess());
     });
   }
 }
