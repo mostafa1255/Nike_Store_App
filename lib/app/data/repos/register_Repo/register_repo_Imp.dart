@@ -2,11 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/core/errors/firebase_faliure.dart';
-import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/repos/register_Repo/register_repo.dart';
 import '../../models/User_Model.dart';
 
@@ -16,7 +14,6 @@ class RegisterRepoImpl extends Registerrepo {
   Future<Either<Faliures, UserCredential>> signUpwithEmailandPassword({
     required String email,
     required String password,
-    required BuildContext context,
   }) async {
     try {
       print("in register function");

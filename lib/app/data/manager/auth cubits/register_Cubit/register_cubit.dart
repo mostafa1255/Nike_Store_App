@@ -18,14 +18,16 @@ class RegisterCubit extends Cubit<RegisterState> {
   final passController = TextEditingController();
 
 //Email and Password Auth
-  Future<void> signUpwithEmailandPassword(
-      {required String email,
-      required String password,
-      required String name,
-      required BuildContext context}) async {
+  Future<void> signUpwithEmailandPassword({
+    required String email,
+    required String password,
+    required String name,
+  }) async {
     emit(RegisterLoading());
     var result = await registerrepo.signUpwithEmailandPassword(
-        email: email, password: password, context: context);
+      email: email,
+      password: password,
+    );
     result.fold((faliure) {
       emit(RegisterFailure(errMessage: faliure.errmessage));
     }, (usercredential) {
