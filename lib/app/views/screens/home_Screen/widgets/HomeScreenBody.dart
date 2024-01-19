@@ -6,6 +6,7 @@ import 'package:nike_store_app/app/core/constants.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
+import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/widgets/CustomHeaderofHomeItemListView.dart';
 import 'package:nike_store_app/app/views/widgets/VsizedBox.dart';
 import 'NewArrivalsAndOffersHomeListView.dart';
@@ -38,57 +39,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
         children: [
           Stack(
             children: [
-              GFSearchBar(
-                margin: EdgeInsets.only(right: 55.w),
-                searchBoxInputDecoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.r),
-                      borderSide:
-                          const BorderSide(width: 0, style: BorderStyle.none)),
-                  hintText: "Looking for shoes",
-                  hintStyle: Txtstyle.style12(context: context).copyWith(
-                    color: AppColors.kDeepGreyColorA6A,
-                  ),
-                  prefixIcon: IconButton(
-                      onPressed: () {},
-                      icon: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          radius: 10.r,
-                          child: SizedBox(
-                              child: Image.asset(AppImages.iconserach)))),
-                ),
-                searchList: list,
-                searchQueryBuilder: (query, list) {
-                  return list
-                      .where((item) =>
-                          item.toLowerCase().contains(query.toLowerCase()))
-                      .toList();
-                },
-                overlaySearchListItemBuilder: (item) {
-                  //this container is for search result
-                  return Container(
-                    decoration: const BoxDecoration(color: Colors.white),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-                    child: Text(
-                      item,
-                      style: Txtstyle.style14(context: context).copyWith(
-                          color: AppColors.kFontColor,
-                          fontFamily: Constants.popinsFamily,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  );
-                },
-                onItemSelected: (item) {
-                  setState(() {
-                    if (kDebugMode) {
-                      print('$item');
-                    }
-                  });
-                },
-              ),
+              searchBarHomeScreen(context),
               Positioned(
                   right: 0.w,
                   top: 12.h,
@@ -118,5 +69,61 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
         ],
       )),
     ));
+  }
+
+  GFSearchBar<dynamic> searchBarHomeScreen(BuildContext context) {
+    return GFSearchBar(
+              margin: EdgeInsets.only(right: 55.w),
+              searchBoxInputDecoration: InputDecoration(
+                fillColor: Colors.white,
+                filled: true,
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.r),
+                    borderSide:
+                        const BorderSide(width: 0, style: BorderStyle.none)),
+                hintText: "Looking for shoes",
+                hintStyle: Txtstyle.style12(context: context).copyWith(
+                  color: AppColors.kDeepGreyColorA6A,
+                ),
+                prefixIcon: IconButton(
+                    onPressed: () async {
+                      await HomeRepoImpl().getAllUserUIDs();
+                    },
+                    icon: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: 10.r,
+                        child: SizedBox(
+                            child: Image.asset(AppImages.iconserach)))),
+              ),
+              searchList: list,
+              searchQueryBuilder: (query, list) {
+                return list
+                    .where((item) =>
+                        item.toLowerCase().contains(query.toLowerCase()))
+                    .toList();
+              },
+              overlaySearchListItemBuilder: (item) {
+                //this container is for search result
+                return Container(
+                  decoration: const BoxDecoration(color: Colors.white),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+                  child: Text(
+                    item,
+                    style: Txtstyle.style14(context: context).copyWith(
+                        color: AppColors.kFontColor,
+                        fontFamily: Constants.popinsFamily,
+                        fontWeight: FontWeight.w400),
+                  ),
+                );
+              },
+              onItemSelected: (item) {
+                setState(() {
+                  if (kDebugMode) {
+                    print('$item');
+                  }
+                });
+              },
+            );
   }
 }

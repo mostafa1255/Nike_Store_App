@@ -52,10 +52,8 @@ class RegisterRepoImpl extends Registerrepo {
 
       if (!isNewUser) {
         return left(FirebaseFailure.fromFirebaseError(
-            errorCode: "Email already used. Go to the login page."));
+            errorCode: "Email already used, Go to the login page"));
       } else {
-        // Uplaod User Info to firestore
-
         return right(userCredential);
       }
     } on Exception catch (e) {

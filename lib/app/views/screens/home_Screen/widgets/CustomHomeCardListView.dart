@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
@@ -101,7 +102,18 @@ class CustomHomeCardListView extends StatelessWidget {
                                         topLeft: Radius.circular(17.r)),
                                     color: AppColors.kPrimaryColor),
                                 child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () async {
+                                      await HomeRepoImpl()
+                                          .addToFavouritesProducts(
+                                              brand: "Nike",
+                                              name: "Shoes",
+                                              price: 120,
+                                              imageUrl: "imageUrl",
+                                              description: "nike shoes");
+
+                                      await HomeRepoImpl()
+                                          .getFavouritesProducts();
+                                    },
                                     icon: Icon(
                                       Icons.add,
                                       color: Colors.white,

@@ -44,19 +44,19 @@ class TabBarWidget extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(top: 25.h),
               child: TabBarView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 children: [
                   Column(
                     children: [
-                      CustomHeaderofHomeItemListView(
+                      const CustomHeaderofHomeItemListView(
                         popularOrNewarrival: 'Popular Shoes',
                       ),
-                      VsizedBox(height: 15),
+                      const VsizedBox(height: 15),
                       GestureDetector(
                         onTap: () {
                           GoRouter.of(context).push(Approuter.detailsscreen);
                         },
-                        child: CustomHomeCardListView(
+                        child: const CustomHomeCardListView(
                           productImage: AppImages.imagenikeshoes,
                           productName: "Nike Jordan",
                           productPrice: "302.00",
@@ -67,14 +67,14 @@ class TabBarWidget extends StatelessWidget {
                   // Content for Header 2
                   Column(
                     children: [
-                      CustomHeaderofHomeItemListView(
+                      const CustomHeaderofHomeItemListView(
                           popularOrNewarrival: "Popular Shoes"),
-                      VsizedBox(height: 15),
+                      const VsizedBox(height: 15),
                       GestureDetector(
                         onTap: () {
                           GoRouter.of(context).push(Approuter.detailsscreen);
                         },
-                        child: CustomHomeCardListView(
+                        child: const CustomHomeCardListView(
                           productImage: AppImages.imagenikeshoes,
                           productName: "Nike Jordan",
                           productPrice: "302.00",
@@ -85,14 +85,14 @@ class TabBarWidget extends StatelessWidget {
                   // Content for Header 3
                   Column(
                     children: [
-                      CustomHeaderofHomeItemListView(
+                      const CustomHeaderofHomeItemListView(
                           popularOrNewarrival: "Popular Shoes"),
-                      VsizedBox(height: 15),
+                      const VsizedBox(height: 15),
                       GestureDetector(
                         onTap: () {
                           GoRouter.of(context).push(Approuter.detailsscreen);
                         },
-                        child: CustomHomeCardListView(
+                        child: const CustomHomeCardListView(
                           productImage: AppImages.imagenikeshoes,
                           productName: "Nike Jordan",
                           productPrice: "302.00",

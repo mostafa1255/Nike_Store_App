@@ -1,7 +1,9 @@
 import 'package:nike_store_app/app/core/errors/faliure.dart';
 
 class FirebaseFailure extends Faliures {
-  FirebaseFailure(String errorMessage) : super(errorMessage);
+  FirebaseFailure(
+    String errorMessage,
+  ) : super(errorMessage);
 
   factory FirebaseFailure.fromFirebaseError({required String errorCode}) {
     String getMessageFromErrorCode() {
