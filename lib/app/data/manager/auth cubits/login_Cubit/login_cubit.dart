@@ -52,17 +52,4 @@ class LoginCubit extends Cubit<LoginState> {
       emit(ResetPasswordsucsess());
     });
   }
-
-  Future<void> isEmailVerified() async {
-    try {
-      if (auth.currentUser!.emailVerified) {
-        emit(EmailVerificationSuccess());
-      } else {
-        auth.currentUser!.sendEmailVerification();
-        emit(EmailVerificationLoading(errMessage: "please verify your email"));
-      }
-    } on FirebaseAuthException catch (e) {
-      emit(EmailVerificationFailure(errMessage: e.message.toString()));
-    }
-  }
 }
