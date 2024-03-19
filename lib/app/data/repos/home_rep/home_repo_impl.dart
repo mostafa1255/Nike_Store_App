@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,6 +7,7 @@ import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/core/errors/firebase_faliure.dart';
 import 'package:nike_store_app/app/core/tools/enums.dart';
 import 'package:nike_store_app/app/data/models/Products_Model.dart';
+import 'package:nike_store_app/app/data/models/User_Model.dart';
 import 'package:nike_store_app/app/data/models/vendors_Model.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo.dart';
 import '../../../core/tools/reg_imp.dart';
@@ -17,19 +20,13 @@ class HomeRepoImpl extends HomeRepo {
 
   Future<List<String>> getAllUserUIDs() async {
     List<String> uids = [];
-
     try {
       QuerySnapshot querySnapshot = await dataBase.collection('users').get();
-
       for (QueryDocumentSnapshot doc in querySnapshot.docs) {
-        // Access the UID field in each document and add it to the uids list
         uids.add(doc.id);
       }
-
-      // Return the list of UIDs
       return uids;
     } catch (e) {
-      // Handle any errors that occur
       print('Error getting user UIDs: $e');
       return [];
     }
@@ -39,7 +36,7 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<Faliures, VendorModel>> getVendorsDataAndProducts() async {
     try {
       print("============================");
-      final users = await dataBase.collection("users").count();
+      final users = dataBase.collection("users").count();
       print(users);
       final vendorsAndProducts =
           await dataBase.collection("vendors").doc(auth.currentUser!.uid).get();
@@ -54,7 +51,7 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Faliures, void>> setVendorsDataAndProducts() async {
+  Future<Either<Faliures, Appstate>> setVendorsDataAndProducts() async {
     vendorModel = VendorModel(
       email: "Mostafa@gmail.com",
       id: auth.currentUser!.uid,
@@ -62,25 +59,25 @@ class HomeRepoImpl extends HomeRepo {
       name: "Mostafa",
       number: 01289880177,
     );
-    productsModel = ProductsModel(
-        brand: "Nike ",
-        name: "Nike G.T. Cut 2",
-        price: 200,
-        imageUrl:
-            "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/464f48a2-bde1-4264-aa7f-67cc60975ece/gt-cut-2-mens-basketball-shoes-tmfmFl.png",
-        description: "Men's Basketball Shoes");
     try {
-      final vendorCollection = dataBase.collection("vendors").doc();
+      print("-" * 30);
+      final vendorCollection =
+          dataBase.collection("vendors").doc(auth.currentUser!.uid);
+      final productsdoc = vendorCollection.collection("products").doc();
+      productsModel = ProductsModel(
+          id: productsdoc.id,
+          brand: "Testtttttttttt ",
+          name: "Nike G.T. Cut 2",
+          price: "200",
+          imageUrl:
+              "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/464f48a2-bde1-4264-aa7f-67cc60975ece/gt-cut-2-mens-basketball-shoes-tmfmFl.png",
+          description: "Men's Basketball Shoes");
       vendorCollection.set(vendorModel!.toMap());
-      vendorCollection
-          .collection("products")
-          .doc()
-          .set(productsModel!.toJson());
-      return right(await dataBase
-          .collection("vendors")
-          .doc(auth.currentUser!.uid)
-          .set(vendorModel!.toMap()));
+      productsdoc.set(productsModel!.toJson());
+      return right(Appstate.productAddedToFavorites);
     } on Exception catch (e) {
+      print("+" * 30);
+      print(e.toString());
       if (e is FirebaseAuthException) {
         return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
       } else {
@@ -90,62 +87,112 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Faliures, void>> addToFavouritesProducts({
-    required String brand,
-    required String name,
-    required num price,
-    required String imageUrl,
-    required String description,
-  }) async {
-    productsModel = ProductsModel(
-        brand: brand,
-        name: name,
-        price: price,
-        imageUrl: imageUrl,
-        description: description);
+  Future<Either<Faliures, List<ProductsModel>>> getProductsFromCollection(
+      {required String collectionName}) async {
     try {
-      print("-" * 70);
-
-      await dataBase
-          .collection("favorites")
+      final QuerySnapshot<Map<String, dynamic>> snapshot = await dataBase
+          .collection(collectionName)
           .doc(auth.currentUser!.uid)
           .collection("products")
-          .doc()
-          .set(productsModel!.toJson());
-      // ignore: void_checks
+          .get();
+      if (snapshot.docs.isNotEmpty) {
+        List<ProductsModel> productsList = [];
+        for (var doc in snapshot.docs) {
+          productsList.add(ProductsModel.fromJson(doc.data()));
+        }
+        return right(productsList);
+      } else {
+        return left(
+            FirebaseFailure("There are no products in $collectionName"));
+      }
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
+    }
+  }
+
+  @override
+  Future<Either<Faliures, List<ProductsModel>>> getAllProducts() async {
+    try {
+      final product = await dataBase.collection("products").get();
+      List<ProductsModel> productsList = [];
+      for (var element in product.docs) {
+        productsList.add(ProductsModel.fromJson(element.data()));
+      }
+      print(productsList);
+      return right(productsList);
+    } catch (e) {
+      // Handle the error here
+      return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
+    }
+  }
+
+/*Future<Either<Failures, ProductsModel>> getRandomProductForThreeDays() async {
+  try {
+    final productsEither = await getAllProducts();
+    
+    return productsEither.fold(
+      (failure) => left(failure),
+      (productsList) {
+        if (productsList.isEmpty) {
+          return left(EmptyListFailure());
+        }
+        
+        // Generate a random index
+        final random = Random();
+        final randomIndex = random.nextInt(productsList.length);
+        
+        // Get the random product
+        final randomProduct = productsList[randomIndex];
+        
+        // Check if the product was selected more than 3 days ago
+        if (selectedProducts.containsKey(randomProduct)) {
+          final lastSelected = selectedProducts[randomProduct];
+          final now = DateTime.now();
+          final difference = now.difference(lastSelected).inDays;
+          if (difference < 3) {
+            // If less than 3 days have passed, select a different product
+            return getRandomProductForThreeDays();
+          }
+        }
+        
+        // Keep track of the selected product and the timestamp
+        selectedProducts[randomProduct] = DateTime.now();
+        
+        return right(randomProduct);
+      }
+    );
+  } catch (e) {
+    // Handle the error here
+    return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
+  }
+}
+
+*/
+
+  @override
+  Future<Either<Faliures, Appstate>> addProductToCollection({
+    required String collectionName,
+    required ProductsModel productsModel,
+  }) async {
+    try {
+      final productDoc = dataBase
+          .collection(collectionName)
+          .doc(auth.currentUser!.uid)
+          .collection("products")
+          .doc(productsModel.id);
+      productsModel = ProductsModel(
+          id: productsModel.id,
+          brand: productsModel.brand,
+          name: productsModel.name,
+          price: productsModel.price,
+          imageUrl: productsModel.imageUrl,
+          description: productsModel.description);
+      await productDoc.set(productsModel.toJson());
       return right(Appstate.productsUploaded);
     } on FirebaseException catch (e) {
       return left(FirebaseFailure(e.code));
     }
   }
 
-  @override
-  Future<Either<Faliures, List<ProductsModel>>> getFavouritesProducts() async {
-    try {
-      final QuerySnapshot<Map<String, dynamic>> snapshot = await dataBase
-          .collection("favorites")
-          .doc(auth.currentUser!.uid)
-          .collection("products")
-          .get();
 
-      if (snapshot.docs.isNotEmpty) {
-        List<ProductsModel> favouriteProductsList = [];
-        snapshot.docs.forEach((doc) {
-          favouriteProductsList.add(ProductsModel.fromJson(doc.data()));
-        });
-        favouriteProductsList.forEach((product) {
-          print(product.brand);
-          print(product.name);
-          print(product.price);
-          print(favouriteProductsList.length);
-        });
-        return right(favouriteProductsList);
-      } else {
-        return left(FirebaseFailure(Appstate.userUIdNotFound.toString()));
-      }
-    } on FirebaseException catch (e) {
-      print("Error Happened in getFavouritesProducts: ${e.message}");
-      return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
-    }
-  }
 }
