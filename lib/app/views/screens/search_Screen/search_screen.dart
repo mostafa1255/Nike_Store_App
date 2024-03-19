@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nike_store_app/app/views/widgets/HsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
 
 import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
-import '../../widgets/CustomBackIcon.dart';
+import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
 import 'widgets/SerachScreenBody.dart';
 
 class SerachScreen extends StatelessWidget {

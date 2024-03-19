@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
-import '../../widgets/CustomBackIcon.dart';
+import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
 import 'widgets/ProfileScreenBody.dart';
 
 class ProfileScreen extends StatelessWidget {

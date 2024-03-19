@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nike_store_app/app/data/models/Products_Model.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../widgets/FavoriteIconAction.dart';
-import '../../../widgets/HsizedBox.dart';
-import '../../../widgets/VsizedBox.dart';
+import '../../../common_widgets/FavoriteIconAction.dart';
+import '../../../common_widgets/HsizedBox.dart';
+import '../../../common_widgets/VsizedBox.dart';
 
 class FavoriteGridView extends StatelessWidget {
   const FavoriteGridView({
@@ -45,7 +46,15 @@ class FavoriteGridView extends StatelessWidget {
                       CircleAvatar(
                           backgroundColor: Colors.grey.withOpacity(0.08),
                           radius: 19.r,
-                          child: const FavoriteIconAction()),
+                          child: FavoriteIconAction(
+                            favProduct: ProductsModel(
+                                id: "d",
+                                brand: "brand ",
+                                name: "name",
+                                price: "200",
+                                imageUrl: "",
+                                description: "description"),
+                          )),
                       Center(
                         child: SizedBox(
                             width: 140.w,

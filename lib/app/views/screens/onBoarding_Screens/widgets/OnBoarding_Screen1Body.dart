@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
-import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
+import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
 
 import '../../../../router/app_router.dart';
 

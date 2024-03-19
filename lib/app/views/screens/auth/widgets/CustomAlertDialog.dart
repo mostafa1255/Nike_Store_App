@@ -4,7 +4,7 @@ import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../widgets/VsizedBox.dart';
+import '../../../common_widgets/VsizedBox.dart';
 
 class CustomForgetPasswordAlertDialog extends StatelessWidget {
   const CustomForgetPasswordAlertDialog({super.key});

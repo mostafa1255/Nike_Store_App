@@ -4,8 +4,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
-import 'package:nike_store_app/app/views/widgets/HsizedBox.dart';
-import 'package:nike_store_app/app/views/widgets/VsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
-import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
+import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
 
 class OnBoardingScreen3Body extends StatelessWidget {
   const OnBoardingScreen3Body({Key? key, required this.controller})

@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
-import 'package:nike_store_app/app/views/widgets/VsizedBox.dart';
-import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
+import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../widgets/CustomTextFormField.dart';
+import 'package:nike_store_app/app/views/common_widgets/CustomTextFormField.dart';
 
 class ProfileScreenBody extends StatelessWidget {
   const ProfileScreenBody({super.key});

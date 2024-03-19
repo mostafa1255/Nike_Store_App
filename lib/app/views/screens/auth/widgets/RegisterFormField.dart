@@ -7,9 +7,9 @@ import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../../core/tools/App_Regex.dart';
 import '../../../../data/manager/auth cubits/register_Cubit/register_cubit.dart';
-import '../../../widgets/CustomTextFormField.dart';
-import '../../../widgets/SecurePasswordTextField.dart';
-import '../../../widgets/VsizedBox.dart';
+import '../../../common_widgets/CustomTextFormField.dart';
+import '../../../common_widgets/SecurePasswordTextField.dart';
+import '../../../common_widgets/VsizedBox.dart';
 
 class RegisterFormField extends StatefulWidget {
   const RegisterFormField({super.key});

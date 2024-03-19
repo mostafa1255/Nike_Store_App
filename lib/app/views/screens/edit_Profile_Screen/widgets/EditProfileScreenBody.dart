@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../core/Functions/changePhotoBottomSheet.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../widgets/CustomTextFormField.dart';
-import '../../../widgets/VsizedBox.dart';
-import '../../../widgets/customMainButton.dart';
+import '../../../common_widgets/CustomTextFormField.dart';
+import '../../../common_widgets/VsizedBox.dart';
+import '../../../common_widgets/customMainButton.dart';
 
 class EditProfileScreenBody extends StatelessWidget {
   const EditProfileScreenBody({super.key});

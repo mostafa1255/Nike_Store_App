@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
-import 'package:nike_store_app/app/views/widgets/CustomBackIcon.dart';
+import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
 import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';

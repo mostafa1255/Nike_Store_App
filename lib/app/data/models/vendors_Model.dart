@@ -1,4 +1,3 @@
-
 class VendorModel {
   String? id;
   String? name;

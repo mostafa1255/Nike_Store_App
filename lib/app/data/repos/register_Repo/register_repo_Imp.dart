@@ -2,10 +2,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/core/errors/firebase_faliure.dart';
 import 'package:nike_store_app/app/data/repos/register_Repo/register_repo.dart';
+import '../../../core/Functions/googleCredential.dart';
 import '../../models/User_Model.dart';
 
 class RegisterRepoImpl extends Registerrepo {
@@ -34,22 +34,9 @@ class RegisterRepoImpl extends Registerrepo {
   @override
   Future<Either<Faliures, UserCredential>> signUpwithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
-
-      UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-
+      final userCredential = await googleUserCredential();
       // Check if the user is new
       final isNewUser = userCredential.additionalUserInfo!.isNewUser;
-
       if (!isNewUser) {
         return left(FirebaseFailure.fromFirebaseError(
             errorCode: "Email already used, Go to the login page"));
@@ -70,8 +57,15 @@ class RegisterRepoImpl extends Registerrepo {
     required String name,
     required String email,
     required String userid,
+    required String imageUrl,
+    required int phoneNumber,
   }) async {
-    UserModel usermodel = UserModel(email: email, userid: userid, name: name);
+    UserModel usermodel = UserModel(
+        email: email,
+        userid: userid,
+        name: name,
+        imageUrl: "",
+        phoneNumber: phoneNumber);
     try {
       return right(await FirebaseFirestore.instance
           .collection("users")

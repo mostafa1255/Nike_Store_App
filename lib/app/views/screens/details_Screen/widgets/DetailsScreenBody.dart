@@ -5,10 +5,11 @@ import 'package:nike_store_app/app/core/constants.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
-import 'package:nike_store_app/app/views/widgets/FavoriteIconAction.dart';
-import 'package:nike_store_app/app/views/widgets/HsizedBox.dart';
-import 'package:nike_store_app/app/views/widgets/VsizedBox.dart';
-import 'package:nike_store_app/app/views/widgets/customMainButton.dart';
+import 'package:nike_store_app/app/views/common_widgets/FavoriteIconAction.dart';
+import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
+import '../../../../data/models/Products_Model.dart';
 import 'MorerelevantShoesListViewInDetailsScreen.dart';
 
 class DetailsScreenBody extends StatelessWidget {
@@ -96,7 +97,15 @@ class DetailsScreenBody extends StatelessWidget {
               CircleAvatar(
                 radius: 24.r,
                 backgroundColor: AppColors.kDeepGreyColorA6A.withOpacity(0.08),
-                child: const FavoriteIconAction(),
+                child: FavoriteIconAction(
+                  favProduct: ProductsModel(
+                      id: "d",
+                      brand: "brand ",
+                      name: "name",
+                      price: "200",
+                      imageUrl: "",
+                      description: "description"),
+                ),
               ),
               const HsizedBox(width: 25),
               CustomMainButton(

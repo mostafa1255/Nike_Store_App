@@ -1,13 +1,15 @@
 // ignore_for_file: file_names
 
 class ProductsModel {
+  String? id;
   String? brand;
   String? name;
   String? imageUrl;
   String? description;
-  num? price;
+  String? price;
 
   ProductsModel({
+    required this.id,
     required this.brand,
     required this.name,
     required this.price,
@@ -18,6 +20,7 @@ class ProductsModel {
   // Convert a Product object into a map object
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'brand': brand,
       'name': name,
       'imageUrl': imageUrl,
@@ -29,10 +32,11 @@ class ProductsModel {
   // Extract a Product object from a map object
   factory ProductsModel.fromJson(Map<String, dynamic> map) {
     return ProductsModel(
+      id: map['id'] ?? '',
       brand: map['brand'] ?? '',
       imageUrl: map['imageUrl'] ?? '',
       name: map['name'] ?? '',
-      price: map['price']?.toDouble() ?? 0.0,
+      price: map['price'] ?? "",
       description: map['description'] ?? '',
     );
   }

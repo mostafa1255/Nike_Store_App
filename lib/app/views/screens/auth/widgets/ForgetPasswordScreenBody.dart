@@ -2,8 +2,9 @@ import 'package:nike_store_app/app/core/tools/global_keys.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
 import 'package:nike_store_app/app/views/screens/auth/widgets/ForgetPasswordBlocListener.dart';
-import '../../../widgets/CustomBackIcon.dart';
-import '../../../widgets/customMainButton.dart';
+import '../../../common_widgets/CustomBackIcon.dart';
+import '../../../common_widgets/VsizedBox.dart';
+import '../../../common_widgets/customMainButton.dart';
 import 'ForgetPasswordForm.dart';
 
 class ForgetPasswordScreenBody extends StatelessWidget {

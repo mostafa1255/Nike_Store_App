@@ -5,8 +5,8 @@ import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
-import '../../../widgets/CustomCartIcon.dart';
-import '../../../widgets/HsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/CustomCartIcon.dart';
+import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
 
 PreferredSizeWidget homeAppBar(BuildContext context) {
   return AppBar(

@@ -40,4 +40,6 @@ class AppImages {
   static const String imageMap = "assets/images/imageMap.png";
   static const String imagecheckOutSucsess =
       "assets/images/checkOutSucsess.png";
+  static const String lottieLoadingAnimation =
+      "assets/jsons/Animation - 1708977162147.json";
 }

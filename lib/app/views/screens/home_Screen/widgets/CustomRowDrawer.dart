@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../widgets/HsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
 
 class CustomRowDrawer extends StatelessWidget {
   const CustomRowDrawer({

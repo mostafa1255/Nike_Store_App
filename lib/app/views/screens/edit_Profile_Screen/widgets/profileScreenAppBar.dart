@@ -4,8 +4,8 @@ import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../../router/app_router.dart';
-import '../../../widgets/CustomBackIcon.dart';
-import '../../../widgets/HsizedBox.dart';
+import '../../../common_widgets/CustomBackIcon.dart';
+import '../../../common_widgets/HsizedBox.dart';
 
 PreferredSizeWidget profileScreenAppBar(BuildContext context) {
   return AppBar(

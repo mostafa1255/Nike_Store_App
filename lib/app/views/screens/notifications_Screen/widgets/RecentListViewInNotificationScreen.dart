@@ -4,8 +4,8 @@ import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../widgets/HsizedBox.dart';
-import '../../../widgets/VsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
 
 class RecentListViewInNotificationScreen extends StatelessWidget {
   const RecentListViewInNotificationScreen({

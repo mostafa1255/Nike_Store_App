@@ -5,8 +5,8 @@ import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../widgets/VsizedBox.dart';
-import '../../../widgets/customMainButton.dart';
+import '../../../common_widgets/VsizedBox.dart';
+import '../../../common_widgets/customMainButton.dart';
 
 class CheckOutAlertDialog extends StatelessWidget {
   const CheckOutAlertDialog({super.key, this.onPressed});

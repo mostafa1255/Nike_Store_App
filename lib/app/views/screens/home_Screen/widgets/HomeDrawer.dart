@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
+import 'package:nike_store_app/app/data/manager/user_cubit/user_cubit.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
-import '../../../widgets/VsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
 import 'CustomRowDrawer.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -22,14 +24,44 @@ class HomeDrawer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 45.r,
-            ),
-            const VsizedBox(height: 15),
-            Text(
-              "Mostafa Yasser",
-              style: Txtstyle.style20(context: context),
+            BlocBuilder<UserCubit, UserState>(
+              builder: (context, state) {
+                if (state is FetchUserDataFailure) {
+                  return Text(state.errMessage,
+                      style: Txtstyle.style20(context: context).copyWith(
+                        color: Colors.white,
+                      ));
+                } else if (state is FetchUserDataSuccess) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      state.userModel.imageUrl == null
+                          ? Center(
+                              child: Icon(
+                              Icons.person,
+                              size: 90.sp,
+                              color: Colors.white,
+                            ))
+                          : CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 45.r,
+                              backgroundImage:
+                                  NetworkImage(state.userModel.imageUrl!),
+                            ),
+                      const VsizedBox(height: 15),
+                      Text(
+                        state.userModel.name!,
+                        style: Txtstyle.style20(context: context),
+                      ),
+                    ],
+                  );
+                } else {
+                  return const Center(
+                      child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ));
+                }
+              },
             ),
             const VsizedBox(height: 45),
             CustomRowDrawer(

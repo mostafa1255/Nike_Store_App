@@ -11,7 +11,7 @@ import 'package:nike_store_app/app/views/screens/home_Screen/home_screen.dart';
 import 'package:nike_store_app/app/views/screens/my_cart_Screen/my_Cart_Screen.dart';
 import 'package:nike_store_app/app/views/screens/notifications_Screen/notifications_screen.dart';
 import 'package:nike_store_app/app/views/screens/profile_Screen/profile_screen.dart';
-import '../views/widgets/DotcontrollerOnBoarding.dart';
+import '../views/common_widgets/DotcontrollerOnBoarding.dart';
 
 abstract class Approuter {
   static const initial = "/";

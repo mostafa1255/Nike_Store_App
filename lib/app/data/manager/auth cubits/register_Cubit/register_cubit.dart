@@ -15,6 +15,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   var userCredential;
   final nameController = TextEditingController();
   final emailController = TextEditingController();
+  final phoneController = TextEditingController();
   final passController = TextEditingController();
 
 //Email and Password Auth
@@ -22,6 +23,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     required String email,
     required String password,
     required String name,
+    required int phoneNumber,
   }) async {
     emit(RegisterLoading());
     var result = await registerrepo.signUpwithEmailandPassword(
@@ -34,7 +36,11 @@ class RegisterCubit extends Cubit<RegisterState> {
       userCredential = usercredential;
       emit(RegisterSuccess());
       sendUserInfotoFirestore(
-          name: name, email: email, userid: auth.currentUser!.uid);
+          phoneNumber: phoneNumber,
+          imageUrl: "",
+          name: name,
+          email: email,
+          userid: auth.currentUser!.uid);
     });
   }
 
@@ -48,6 +54,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       userCredential = usercredential;
       emit(RegisterSuccess());
       sendUserInfotoFirestore(
+          imageUrl: usercredential.user!.photoURL ?? "",
+          phoneNumber: int.parse(usercredential.user!.phoneNumber!),
           name: userCredential.user!.displayName!,
           email: userCredential.user!.email!,
           userid: userCredential.user!.uid);
@@ -55,14 +63,19 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
 // Upload User Info
-  Future<void> sendUserInfotoFirestore({
-    required String name,
-    required String email,
-    required String userid,
-  }) async {
+  Future<void> sendUserInfotoFirestore(
+      {required String name,
+      required String email,
+      required String userid,
+      required String imageUrl,
+      required int phoneNumber}) async {
     emit(UserInfoUploadedLoading());
     var result = await registerrepo.sendUserInfotoFirestore(
-        name: name, email: email, userid: userid);
+        imageUrl: imageUrl,
+        phoneNumber: phoneNumber,
+        name: name,
+        email: email,
+        userid: userid);
     result.fold((faliure) {
       emit(UserInfoUploadedFaliure(errMessage: faliure.errmessage));
     }, (usercredential) {

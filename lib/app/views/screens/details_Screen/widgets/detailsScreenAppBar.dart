@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
-import 'package:nike_store_app/app/views/widgets/HsizedBox.dart';
+import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../widgets/CustomBackIcon.dart';
-import '../../../widgets/CustomCartIcon.dart';
+import '../../../common_widgets/CustomBackIcon.dart';
+import '../../../common_widgets/CustomCartIcon.dart';
 
 AppBar detailsScreenAppBar(BuildContext context) {
   return AppBar(

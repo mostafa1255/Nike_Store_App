@@ -3,7 +3,9 @@ import '../../../../core/constants.dart';
 import '../../../../core/tools/App_Regex.dart';
 import '../../../../core/tools/reg_imp.dart';
 import '../../../../data/manager/auth cubits/login_Cubit/login_cubit.dart';
-import '../../../widgets/CustomTextFormField.dart';
+import '../../../common_widgets/CustomTextFormField.dart';
+import '../../../common_widgets/SecurePasswordTextField.dart';
+import '../../../common_widgets/VsizedBox.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -52,20 +54,15 @@ class _LoginFormState extends State<LoginForm> {
                 fontFamily: Constants.relwayFamily),
           ),
           const VsizedBox(height: 8),
-          CustomTextFormField(
-            stringController: logCubit.passController,
-            widget: IconButton(
-                onPressed: () {}, icon: Image.asset(AppImages.iconeyePassword)),
-            hinttext: "Password",
-            securPass: true,
-            width: double.infinity,
-            height: 80.h,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter correct Password";
-              }
-            },
-          ),
+          SecurePasswordTextField(
+              passController: logCubit.passController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter correct Password";
+                } else {
+                  return null;
+                }
+              })
         ],
       ),
     );
