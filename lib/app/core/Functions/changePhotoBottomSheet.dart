@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import '../../views/widgets/VsizedBox.dart';
-import '../../views/widgets/customMainButton.dart';
+import '../../views/common_widgets/VsizedBox.dart';
+import '../../views/common_widgets/customMainButton.dart';
 import '../styles/App_Colors.dart';
 
-PersistentBottomSheetController<dynamic> changePhotoBottomSheet(
+dynamic changePhotoBottomSheet(
     BuildContext context) {
   return showBottomSheet(
     backgroundColor: AppColors.kOfWhiteColor,
