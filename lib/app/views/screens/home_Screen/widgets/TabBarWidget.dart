@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
-import 'package:nike_store_app/app/router/app_router.dart';
-import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
-import 'CustomHeaderofHomeItemListView.dart';
-import 'CustomHomeCardListView.dart';
+import 'AllShoes_BlocBuilder_BlocListener_ListView.dart';
+import 'OutDoorBlocBuilder_BlocListener_ListView.dart';
+import 'Tennis_BlocBuilder_BlocListener_ListView.dart';
 
 class TabBarWidget extends StatelessWidget {
   const TabBarWidget({
@@ -31,9 +29,7 @@ class TabBarWidget extends StatelessWidget {
             labelStyle: Txtstyle.style12(context: context),
             unselectedLabelColor: AppColors.kFontColor,
             tabs: const [
-              Tab(
-                text: 'All Shoes',
-              ),
+              Tab(text: 'All Shoes'),
               Tab(text: 'Outdoor'),
               Tab(text: 'Tennis'),
             ],
@@ -42,51 +38,15 @@ class TabBarWidget extends StatelessWidget {
             height: 330.h,
             child: Padding(
               padding: EdgeInsets.only(top: 25.h),
-              child: TabBarView(
-                physics: const BouncingScrollPhysics(),
+              child: const TabBarView(
+                physics: BouncingScrollPhysics(),
                 children: [
-                  Column(
-                    children: [
-                      const CustomHeaderofHomeItemListView(
-                        popularOrNewarrival: 'Popular Shoes',
-                      ),
-                      const VsizedBox(height: 15),
-                      GestureDetector(
-                        onTap: () {
-                          GoRouter.of(context).push(Approuter.detailsscreen);
-                        },
-                        child: const CustomHomeCardListView(),
-                      )
-                    ],
-                  ),
+                  // Content for Header 1
+                  AllShoes_BlocBuilder_BlocListener_ListView(),
                   // Content for Header 2
-                  Column(
-                    children: [
-                      const CustomHeaderofHomeItemListView(
-                          popularOrNewarrival: "Popular Shoes"),
-                      const VsizedBox(height: 15),
-                      GestureDetector(
-                        onTap: () {
-                          GoRouter.of(context).push(Approuter.detailsscreen);
-                        },
-                        child: const CustomHomeCardListView(),
-                      )
-                    ],
-                  ),
+                  OutDoorBlocBuilder_BlocListener_ListView(),
                   // Content for Header 3
-                  Column(
-                    children: [
-                      const CustomHeaderofHomeItemListView(
-                          popularOrNewarrival: "Popular Shoes"),
-                      const VsizedBox(height: 15),
-                      GestureDetector(
-                        onTap: () {
-                          GoRouter.of(context).push(Approuter.detailsscreen);
-                        },
-                        child: const CustomHomeCardListView(),
-                      )
-                    ],
-                  ),
+                  Tennis_BlocBuilder_BlocListener_ListView(),
                 ],
               ),
             ),

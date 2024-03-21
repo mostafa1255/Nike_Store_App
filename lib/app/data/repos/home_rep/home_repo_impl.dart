@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +5,6 @@ import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/core/errors/firebase_faliure.dart';
 import 'package:nike_store_app/app/core/tools/enums.dart';
 import 'package:nike_store_app/app/data/models/Products_Model.dart';
-import 'package:nike_store_app/app/data/models/User_Model.dart';
 import 'package:nike_store_app/app/data/models/vendors_Model.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo.dart';
 import '../../../core/tools/reg_imp.dart';

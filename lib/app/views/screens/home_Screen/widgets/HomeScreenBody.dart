@@ -8,7 +8,7 @@ import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/widgets/CustomHeaderofHomeItemListView.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
-import 'NewArrivalsAndOffersHomeListView.dart';
+import 'NewArrivalsBlocBuilder.dart';
 import 'TabBarWidget.dart';
 
 class HomeScreenBody extends StatefulWidget {
@@ -44,7 +44,6 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
                   top: 12.h,
                   child: GestureDetector(
                     onTap: () async {
-              //        await HomeRepoImpl().setVendorsDataAndProducts();
                     },
                     child: CircleAvatar(
                         backgroundColor: Colors.transparent,
@@ -66,7 +65,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
           const CustomHeaderofHomeItemListView(
               popularOrNewarrival: "New Arrivals"),
           const VsizedBox(height: 0),
-          const NewArrivalsAndOffersHomeListView()
+          const NewArrivalsBlocBuilder()
         ],
       )),
     ));
