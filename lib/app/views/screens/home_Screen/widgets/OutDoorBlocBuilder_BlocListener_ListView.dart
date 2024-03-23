@@ -9,8 +9,8 @@ import '../../../common_widgets/VsizedBox.dart';
 import 'CustomHeaderofHomeItemListView.dart';
 import 'CustomHomeCardListView.dart';
 
-class OutDoorBlocBuilder_BlocListener_ListView extends StatelessWidget {
-  const OutDoorBlocBuilder_BlocListener_ListView({
+class OutDoorBlocBuilderBlocListenerListView extends StatelessWidget {
+  const OutDoorBlocBuilderBlocListenerListView({
     super.key,
   });
 
