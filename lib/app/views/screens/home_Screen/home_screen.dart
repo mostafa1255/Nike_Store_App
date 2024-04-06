@@ -20,17 +20,17 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: MultiBlocProvidersHomeScreen,
+      providers: multiBlocProvidersHomeScreen,
       child: Scaffold(
         backgroundColor: AppColors.kOfWhiteColor,
         drawer: const HomeDrawer(),
         appBar: homeAppBar(context),
-        body:  HomeScreenBody(),
+        body: const HomeScreenBody(),
       ),
     );
   }
 
-  List<SingleChildWidget> get MultiBlocProvidersHomeScreen {
+  List<SingleChildWidget> get multiBlocProvidersHomeScreen {
     return [
       BlocProvider(
         create: (context) =>

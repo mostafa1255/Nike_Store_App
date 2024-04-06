@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
+import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
 import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
 import '../../../core/constants.dart';
@@ -35,7 +38,10 @@ class MyCartScreen extends StatelessWidget {
               fontFamily: Constants.relwayFamily),
         ),
       ),
-      body: MyCartScreenBody(),
+      body: BlocProvider(
+        create: (context) => CartCubit(homeRepo: HomeRepoImpl()),
+        child: MyCartScreenBody(),
+      ),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../../core/styles/App_Colors.dart';
 import '../favorite_Screen/widgets/favoriteScreenAppBar.dart';
 import 'widgets/NotificationScreenBody.dart';

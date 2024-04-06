@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../views/screens/home_Screen/widgets/SliderPriceFilter.dart';
+import '../tools/reg_imp.dart';
 
 Future<dynamic> filterInBottomSheetFunction(BuildContext context) {
   return showModalBottomSheet(
+    backgroundColor: Colors.white,
     context: context,
     isScrollControlled: true,
     builder: (context) {

@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo.dart';
@@ -17,9 +16,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-
-
-  Future<void> getFavoriteProducts() async {
+/* Future<void> getFavoriteProducts() async {
     emit(CartProductsLoading());
     final result =
         await homeRepo.getProductsFromCollection(collectionName: "favorites");
@@ -29,7 +26,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  /*Future<void> addToFavoritesProducts(
+  Future<void> addToFavoritesProducts(
       {required ProductsModel productsModel}) async {
     emit(AddtoCartProductsLoading());
     final result = await homeRepo.addProductToCollection(

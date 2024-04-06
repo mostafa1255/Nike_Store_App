@@ -19,17 +19,5 @@ final class MainProductsFailure extends HomeState {
   MainProductsFailure({required this.errMessage});
 }
 
-final class CartProductsLoading extends HomeState {}
 
-final class CartProductsSuccess extends HomeState {
-  final List<ProductsModel> products;
-
-  CartProductsSuccess({required this.products});
-}
-
-final class CartProductsFailure extends HomeState {
-  final String errMessage;
-
-  CartProductsFailure({required this.errMessage});
-}
 

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nike_store_app/app/data/manager/favorite_cubit/favorite_cubit.dart';
 import 'package:nike_store_app/app/data/models/Products_Model.dart';
+import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
 import 'package:nike_store_app/app/views/common_widgets/FavoriteIconAction.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/widgets/AddToCartButton.dart';
 import '../../../../core/constants.dart';
@@ -43,8 +46,11 @@ class CustomHomeCardListView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        FavoriteIconAction(
-                          favProduct: products[index],
+                        BlocProvider(
+                          create: (context) => FavoriteCubit(homeRepo: HomeRepoImpl()),
+                          child: FavoriteIconAction(
+                            favProduct: products[index],
+                          ),
                         ),
                         SizedBox(
                             width: 160.w,

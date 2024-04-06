@@ -29,6 +29,7 @@ class AddToCartButton extends StatelessWidget {
             color: AppColors.kPrimaryColor),
         child: IconButton(
             onPressed: () async {
+             // print("Add To Cart");
               await cCubit.addToCartProducts(productsModel: productsModel);
             },
             icon: Icon(
