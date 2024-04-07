@@ -10,8 +10,10 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
   const BottomNavBarOfMyCartScreen({
     super.key,
     this.onPressed,
+    required this.subTotalPrice,
   });
   final void Function()? onPressed;
+  final num subTotalPrice;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +34,7 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
                     color: AppColors.kDeepGreyColorA6A),
               ),
               trailing: Text(
-                "\$584.95",
+                "\$$subTotalPrice",
                 style: Txtstyle.style16(context: context).copyWith(
                     fontFamily: Constants.popinsFamily,
                     color: AppColors.kSecondFontColor,
@@ -72,7 +74,7 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
                   color: AppColors.kFontColor),
             ),
             trailing: Text(
-              "\$645.15",
+              "\$${subTotalPrice + 60.20}",
               style: Txtstyle.style16(context: context).copyWith(
                   fontFamily: Constants.popinsFamily,
                   color: AppColors.kPrimaryColor,

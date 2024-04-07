@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/data/manager/calculation_cubit/calculation_cubit.dart';
 import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
@@ -16,31 +17,48 @@ class MyCartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavBarOfMyCartScreen(
-        onPressed: () {
-          GoRouter.of(context).push(Approuter.checkoutscreen);
-        },
-      ),
-      backgroundColor: AppColors.kOfWhiteColor,
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        backgroundColor: AppColors.kOfWhiteColor,
-        leading: CustomBackAndFavIcon(onPressed: () {
-          GoRouter.of(context).pop();
-        }),
-        centerTitle: true,
-        title: Text(
-          "My Cart",
-          style: Txtstyle.style16(context: context).copyWith(
-              color: AppColors.kFontColor,
-              fontWeight: FontWeight.w500,
-              fontFamily: Constants.relwayFamily),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              CartCubit(homeRepo: HomeRepoImpl())..getCartProducts(),
         ),
-      ),
-      body: BlocProvider(
-        create: (context) => CartCubit(homeRepo: HomeRepoImpl()),
-        child: MyCartScreenBody(),
+        BlocProvider(
+          create: (context) => CalculationCubit(),
+        ),
+      ],
+      child: Scaffold(
+        bottomNavigationBar: BlocBuilder<CartCubit, CartState>(
+          builder: (context, state) {
+            if (state is GetFromCartSuccsesswithProducts) {
+              return BottomNavBarOfMyCartScreen(
+                subTotalPrice: state.totalPrice,
+                onPressed: () {
+                  GoRouter.of(context).push(Approuter.checkoutscreen);
+                },
+              );
+            } else {
+              return const SizedBox.shrink();
+            }
+          },
+        ),
+        backgroundColor: AppColors.kOfWhiteColor,
+        appBar: AppBar(
+          surfaceTintColor: Colors.transparent,
+          backgroundColor: AppColors.kOfWhiteColor,
+          leading: CustomBackAndFavIcon(onPressed: () {
+            GoRouter.of(context).pop();
+          }),
+          centerTitle: true,
+          title: Text(
+            "My Cart",
+            style: Txtstyle.style16(context: context).copyWith(
+                color: AppColors.kFontColor,
+                fontWeight: FontWeight.w500,
+                fontFamily: Constants.relwayFamily),
+          ),
+        ),
+        body: const MyCartScreenBody(),
       ),
     );
   }
