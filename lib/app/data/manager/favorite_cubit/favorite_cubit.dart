@@ -7,33 +7,33 @@ part 'favorite_state.dart';
 class FavoriteCubit extends Cubit<FavoriteState> {
   FavoriteCubit({required this.homeRepo}) : super(FavoriteInitial());
   HomeRepo homeRepo;
-  List<ProductsModel> favProducts = [];
 
-  void toggleFavorite(ProductsModel product) {
-    if (favProducts.contains(product)) {
-      favProducts.remove(product);
-    } else {
-      favProducts.add(product);
-    }
-    print("Favorite Products: $favProducts");
-    emit(FavoriteUpdated(favProducts));
+  Future<void> deleteFavoriteItem({required String productId}) async {
+    final result = await homeRepo.deleteProductFromCollection(
+      collectionName: "favorites",
+      productId: productId,
+      subCollectionName: "products",
+    );
+    getFavoriteProducts();
+    result.fold(
+      (l) {},
+      (r) {},
+    );
   }
 
   Future<void> addToFavoritesProducts(
       {required ProductsModel productsModel}) async {
-    emit(AddtoFavoriteLoading());
     final result = await homeRepo.addProductToCollection(
         collectionName: "favorites", productsModel: productsModel);
-    print(" Favorite Products: $favProducts");
     result.fold(
       (l) => emit(AddtoFavoriteFailure(errMessage: l.errmessage)),
-      (r) => emit(AddtoFavoriteSuccsess()),
+      (r) {},
     );
   }
 
   Future<void> getFavoriteProducts() async {
     final result =
-        await homeRepo.getProductsFromCollection(collectionName: "favorite");
+        await homeRepo.getProductsFromCollection(collectionName: "favorites");
     result.fold(
       (l) {
         print("Favorite Products: $l");

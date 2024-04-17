@@ -11,7 +11,6 @@ class FavoriteUpdated extends FavoriteState {
   FavoriteUpdated(this.favProducts);
 }
 
-final class AddtoFavoriteLoading extends FavoriteState {}
 
 final class AddtoFavoriteSuccsess extends FavoriteState {}
 
