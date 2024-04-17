@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
+import '../../../../core/tools/save_user_info.dart';
 
 class CheckOutEmailListTile extends StatelessWidget {
   const CheckOutEmailListTile({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,13 +23,21 @@ class CheckOutEmailListTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.r)),
           child: Image.asset(AppImages.iconemail2),
         ),
-        title: Text(
-          "emmanueloyiboke@gmail.com",
-          style: Txtstyle.style14(context: context).copyWith(
-              fontWeight: FontWeight.w500,
-              color: AppColors.kSecondFontColor,
-              fontFamily: Constants.popinsFamily),
-        ),
+        title: FutureBuilder(
+            future: SaveUserInfo.getUserEmail(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(
+                  snapshot.data!,
+                  style: Txtstyle.style14(context: context).copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.kSecondFontColor,
+                      fontFamily: Constants.popinsFamily),
+                );
+              } else {
+                return const Text("There is no Email");
+              }
+            }),
         subtitle: Text(
           "Email",
           style: Txtstyle.style12(context: context).copyWith(
@@ -38,8 +45,6 @@ class CheckOutEmailListTile extends StatelessWidget {
               color: AppColors.kDeepGreyColorA6A,
               fontFamily: Constants.popinsFamily),
         ),
-        trailing:
-            IconButton(onPressed: () {}, icon: Image.asset(AppImages.iconEdit)),
       ),
     );
   }

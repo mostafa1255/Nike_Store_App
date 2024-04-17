@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/core/constants.dart';
-import 'package:nike_store_app/app/core/styles/App_Image.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
 import '../../../../core/styles/App_Colors.dart';
 import 'CheckOutEmailListTile.dart';
 import 'CheckOutPhoneListTile.dart';
+import 'DetemineUserLocationWidget.dart';
 import 'ViewUserLocationMap.dart';
 
 class CheckOutScreenBody extends StatelessWidget {
@@ -51,16 +51,7 @@ class CheckOutScreenBody extends StatelessWidget {
                         fontFamily: Constants.relwayFamily),
                   ),
                   const VsizedBox(height: 10),
-                  Flexible(
-                    child: Text(
-                      "1082 Airport Road, Nigeria",
-                      style: Txtstyle.style12(context: context).copyWith(
-                          fontWeight: FontWeight.w600,
-                          //  overflow: TextOverflow.ellipsis,
-                          color: AppColors.kDeepGreyColorA6A.withOpacity(0.7),
-                          fontFamily: Constants.popinsFamily),
-                    ),
-                  ),
+                  const DetemineUserLocationWidget(),
                   const VsizedBox(height: 15),
                   const ViewUserLocationMap(),
                   const VsizedBox(height: 15),

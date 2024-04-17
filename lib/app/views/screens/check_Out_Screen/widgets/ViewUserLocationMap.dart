@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:nike_store_app/app/views/screens/map_Screen/map_screen.dart';
 import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
@@ -40,7 +40,10 @@ class ViewUserLocationMap extends StatelessWidget {
             radius: 22.r,
             backgroundColor: AppColors.kPrimaryColor,
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => MapUserScreen()));
+                },
                 icon: Icon(
                   Icons.location_on_rounded,
                   size: 25.sp,

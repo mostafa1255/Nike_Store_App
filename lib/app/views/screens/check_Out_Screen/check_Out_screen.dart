@@ -10,12 +10,13 @@ import 'widgets/CheckOutAlertDialog.dart';
 import 'widgets/CheckOutScreenBody.dart';
 
 class CheckOutScreen extends StatelessWidget {
-  const CheckOutScreen({super.key});
-
+  const CheckOutScreen({super.key, required this.subTotalPrice});
+  final num subTotalPrice;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavBarOfMyCartScreen(
+        subTotalPrice: 20,
         onPressed: () {
           showDialog(
             context: context,

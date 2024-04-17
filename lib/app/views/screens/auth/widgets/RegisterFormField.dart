@@ -19,9 +19,6 @@ class RegisterFormField extends StatefulWidget {
 }
 
 class _RegisterFormFieldState extends State<RegisterFormField> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  final TextEditingController passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var regCubit = BlocProvider.of<RegisterCubit>(context);
@@ -72,6 +69,28 @@ class _RegisterFormFieldState extends State<RegisterFormField> {
               },
               stringController: regCubit.emailController,
               hinttext: "xyz@gmail.com",
+              securPass: false,
+              width: double.infinity,
+              height: 80.h,
+            ),
+            Text(
+              "Phone Number",
+              style: Txtstyle.style16(context: context).copyWith(
+                  color: AppColors.kFontColor,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: Constants.relwayFamily),
+            ),
+            const VsizedBox(height: 8),
+            CustomTextFormField(
+              validator: (value) {
+                if (value == null ||
+                    value.isEmpty ||
+                    !AppRegex.hasNumber(value)) {
+                  return "Please enter your correct Email";
+                }
+              },
+              stringController: regCubit.phoneController,
+              hinttext: "0123456789",
               securPass: false,
               width: double.infinity,
               height: 80.h,

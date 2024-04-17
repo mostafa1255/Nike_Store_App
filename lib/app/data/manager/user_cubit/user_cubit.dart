@@ -11,6 +11,7 @@ class UserCubit extends Cubit<UserState> {
   Future<void> getUserData() async {
     emit(FetchUserDataLoading());
     final result = await userRepo.getUserData();
+
     result.fold(
       (l) => emit(FetchUserDataFailure(errMessage: l.errmessage)),
       (r) => emit(FetchUserDataSuccess(userModel: r)),

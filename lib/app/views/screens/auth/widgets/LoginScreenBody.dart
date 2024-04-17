@@ -4,8 +4,7 @@ import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
 import 'package:nike_store_app/app/views/common_widgets/Lottie_Loading_Animation.dart';
 import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
-import '../../../common_widgets/HsizedBox.dart';
-import '../../../common_widgets/VsizedBox.dart';
+import '../../../../core/tools/remote_notification_sevices.dart';
 import 'CustomAuthHaveaccount.dart';
 import 'LoginBlocListener.dart';
 import 'LoginForm.dart';
@@ -85,6 +84,12 @@ class LoginScreenBody extends StatelessWidget {
                 color: AppColors.kPrimaryColor,
                 onPressed: () {
                   if (GlobalKeys.riKey1.currentState!.validate()) {
+                    RemoteNotificationService
+                        .actionWhenFcmMessageReceivedInBackground(
+                            context: context);
+                    RemoteNotificationService
+                        .actionWhenFcmMessageReceivedInTerminated(
+                            context: context);
                     BlocProvider.of<LoginCubit>(context)
                         .signInwithEmailandPassword(
                       context: context,

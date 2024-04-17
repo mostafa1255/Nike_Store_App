@@ -11,6 +11,7 @@ class FilterStateBlocBuilder extends StatelessWidget {
     required this.fCubit,
   });
   final FilterCubit fCubit;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FilterCubit, FilterState>(
@@ -24,9 +25,7 @@ class FilterStateBlocBuilder extends StatelessWidget {
               Row(
                 children: [
                   IconButton(
-                      onPressed: () {
-                        fCubit.deactiveFilterIcon();
-                      },
+                      onPressed: () => fCubit.deactiveFilterIcon(),
                       icon: const Icon(
                         Icons.close,
                         color: AppColors.kPrimaryColor,
@@ -47,10 +46,9 @@ class FilterStateBlocBuilder extends StatelessWidget {
                           const VsizedBox(height: 150),
                           Text(
                             "There is no product in this Price Range",
-                            style: Txtstyle.style16(context: context)
-                                .copyWith(
-                                    color: AppColors.kFontColor,
-                                    fontWeight: FontWeight.bold),
+                            style: Txtstyle.style16(context: context).copyWith(
+                                color: AppColors.kFontColor,
+                                fontWeight: FontWeight.bold),
                           ),
                           const VsizedBox(height: 150),
                         ],
@@ -85,4 +83,3 @@ class FilterStateBlocBuilder extends StatelessWidget {
     );
   }
 }
-

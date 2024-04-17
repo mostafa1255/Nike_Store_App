@@ -35,7 +35,8 @@ class HomeDrawer extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      state.userModel.imageUrl == null
+                      state.userModel.imageUrl!.isEmpty ||
+                              state.userModel.imageUrl == null
                           ? Center(
                               child: Icon(
                               Icons.person,

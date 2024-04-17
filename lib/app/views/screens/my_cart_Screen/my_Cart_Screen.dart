@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nike_store_app/app/data/manager/calculation_cubit/calculation_cubit.dart';
+import 'package:nike_store_app/app/data/manager/cart_Quantity_cubit/cart_Quantity_cubit.dart';
 import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
-import 'package:nike_store_app/app/router/app_router.dart';
-import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
-import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
-import '../../../core/styles/text_Style.dart';
-import 'widgets/BottomNavBarOfMyCartScreen.dart';
+import '../../../data/repos/cart_repo/cart_repo_Impl.dart';
+import 'widgets/BottomNavBarOfMyCartScreenBlocBuilder.dart';
 import 'widgets/MyCartScreenBody.dart';
+import 'widgets/cartScreenAppBar.dart';
 
 class MyCartScreen extends StatelessWidget {
   const MyCartScreen({super.key});
@@ -21,45 +18,20 @@ class MyCartScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              CartCubit(homeRepo: HomeRepoImpl())..getCartProducts(),
+              CartCubit(cartRepo: CartRepoImpl(), homeRepo: HomeRepoImpl())
+                ..getCartProducts(),
         ),
         BlocProvider(
-          create: (context) => CalculationCubit(),
+          create: (context) => CartQuantityCubit(cartRepo: CartRepoImpl()),
         ),
       ],
       child: Scaffold(
-        bottomNavigationBar: BlocBuilder<CartCubit, CartState>(
-          builder: (context, state) {
-            if (state is GetFromCartSuccsesswithProducts) {
-              return BottomNavBarOfMyCartScreen(
-                subTotalPrice: state.totalPrice,
-                onPressed: () {
-                  GoRouter.of(context).push(Approuter.checkoutscreen);
-                },
-              );
-            } else {
-              return const SizedBox.shrink();
-            }
-          },
-        ),
+        bottomNavigationBar: const BottomNavBarOfMyCartScreenBlocBuilder(),
         backgroundColor: AppColors.kOfWhiteColor,
-        appBar: AppBar(
-          surfaceTintColor: Colors.transparent,
-          backgroundColor: AppColors.kOfWhiteColor,
-          leading: CustomBackAndFavIcon(onPressed: () {
-            GoRouter.of(context).pop();
-          }),
-          centerTitle: true,
-          title: Text(
-            "My Cart",
-            style: Txtstyle.style16(context: context).copyWith(
-                color: AppColors.kFontColor,
-                fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
-          ),
-        ),
+        appBar: cartScreenAppBar(context),
         body: const MyCartScreenBody(),
       ),
     );
   }
 }
+

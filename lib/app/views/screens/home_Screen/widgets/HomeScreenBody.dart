@@ -12,7 +12,6 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var fCubit = BlocProvider.of<FilterCubit>(context);
-
     return SafeArea(
         child: Padding(
       padding: EdgeInsets.only(top: 15.h, left: 16.w, right: 14.w),
@@ -38,4 +37,3 @@ class HomeScreenBody extends StatelessWidget {
     ));
   }
 }
-

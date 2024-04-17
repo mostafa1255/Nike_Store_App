@@ -4,6 +4,7 @@ import '../../../../core/constants.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
+import '../../../../core/tools/save_user_info.dart';
 
 class CheckOutPhoneListTile extends StatelessWidget {
   const CheckOutPhoneListTile({
@@ -23,12 +24,21 @@ class CheckOutPhoneListTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.r)),
           child: Image.asset(AppImages.iconPhone),
         ),
-        title: Text(
-          "+234-811-732-5298",
-          style: Txtstyle.style14(context: context).copyWith(
-              fontWeight: FontWeight.w500,
-              color: AppColors.kSecondFontColor,
-              fontFamily: Constants.popinsFamily),
+        title: FutureBuilder(
+          future: SaveUserInfo.getUserPhone(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text(
+                snapshot.data!,
+                style: Txtstyle.style14(context: context).copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.kSecondFontColor,
+                    fontFamily: Constants.popinsFamily),
+              );
+            } else {
+              return const Text("There is no Phone number");
+            }
+          },
         ),
         subtitle: Text(
           "Phone",
@@ -37,8 +47,6 @@ class CheckOutPhoneListTile extends StatelessWidget {
               color: AppColors.kDeepGreyColorA6A,
               fontFamily: Constants.popinsFamily),
         ),
-        trailing:
-            IconButton(onPressed: () {}, icon: Image.asset(AppImages.iconEdit)),
       ),
     );
   }

@@ -46,7 +46,7 @@ class TabBarWidget extends StatelessWidget {
                   // Content for Header 2
                   OutDoorBlocBuilderBlocListenerListView(),
                   // Content for Header 3
-                  Tennis_BlocBuilder_BlocListener_ListView(),
+                  TennisBlocBuilderBlocListenerListView(),
                 ],
               ),
             ),

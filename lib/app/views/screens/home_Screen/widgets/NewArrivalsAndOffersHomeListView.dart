@@ -34,13 +34,14 @@ class _NewArrivalsAndOffersHomeListViewState
 
   void _scrollListView() {
     Future.delayed(Duration(seconds: widget.products.length), () {
-      if (_pageController.page == widget.products.length - 1) {
+      if (_pageController.hasClients &&
+          _pageController.page == widget.products.length - 1) {
         _pageController.animateToPage(
           0,
           duration: _scrollDuration,
           curve: Curves.easeInOut,
         );
-      } else {
+      } else if (_pageController.hasClients) {
         _pageController.animateToPage(
           _pageController.page!.toInt() + 1,
           duration: _scrollDuration,

@@ -16,7 +16,7 @@ class CustomBackAndFavIcon extends StatelessWidget {
         style: ButtonStyle(
           side: MaterialStateProperty.all<BorderSide>(BorderSide(
             width: 5.w,
-            color: AppColors.kOfWhiteColor,
+            color: Colors.white,
           )),
           backgroundColor: MaterialStateProperty.all<Color>(
             Colors.white,

@@ -18,3 +18,5 @@ final class OutDoorProductsFailure extends OutDoorState {
 
   OutDoorProductsFailure({required this.errMessage});
 }
+
+

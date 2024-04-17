@@ -10,6 +10,8 @@ import 'package:nike_store_app/app/data/manager/home_cubits/tennis_cubit/tennis_
 import 'package:nike_store_app/app/data/manager/user_cubit/user_cubit.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
 import 'package:nike_store_app/app/data/repos/user_repo/user_repo_Impl.dart';
+import '../../../core/tools/remote_notification_sevices.dart';
+import '../../../data/repos/cart_repo/cart_repo_Impl.dart';
 import 'widgets/HomeDrawer.dart';
 import 'widgets/HomeScreenBody.dart';
 import 'widgets/homeAppBar.dart';
@@ -36,7 +38,9 @@ class HomeScreen extends StatelessWidget {
         create: (context) =>
             HomeCubit(homeRepo: HomeRepoImpl())..getAllProducts(),
       ),
-      BlocProvider(create: (context) => CartCubit(homeRepo: HomeRepoImpl())),
+      BlocProvider(
+          create: (context) =>
+              CartCubit(cartRepo: CartRepoImpl(), homeRepo: HomeRepoImpl())),
       BlocProvider(
           create: (context) => NewArrivalsCubit(homeRepo: HomeRepoImpl())
             ..newArrivalsProducts()),
@@ -46,9 +50,6 @@ class HomeScreen extends StatelessWidget {
       BlocProvider(
           create: (context) =>
               OutDoorCubit(homeRepo: HomeRepoImpl())..outDoorProducts()),
-      BlocProvider(
-          create: (context) =>
-              UserCubit(userRepo: UserRepoImpl())..getUserData())
     ];
   }
 }

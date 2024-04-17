@@ -7,7 +7,6 @@ import 'package:nike_store_app/app/core/tools/enums.dart';
 import 'package:nike_store_app/app/data/models/Products_Model.dart';
 import 'package:nike_store_app/app/data/models/vendors_Model.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo.dart';
-import '../../../core/tools/reg_imp.dart';
 
 class HomeRepoImpl extends HomeRepo {
   final dataBase = FirebaseFirestore.instance;
@@ -30,60 +29,6 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Faliures, VendorModel>> getVendorsDataAndProducts() async {
-    try {
-      print("============================");
-      final users = dataBase.collection("users").count();
-      print(users);
-      final vendorsAndProducts =
-          await dataBase.collection("vendors").doc(auth.currentUser!.uid).get();
-      // final userdata = vendorsAndProducts.data()!;
-      vendorModel = VendorModel.fromMap(map: vendorsAndProducts.data()!);
-      debugPrint("User name: ${vendorModel?.name}");
-      return right(vendorModel!);
-    } on FirebaseException catch (e) {
-      print("Error Happien");
-      return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
-    }
-  }
-
-  @override
-  Future<Either<Faliures, Appstate>> setVendorsDataAndProducts() async {
-    vendorModel = VendorModel(
-      email: "Mostafa@gmail.com",
-      id: auth.currentUser!.uid,
-      location: "[015,012]",
-      name: "Mostafa",
-      number: 01289880177,
-    );
-    try {
-      print("-" * 30);
-      final vendorCollection =
-          dataBase.collection("vendors").doc(auth.currentUser!.uid);
-      final productsdoc = vendorCollection.collection("products").doc();
-      productsModel = ProductsModel(
-          id: productsdoc.id,
-          brand: "Testtttttttttt ",
-          name: "Nike G.T. Cut 2",
-          price: "200",
-          imageUrl:
-              "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/464f48a2-bde1-4264-aa7f-67cc60975ece/gt-cut-2-mens-basketball-shoes-tmfmFl.png",
-          description: "Men's Basketball Shoes");
-      vendorCollection.set(vendorModel!.toMap());
-      productsdoc.set(productsModel!.toJson());
-      return right(Appstate.productAddedToFavorites);
-    } on Exception catch (e) {
-      print("+" * 30);
-      print(e.toString());
-      if (e is FirebaseAuthException) {
-        return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
-      } else {
-        return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
-      }
-    }
-  }
-
-  @override
   Future<Either<Faliures, List<ProductsModel>>> getProductsFromCollection(
       {required String collectionName}) async {
     try {
@@ -95,10 +40,11 @@ class HomeRepoImpl extends HomeRepo {
       if (snapshot.docs.isNotEmpty) {
         List<ProductsModel> productsList = [];
         for (var doc in snapshot.docs) {
-          productsList.add(ProductsModel.fromJson(doc.data()));
+          productsList.add(ProductsModel.fromJson(map: doc.data()));
         }
         return right(productsList);
       } else {
+        print("There are no products in $collectionName");
         return left(
             FirebaseFailure("There are no products in $collectionName"));
       }
@@ -113,58 +59,33 @@ class HomeRepoImpl extends HomeRepo {
       final product = await dataBase.collection("products").get();
       List<ProductsModel> productsList = [];
       for (var element in product.docs) {
-        productsList.add(ProductsModel.fromJson(element.data()));
+        productsList.add(ProductsModel.fromJson(map: element.data()));
       }
       print(productsList);
       return right(productsList);
     } catch (e) {
-      // Handle the error here
       return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
     }
   }
 
-/*Future<Either<Failures, ProductsModel>> getRandomProductForThreeDays() async {
-  try {
-    final productsEither = await getAllProducts();
-    
-    return productsEither.fold(
-      (failure) => left(failure),
-      (productsList) {
-        if (productsList.isEmpty) {
-          return left(EmptyListFailure());
-        }
-        
-        // Generate a random index
-        final random = Random();
-        final randomIndex = random.nextInt(productsList.length);
-        
-        // Get the random product
-        final randomProduct = productsList[randomIndex];
-        
-        // Check if the product was selected more than 3 days ago
-        if (selectedProducts.containsKey(randomProduct)) {
-          final lastSelected = selectedProducts[randomProduct];
-          final now = DateTime.now();
-          final difference = now.difference(lastSelected).inDays;
-          if (difference < 3) {
-            // If less than 3 days have passed, select a different product
-            return getRandomProductForThreeDays();
-          }
-        }
-        
-        // Keep track of the selected product and the timestamp
-        selectedProducts[randomProduct] = DateTime.now();
-        
-        return right(randomProduct);
-      }
-    );
-  } catch (e) {
-    // Handle the error here
-    return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
+  @override
+  Future<Either<Faliures, void>> deleteProductFromCollection({
+    required String collectionName,
+    required String subCollectionName,
+    required String productId,
+  }) async {
+    try {
+      await dataBase
+          .collection(collectionName)
+          .doc(auth.currentUser!.uid)
+          .collection(subCollectionName)
+          .doc(productId)
+          .delete();
+      return const Right(null);
+    } catch (e) {
+      return Left(FirebaseFailure("Failed to delete product"));
+    }
   }
-}
-
-*/
 
   @override
   Future<Either<Faliures, Appstate>> addProductToCollection({
@@ -183,6 +104,7 @@ class HomeRepoImpl extends HomeRepo {
           name: productsModel.name,
           price: productsModel.price,
           imageUrl: productsModel.imageUrl,
+          vendorId: productsModel.vendorId,
           description: productsModel.description);
       await productDoc.set(productsModel.toJson());
       return right(Appstate.productsUploaded);
@@ -190,6 +112,4 @@ class HomeRepoImpl extends HomeRepo {
       return left(FirebaseFailure(e.code));
     }
   }
-
-
 }

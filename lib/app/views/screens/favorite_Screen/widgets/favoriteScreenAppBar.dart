@@ -26,12 +26,14 @@ AppBar favAndNotifScreenAppBar(
           fontFamily: Constants.relwayFamily),
     ),
     centerTitle: true,
-    actions: [
-      CustomBackAndFavIcon(
-        onPressed: onPressed2,
-        iconData: iconData,
-      ),
-      HsizedBox(width: 15.w)
-    ],
+    actions: iconData != null
+        ? [
+            CustomBackAndFavIcon(
+              onPressed: onPressed2,
+              iconData: iconData,
+            ),
+            HsizedBox(width: 15.w)
+          ]
+        : null,
   );
 }

@@ -28,16 +28,6 @@ class NotificationScreenBody extends StatelessWidget {
           ),
           const VsizedBox(height: 15),
           const RecentListViewInNotificationScreen(),
-          Text(
-            "Yesterday",
-            textAlign: TextAlign.center,
-            style: Txtstyle.style18(context: context).copyWith(
-                color: AppColors.kFontColor,
-                fontWeight: FontWeight.w600,
-                fontFamily: Constants.relwayFamily),
-          ),
-          const VsizedBox(height: 15),
-          const RecentListViewInNotificationScreen(),
         ],
       )),
     ));

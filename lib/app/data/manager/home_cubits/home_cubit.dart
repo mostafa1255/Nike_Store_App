@@ -15,26 +15,4 @@ class HomeCubit extends Cubit<HomeState> {
       (r) => emit(MainProductsSuccess(products: r)),
     );
   }
-
-/* Future<void> getFavoriteProducts() async {
-    emit(CartProductsLoading());
-    final result =
-        await homeRepo.getProductsFromCollection(collectionName: "favorites");
-    result.fold(
-      (l) => emit(CartProductsFailure(errMessage: l.errmessage)),
-      (r) => emit(CartProductsSuccess(products: r)),
-    );
-  }
-
-  Future<void> addToFavoritesProducts(
-      {required ProductsModel productsModel}) async {
-    emit(AddtoCartProductsLoading());
-    final result = await homeRepo.addProductToCollection(
-        collectionName: "favorites", productsModel: productsModel);
-    result.fold(
-      (l) => emit(AddtoCartProductsFailure(errMessage: l.errmessage)),
-      (r) => emit(AddtoCartProductsSuccsess()),
-    );
-  }
-  */
 }

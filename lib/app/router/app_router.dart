@@ -1,4 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/data/manager/fcm_cubit/fcm_cubit.dart';
+import 'package:nike_store_app/app/data/manager/user_cubit/user_cubit.dart';
 import 'package:nike_store_app/app/views/screens/Splash_Screen/splash_Screen.dart';
 import 'package:nike_store_app/app/views/screens/auth/forget_password_Screen.dart';
 import 'package:nike_store_app/app/views/screens/auth/login_screen.dart';
@@ -11,6 +14,8 @@ import 'package:nike_store_app/app/views/screens/home_Screen/home_screen.dart';
 import 'package:nike_store_app/app/views/screens/my_cart_Screen/my_Cart_Screen.dart';
 import 'package:nike_store_app/app/views/screens/notifications_Screen/notifications_screen.dart';
 import 'package:nike_store_app/app/views/screens/profile_Screen/profile_screen.dart';
+import '../data/models/Products_Model.dart';
+import '../data/repos/user_repo/user_repo_Impl.dart';
 import '../views/common_widgets/DotcontrollerOnBoarding.dart';
 
 abstract class Approuter {
@@ -30,10 +35,7 @@ abstract class Approuter {
 
   static final router = GoRouter(
     routes: [
-      GoRoute(
-        path: initial,
-        builder: (context, state) => LoginScreen(),
-      ),
+      GoRoute(path: initial, builder: (context, state) => LoginScreen()),
       GoRoute(
         path: pageview,
         builder: (context, state) => DotcontrollerOnBoarding(),
@@ -52,11 +54,13 @@ abstract class Approuter {
       ),
       GoRoute(
         path: homescreen,
-        builder: (context, state) => HomeScreen(),
+        builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
         path: detailsscreen,
-        builder: (context, state) => DetailsScreen(),
+        builder: (context, state) => DetailsScreen(
+          productsModel: state.extra as ProductsModel,
+        ),
       ),
       GoRoute(
         path: mycartscreen,
@@ -72,7 +76,10 @@ abstract class Approuter {
       ),
       GoRoute(
         path: notificationscreen,
-        builder: (context, state) => NotificationScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => FcmCubit()..getFCMProducts(),
+          child: const NotificationScreen(),
+        ),
       ),
       GoRoute(
         path: favoritescreen,
@@ -80,7 +87,9 @@ abstract class Approuter {
       ),
       GoRoute(
         path: checkoutscreen,
-        builder: (context, state) => CheckOutScreen(),
+        builder: (context, state) => CheckOutScreen(
+          subTotalPrice: state.extra as num,
+        ),
       ),
     ],
   );

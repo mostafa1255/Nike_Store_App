@@ -21,8 +21,10 @@ class _FavoriteIconActionState extends State<FavoriteIconAction> {
     return IconButton(
       onPressed: () {
         if (isFavorite == false) {
+          print("Added To Favorites");
           const ToastMessage(message: "Added To Favorites").showToast(context);
         }
+        print("Added To ");
         BlocProvider.of<FavoriteCubit>(context)
             .addToFavoritesProducts(productsModel: widget.favProduct);
         setState(() {

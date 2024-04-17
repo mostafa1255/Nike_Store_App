@@ -21,6 +21,7 @@ class RegisterRepoImpl extends Registerrepo {
           .createUserWithEmailAndPassword(email: email, password: password);
       print(userCredential.user?.uid);
       auth.currentUser!.sendEmailVerification();
+      
       return right(userCredential);
     } on Exception catch (e) {
       if (e is FirebaseAuthException) {

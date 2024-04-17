@@ -26,6 +26,8 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginFailure(errMessage: faliure.errmessage));
     }, (usercredential) {
       userCredential = usercredential;
+
+      print("emit LoginSuccess");
       emit(LoginSuccess());
     });
   }
@@ -37,7 +39,6 @@ class LoginCubit extends Cubit<LoginState> {
     result.fold((faliure) {
       emit(LoginFailure(errMessage: faliure.errmessage));
     }, (usercredential) {
-      userCredential = usercredential;
       emit(LoginSuccess());
     });
   }
