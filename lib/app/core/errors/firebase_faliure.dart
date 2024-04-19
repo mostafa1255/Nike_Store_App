@@ -37,7 +37,7 @@ class FirebaseFailure extends Faliures {
           return "Email address is invalid.";
 
         default:
-          return errorCode;
+          return "something is wrong please try again later.";
       }
     }
 

@@ -7,10 +7,7 @@ import 'package:nike_store_app/app/data/manager/home_cubits/OutDoor_cubit/out_do
 import 'package:nike_store_app/app/data/manager/home_cubits/home_cubit.dart';
 import 'package:nike_store_app/app/data/manager/home_cubits/new_arrivals/new_arrivals_cubit.dart';
 import 'package:nike_store_app/app/data/manager/home_cubits/tennis_cubit/tennis_cubit.dart';
-import 'package:nike_store_app/app/data/manager/user_cubit/user_cubit.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
-import 'package:nike_store_app/app/data/repos/user_repo/user_repo_Impl.dart';
-import '../../../core/tools/remote_notification_sevices.dart';
 import '../../../data/repos/cart_repo/cart_repo_Impl.dart';
 import 'widgets/HomeDrawer.dart';
 import 'widgets/HomeScreenBody.dart';

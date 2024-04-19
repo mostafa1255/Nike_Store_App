@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
+import 'package:nike_store_app/app/core/tools/save_user_info.dart';
 import 'package:nike_store_app/app/data/repos/login_Repo/login_repo.dart';
 part 'login_state.dart';
 
@@ -10,6 +12,7 @@ class LoginCubit extends Cubit<LoginState> {
   final auth = FirebaseAuth.instance;
   LoginRepo loginRepo;
   UserCredential? userCredential;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -25,10 +28,16 @@ class LoginCubit extends Cubit<LoginState> {
     result.fold((faliure) {
       emit(LoginFailure(errMessage: faliure.errmessage));
     }, (usercredential) {
-      userCredential = usercredential;
-
-      print("emit LoginSuccess");
-      emit(LoginSuccess());
+      if (auth.currentUser!.emailVerified) {
+        userCredential = usercredential;
+        emit(LoginSuccess());
+      } else {
+        emit(LoginFailure(errMessage: "Please Verify Your Email"));
+      }
+      Future.delayed(const Duration(seconds: 2)).then((_) {
+        emailController.clear();
+        passController.clear();
+      });
     });
   }
 
@@ -52,5 +61,16 @@ class LoginCubit extends Cubit<LoginState> {
     }, (voidreturn) {
       emit(ResetPasswordsucsess());
     });
+  }
+
+  Future<void> signOut() async {
+    try {
+      await auth.signOut();
+      await googleSignIn.disconnect();
+      await googleSignIn.signOut();
+      SaveUserInfo.deleteUserInfo();
+    } catch (e) {
+      print("Error disconnecting from Google: $e");
+    }
   }
 }

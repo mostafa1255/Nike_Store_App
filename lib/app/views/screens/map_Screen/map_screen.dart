@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import '../../../core/constants.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
@@ -85,22 +86,8 @@ class MapUserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.kOfWhiteColor,
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        backgroundColor: AppColors.kOfWhiteColor,
-        leading: CustomBackAndFavIcon(onPressed: () {}),
-        centerTitle: true,
-        title: Text(
-          "My Location",
-          style: Txtstyle.style16(context: context).copyWith(
-              color: AppColors.kFontColor,
-              fontWeight: FontWeight.w500,
-              fontFamily: Constants.relwayFamily),
-        ),
-      ),
-      body: const MapUserScreenBody(),
+    return const Scaffold(
+      body: MapUserScreenBody(),
     );
   }
 }

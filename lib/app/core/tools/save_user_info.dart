@@ -46,4 +46,12 @@ class SaveUserInfo {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString("uid");
   }
+
+  static Future<void> deleteUserInfo() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove("email");
+    await prefs.remove("phone");
+    await prefs.remove("name");
+    await prefs.remove("uid");
+  }
 }

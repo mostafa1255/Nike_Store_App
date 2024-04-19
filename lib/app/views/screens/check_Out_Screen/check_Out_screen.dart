@@ -16,7 +16,7 @@ class CheckOutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavBarOfMyCartScreen(
-        subTotalPrice: 20,
+        subTotalPrice: subTotalPrice,
         onPressed: () {
           showDialog(
             context: context,

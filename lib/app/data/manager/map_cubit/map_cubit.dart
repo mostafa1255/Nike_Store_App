@@ -1,15 +1,14 @@
+import 'package:bloc/bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:meta/meta.dart';
+part 'map_state.dart';
 
-class LocationServices {
-  static double? latitude;
-  static double? longitude;
-
-  static Future<Position> determinePosition(
-      {double? latitude, double? longitude}) async {
+class MapCubit extends Cubit<MapState> {
+  MapCubit() : super(MapInitial());
+  Future<void> determineUserPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
-
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return Future.error('Location services are disabled.');
@@ -27,8 +26,36 @@ class LocationServices {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
-    if (latitude != null && longitude != null) {
-      Position pos = await Geolocator.getCurrentPosition();
+    try {
+      emit(MapLoading());
+      Position position = await Geolocator.getCurrentPosition();
+
+      getCurrentPositionStreet(
+          latitude: position.latitude, longitude: position.longitude);
+    } catch (e) {
+      emit(MapError(error: e.toString()));
+    }
+  }
+
+  Future<void> changeUserPosition(
+      {required double latitude, required double longitude}) async {
+    emit(MapLoading());
+    await getCurrentPositionStreet(latitude: latitude, longitude: longitude);
+  }
+
+  Future<void> getCurrentPositionStreet(
+      {required double latitude, required double longitude}) async {
+    try {
+      emit(MapLoading());
+      List<Placemark> placemark =
+          await placemarkFromCoordinates(latitude, longitude);
+      emit(MapUpdated(streetName: placemark[0].street!));
+    } catch (e) {
+      emit(MapError(error: e.toString()));
+    }
+  }
+}
+/*  Position pos = await Geolocator.getCurrentPosition();
       return Position(
           longitude: longitude,
           latitude: latitude,
@@ -40,17 +67,4 @@ class LocationServices {
           headingAccuracy: pos.headingAccuracy,
           speed: pos.speed,
           speedAccuracy: pos.speedAccuracy);
-    }
-    return await Geolocator.getCurrentPosition();
-  }
-
-  static Future<String> getCurrentPositionStreet(
-      {required double latitude, required double longitude}) async {
-    List<Placemark> placemark =
-        await placemarkFromCoordinates(latitude, longitude);
-
-    return placemark[0].street!;
-  }
-
-//
-}
+    }* */

@@ -11,7 +11,6 @@ class NewArrivalsCubit extends Cubit<NewArrivalsState> {
   HomeRepo homeRepo;
 
   Future<void> newArrivalsProducts() async {
-    print("outdoor");
     emit(NewArrivalsProductsLoading());
     final result = await homeRepo.getAllProducts();
     result

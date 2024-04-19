@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
 import 'package:nike_store_app/app/data/manager/home_cubits/filter_cubit/filter_cubit.dart';
+import 'package:nike_store_app/app/data/manager/map_cubit/map_cubit.dart';
 import 'package:nike_store_app/app/data/manager/user_cubit/user_cubit.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
 import 'package:nike_store_app/app/data/repos/login_Repo/login_repo_Impl.dart';
@@ -22,6 +23,7 @@ class NikeStoreApp extends StatelessWidget {
         BlocProvider(create: (_) => LoginCubit(LoginRepoImpl())),
         BlocProvider(create: (_) => FilterCubit(homeRepo: HomeRepoImpl())),
         BlocProvider(create: (_) => UserCubit(userRepo: UserRepoImpl())),
+        BlocProvider(create: (_) => MapCubit()..determineUserPosition()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),

@@ -33,7 +33,9 @@ class LoginScreenBody extends StatelessWidget {
                 child: IconButton(
                     iconSize: 17.sp,
                     onPressed: () {
-                      GoRouter.of(context).pop();
+                      if (GoRouter.of(context).canPop()) {
+                        GoRouter.of(context).pop();
+                      }
                     },
                     icon: const Icon(Icons.arrow_back_ios_rounded)),
               ),
@@ -82,20 +84,19 @@ class LoginScreenBody extends StatelessWidget {
                 fcolorWhite: true,
                 txt: "Sign In",
                 color: AppColors.kPrimaryColor,
-                onPressed: () {
+                onPressed: () async {
                   if (GlobalKeys.riKey1.currentState!.validate()) {
+                    await logCubit.signInwithEmailandPassword(
+                      context: context,
+                      email: logCubit.emailController.text,
+                      password: logCubit.passController.text,
+                    );
                     RemoteNotificationService
                         .actionWhenFcmMessageReceivedInBackground(
                             context: context);
                     RemoteNotificationService
                         .actionWhenFcmMessageReceivedInTerminated(
                             context: context);
-                    BlocProvider.of<LoginCubit>(context)
-                        .signInwithEmailandPassword(
-                      context: context,
-                      email: logCubit.emailController.text,
-                      password: logCubit.passController.text,
-                    );
                   }
                 },
               ),
