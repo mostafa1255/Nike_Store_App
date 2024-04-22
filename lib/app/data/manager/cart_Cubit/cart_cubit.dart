@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
-import 'package:nike_store_app/app/data/manager/home_cubits/OutDoor_cubit/out_door_cubit.dart';
 import 'package:nike_store_app/app/data/models/Products_Model.dart';
 import 'package:nike_store_app/app/data/repos/cart_repo/cart_repo.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo.dart';

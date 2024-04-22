@@ -7,7 +7,7 @@ import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/widgets/addToCartBlocListener.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../../router/app_router.dart';
-import '../../../common_widgets/Lottie_Loading_Animation.dart';
+import '../../../common_widgets/CustomShimmerProductListViewHomeScreen.dart';
 import 'CustomHeaderofHomeItemListView.dart';
 import 'CustomHomeCardListView.dart';
 
@@ -47,9 +47,7 @@ class TennisBlocBuilderBlocListenerListView extends StatelessWidget {
                       ),
                     );
                   default:
-                    return const Center(
-                      child: Lottie_Loading_Animation(),
-                    );
+                    return const CustomShimmerProductListViewHomeScreen();
                 }
               },
             ),

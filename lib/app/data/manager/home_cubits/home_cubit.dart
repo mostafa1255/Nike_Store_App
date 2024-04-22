@@ -9,10 +9,12 @@ class HomeCubit extends Cubit<HomeState> {
   HomeRepo homeRepo;
   Future<void> getAllProducts() async {
     emit(MainProductsLoading());
-    final result = await homeRepo.getAllProducts();
-    result.fold(
-      (l) => emit(MainProductsFailure(errMessage: l.errmessage)),
-      (r) => emit(MainProductsSuccess(products: r)),
-    );
+    Future.delayed(const Duration(seconds: 5), () async {
+      final result = await homeRepo.getAllProducts();
+      result.fold(
+        (l) => emit(MainProductsFailure(errMessage: l.errmessage)),
+        (r) => emit(MainProductsSuccess(products: r)),
+      );
+    });
   }
 }

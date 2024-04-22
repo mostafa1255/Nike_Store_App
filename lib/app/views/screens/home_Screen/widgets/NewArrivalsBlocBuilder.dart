@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../../data/manager/home_cubits/new_arrivals/new_arrivals_cubit.dart';
-import '../../../common_widgets/Lottie_Loading_Animation.dart';
 import 'NewArrivalsAndOffersHomeListView.dart';
+import '_buildShimmerListView.dart';
 
 class NewArrivalsBlocBuilder extends StatelessWidget {
   const NewArrivalsBlocBuilder({
@@ -30,9 +30,10 @@ class NewArrivalsBlocBuilder extends StatelessWidget {
               ],
             );
           default:
-            return const Lottie_Loading_Animation();
+            return buildShimmerListView();
         }
       },
     );
   }
 }
+

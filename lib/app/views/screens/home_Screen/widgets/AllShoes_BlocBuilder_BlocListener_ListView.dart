@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
 import '../../../../data/manager/home_cubits/home_cubit.dart';
-import '../../../common_widgets/Lottie_Loading_Animation.dart';
+import '../../../common_widgets/CustomShimmerProductListViewHomeScreen.dart';
 import '../../../common_widgets/VsizedBox.dart';
 import 'CustomHeaderofHomeItemListView.dart';
 import 'CustomHomeCardListView.dart';
 import 'addToCartBlocListener.dart';
 
-class AllShoes_BlocBuilder_BlocListener_ListView extends StatelessWidget {
-  const AllShoes_BlocBuilder_BlocListener_ListView({
+class AllShoesBlocBuilderBlocListenerListView extends StatelessWidget {
+  const AllShoesBlocBuilderBlocListenerListView({
     super.key,
   });
 
@@ -40,9 +40,7 @@ class AllShoes_BlocBuilder_BlocListener_ListView extends StatelessWidget {
                     ),
                   );
                 default:
-                  return const Center(
-                    child: Lottie_Loading_Animation(),
-                  );
+                  return const CustomShimmerProductListViewHomeScreen();
               }
             },
           ),
@@ -51,3 +49,5 @@ class AllShoes_BlocBuilder_BlocListener_ListView extends StatelessWidget {
     );
   }
 }
+
+

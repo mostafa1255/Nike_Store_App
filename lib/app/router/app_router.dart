@@ -35,7 +35,7 @@ abstract class Approuter {
 
   static final router = GoRouter(
     routes: [
-      GoRoute(path: initial, builder: (context, state) => LoginScreen()),
+      GoRoute(path: initial, builder: (context, state) => HomeScreen()),
       GoRoute(
         path: pageview,
         builder: (context, state) => DotcontrollerOnBoarding(),

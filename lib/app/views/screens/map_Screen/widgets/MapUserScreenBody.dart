@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:nike_store_app/app/core/tools/Location_Services.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/map_cubit/map_cubit.dart';
 import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
@@ -25,7 +24,7 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
   );
   GoogleMapController? gmc;
   List<Placemark>? placemarks;
-  int id = 3;
+  String id = "1";
   Set<Marker> markers = {};
 
   StreamSubscription<Position>? positionStream;
@@ -34,9 +33,7 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
     LocationPermission permission;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     permission = await Geolocator.checkPermission();
-
     if (!serviceEnabled) {}
-
     if (permission == LocationPermission.denied) {
       print("denied");
       permission = await Geolocator.requestPermission();
@@ -53,15 +50,11 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
       positionStream =
           Geolocator.getPositionStream().listen((Position? position) async {
         markers.add(Marker(
-          markerId: const MarkerId("1"),
+          markerId: MarkerId(id),
           position: LatLng(position!.latitude, position.longitude),
         ));
 
         //animate Camera for camera wailk with person
-        setState(() {
-          // gmc?.animateCamera(CameraUpdate.newLatLng(
-          //   LatLng(position.latitude, position.longitude)));
-        });
       });
     }
   }
@@ -105,21 +98,11 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
                 onTap: (LatLng latLng) async {
                   setState(() {
                     markers.add(Marker(
-                        markerId: const MarkerId("1"),
+                        markerId: MarkerId(id),
                         position: LatLng(latLng.latitude, latLng.longitude)));
                   });
-                  print("+++++++++++++++++");
-                  print(latLng.latitude);
-                  print(latLng.longitude);
-                  id++;
-                  print("=============================");
-                  placemarks = await placemarkFromCoordinates(
-                      latLng.latitude, latLng.longitude);
-                  print(latLng.latitude);
-                  print(latLng.longitude);
-                  print(placemarks![0].country);
-                  print(placemarks![0].street);
-                  print(placemarks![0].administrativeArea);
+                  await BlocProvider.of<MapCubit>(context).changeUserPosition(
+                      latitude: latLng.latitude, longitude: latLng.longitude);
                 },
                 markers: markers.toSet(),
                 mapType: MapType.normal,
@@ -166,10 +149,6 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
                       if (GoRouter.of(context).canPop()) {
                         GoRouter.of(context).pop();
                       }
-                      await BlocProvider.of<MapCubit>(context)
-                          .changeUserPosition(
-                              latitude: markers.first.position.latitude,
-                              longitude: markers.first.position.longitude);
                     }),
               )
             ],

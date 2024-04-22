@@ -34,12 +34,13 @@ class RegisterScreenBody extends StatelessWidget {
                 child: IconButton(
                   iconSize: 17.sp,
                   onPressed: () {
-                    //       GoRouter.of(context);
+                    if (GoRouter.of(context).canPop()) {
+                      GoRouter.of(context).pop();
+                    }
                   },
                   icon: const Icon(Icons.arrow_back_ios_rounded),
                 ),
               ),
-              const VsizedBox(height: 8),
               Align(
                 alignment: Alignment.center,
                 child: Text(
@@ -116,6 +117,7 @@ class RegisterScreenBody extends StatelessWidget {
                 accountType: "Already Have Account?",
                 createOrLogin: " Log In",
               ),
+              const VsizedBox(height: 60),
             ],
           )),
         ));

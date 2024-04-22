@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import '../../../models/Products_Model.dart';
@@ -12,17 +11,19 @@ class NewArrivalsCubit extends Cubit<NewArrivalsState> {
 
   Future<void> newArrivalsProducts() async {
     emit(NewArrivalsProductsLoading());
-    final result = await homeRepo.getAllProducts();
-    result
-        .fold((l) => emit(NewArrivalsProductsFailure(errMessage: l.errmessage)),
-            (products) {
-      List<ProductsModel> randomProducts = [];
-      Random random = Random();
-      for (int i = 0; i < 3; i++) {
-        int randomIndex = random.nextInt(products.length);
-        randomProducts.add(products[randomIndex]);
-      }
-      emit(NewArrivalsProductsSuccess(products: randomProducts));
+    Future.delayed(const Duration(seconds: 5), () async {
+      final result = await homeRepo.getAllProducts();
+      result.fold(
+          (l) => emit(NewArrivalsProductsFailure(errMessage: l.errmessage)),
+          (products) {
+        List<ProductsModel> randomProducts = [];
+        Random random = Random();
+        for (int i = 0; i < 3; i++) {
+          int randomIndex = random.nextInt(products.length);
+          randomProducts.add(products[randomIndex]);
+        }
+        emit(NewArrivalsProductsSuccess(products: randomProducts));
+      });
     });
   }
 }

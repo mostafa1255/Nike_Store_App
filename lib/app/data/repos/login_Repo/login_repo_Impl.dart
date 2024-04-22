@@ -6,7 +6,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/data/repos/login_Repo/login_repo.dart';
 import '../../../core/Functions/ensureNotVendorEmail.dart';
-import '../../../core/Functions/googleCredential.dart';
 import '../../../core/errors/firebase_faliure.dart';
 import '../../../core/tools/reg_imp.dart';
 
@@ -85,7 +84,6 @@ class LoginRepoImpl extends LoginRepo {
       return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
     }
   }
-
 // reset password
   @override
   Future<Either<Faliures, void>> resetPassword({required String email}) async {

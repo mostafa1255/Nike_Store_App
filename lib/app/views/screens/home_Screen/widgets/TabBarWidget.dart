@@ -42,7 +42,7 @@ class TabBarWidget extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 children: [
                   // Content for Header 1
-                  AllShoes_BlocBuilder_BlocListener_ListView(),
+                  AllShoesBlocBuilderBlocListenerListView(),
                   // Content for Header 2
                   OutDoorBlocBuilderBlocListenerListView(),
                   // Content for Header 3

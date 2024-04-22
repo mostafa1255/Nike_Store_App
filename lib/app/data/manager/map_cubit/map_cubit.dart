@@ -7,6 +7,8 @@ part 'map_state.dart';
 class MapCubit extends Cubit<MapState> {
   MapCubit() : super(MapInitial());
   Future<void> determineUserPosition() async {
+    print("10" * 20);
+    print("in determine user position");
     bool serviceEnabled;
     LocationPermission permission;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -29,7 +31,6 @@ class MapCubit extends Cubit<MapState> {
     try {
       emit(MapLoading());
       Position position = await Geolocator.getCurrentPosition();
-
       getCurrentPositionStreet(
           latitude: position.latitude, longitude: position.longitude);
     } catch (e) {
@@ -47,24 +48,20 @@ class MapCubit extends Cubit<MapState> {
       {required double latitude, required double longitude}) async {
     try {
       emit(MapLoading());
-      List<Placemark> placemark =
+      List<Placemark> placemarks =
           await placemarkFromCoordinates(latitude, longitude);
-      emit(MapUpdated(streetName: placemark[0].street!));
+      print("10" * 20);
+      print(latitude);
+      print(longitude);
+      print(placemarks[0].street);
+      if (placemarks.isNotEmpty) {
+        String streetName = placemarks[0].street ?? 'Unknown Street';
+        emit(MapUpdated(streetName: streetName));
+      } else {
+        emit(MapError(error: 'No placemark found for the given coordinates'));
+      }
     } catch (e) {
-      emit(MapError(error: e.toString()));
+      emit(MapError(error: 'No placemark found for the given coordinates'));
     }
   }
 }
-/*  Position pos = await Geolocator.getCurrentPosition();
-      return Position(
-          longitude: longitude,
-          latitude: latitude,
-          timestamp: pos.timestamp,
-          accuracy: pos.accuracy,
-          altitude: pos.altitude,
-          altitudeAccuracy: pos.altitudeAccuracy,
-          heading: pos.heading,
-          headingAccuracy: pos.headingAccuracy,
-          speed: pos.speed,
-          speedAccuracy: pos.speedAccuracy);
-    }* */

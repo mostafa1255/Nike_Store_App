@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
-import 'package:nike_store_app/app/views/common_widgets/ToastMessage.dart';
 import '../../../../data/manager/home_cubits/OutDoor_cubit/out_door_cubit.dart';
-import '../../../../router/app_router.dart';
-import '../../../common_widgets/Lottie_Loading_Animation.dart';
 import '../../../common_widgets/VsizedBox.dart';
 import 'CustomHeaderofHomeItemListView.dart';
-import 'CustomHomeCardListView.dart';
+import '_buildBlocContent.dart';
 import 'addToCartBlocListener.dart';
 
 class OutDoorBlocBuilderBlocListenerListView extends StatelessWidget {
@@ -29,7 +24,7 @@ class OutDoorBlocBuilderBlocListenerListView extends StatelessWidget {
           },
           child: BlocBuilder<OutDoorCubit, OutDoorState>(
             builder: (context, state) {
-              return _buildBlocContent(state, context: context);
+              return buildBlocContent(state, context: context);
             },
           ),
         )
@@ -38,23 +33,5 @@ class OutDoorBlocBuilderBlocListenerListView extends StatelessWidget {
   }
 }
 
-Widget _buildBlocContent(OutDoorState state, {context}) {
-  switch (state) {
-    case OutDoorProductsSuccess():
-      return CustomHomeCardListView(
-        products: state.products,
-      );
-    case OutDoorProductsFailure():
-      return Center(
-        child: Text(
-          state.errMessage,
-          style: Txtstyle.style16(context: context)
-              .copyWith(color: const Color.fromARGB(255, 58, 54, 54)),
-        ),
-      );
-    default:
-      return const Center(
-        child: Lottie_Loading_Animation(),
-      );
-  }
-}
+
+

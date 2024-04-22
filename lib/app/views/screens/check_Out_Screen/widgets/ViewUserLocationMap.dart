@@ -41,8 +41,8 @@ class ViewUserLocationMap extends StatelessWidget {
             backgroundColor: AppColors.kPrimaryColor,
             child: IconButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => MapUserScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const MapUserScreen()));
                 },
                 icon: Icon(
                   Icons.location_on_rounded,
