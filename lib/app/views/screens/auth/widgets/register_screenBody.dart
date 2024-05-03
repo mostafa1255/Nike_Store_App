@@ -1,5 +1,5 @@
-import 'package:nike_store_app/app/core/constants.dart';
-import 'package:nike_store_app/app/core/tools/global_keys.dart';
+import 'package:nike_store_app/app/core/utils/AppFonts.dart';
+import 'package:nike_store_app/app/core/utils/global_keys.dart';
 import 'package:nike_store_app/app/core/tools/remote_notification_sevices.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
@@ -98,7 +98,7 @@ class RegisterScreenBody extends StatelessWidget {
                     Text(
                       "Sign In with Google ",
                       style: Txtstyle.style14(context: context).copyWith(
-                          fontFamily: Constants.relwayFamily,
+                          fontFamily: AppFonts.relwayFamily,
                           color: AppColors.kFontColor),
                     )
                   ],

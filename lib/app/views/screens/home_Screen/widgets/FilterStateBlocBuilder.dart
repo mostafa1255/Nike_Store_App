@@ -1,4 +1,4 @@
-import 'package:nike_store_app/app/core/constants.dart';
+import 'package:nike_store_app/app/core/utils/AppFonts.dart';
 import '../../../../core/tools/reg_imp.dart';
 import '../../../../data/manager/home_cubits/filter_cubit/filter_cubit.dart';
 import '../../../common_widgets/Lottie_Loading_Animation.dart';
@@ -73,7 +73,7 @@ class FilterStateBlocBuilder extends StatelessWidget {
               "Select Category",
               style: Txtstyle.style16(context: context).copyWith(
                   color: AppColors.kFontColor,
-                  fontFamily: Constants.relwayFamily),
+                  fontFamily: AppFonts.relwayFamily),
             ),
             const VsizedBox(height: 15),
             const TabBarWidget(),

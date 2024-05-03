@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 
@@ -17,7 +17,7 @@ class CustomHeaderofHomeItemListView extends StatelessWidget {
         Text(
           popularOrNewarrival,
           style: Txtstyle.style16(context: context).copyWith(
-              fontFamily: Constants.relwayFamily, color: AppColors.kFontColor),
+              fontFamily: AppFonts.relwayFamily, color: AppColors.kFontColor),
         ),
       ],
     );

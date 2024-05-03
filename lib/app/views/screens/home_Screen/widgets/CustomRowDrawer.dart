@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
 
@@ -21,7 +21,7 @@ class CustomRowDrawer extends StatelessWidget {
         Text(
           text,
           style: Txtstyle.style16(context: context)
-              .copyWith(fontFamily: Constants.relwayFamily),
+              .copyWith(fontFamily: AppFonts.relwayFamily),
         ),
       ],
     );

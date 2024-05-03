@@ -1,6 +1,6 @@
-import 'package:nike_store_app/app/core/tools/global_keys.dart';
-import '../../../../core/constants.dart';
-import '../../../../core/tools/App_Regex.dart';
+import 'package:nike_store_app/app/core/utils/global_keys.dart';
+import '../../../../core/utils/AppFonts.dart';
+import '../../../../core/utils/App_Regex.dart';
 import '../../../../core/tools/reg_imp.dart';
 import '../../../../data/manager/auth cubits/login_Cubit/login_cubit.dart';
 import '../../../common_widgets/CustomTextFormField.dart';
@@ -28,7 +28,7 @@ class _LoginFormState extends State<LoginForm> {
             style: Txtstyle.style16(context: context).copyWith(
                 color: AppColors.kFontColor,
                 fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
@@ -51,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
             style: Txtstyle.style16(context: context).copyWith(
                 color: AppColors.kFontColor,
                 fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 8),
           SecurePasswordTextField(

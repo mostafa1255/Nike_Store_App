@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
@@ -30,13 +30,13 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
               leading: Text(
                 "Subtotal",
                 style: Txtstyle.style16(context: context).copyWith(
-                    fontFamily: Constants.relwayFamily,
+                    fontFamily: AppFonts.relwayFamily,
                     color: AppColors.kDeepGreyColorA6A),
               ),
               trailing: Text(
                 "\$$subTotalPrice",
                 style: Txtstyle.style16(context: context).copyWith(
-                    fontFamily: Constants.popinsFamily,
+                    fontFamily: AppFonts.popinsFamily,
                     color: AppColors.kSecondFontColor,
                     fontWeight: FontWeight.w600),
               ),
@@ -48,13 +48,13 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
               leading: Text(
                 "Delivery",
                 style: Txtstyle.style16(context: context).copyWith(
-                    fontFamily: Constants.relwayFamily,
+                    fontFamily: AppFonts.relwayFamily,
                     color: AppColors.kDeepGreyColorA6A),
               ),
               trailing: Text(
                 "\$60.20",
                 style: Txtstyle.style16(context: context).copyWith(
-                    fontFamily: Constants.popinsFamily,
+                    fontFamily: AppFonts.popinsFamily,
                     color: AppColors.kSecondFontColor,
                     fontWeight: FontWeight.w600),
               ),
@@ -70,13 +70,13 @@ class BottomNavBarOfMyCartScreen extends StatelessWidget {
             leading: Text(
               "Total Cost",
               style: Txtstyle.style16(context: context).copyWith(
-                  fontFamily: Constants.relwayFamily,
+                  fontFamily: AppFonts.relwayFamily,
                   color: AppColors.kFontColor),
             ),
             trailing: Text(
               "\$${subTotalPrice + 60.20}",
               style: Txtstyle.style16(context: context).copyWith(
-                  fontFamily: Constants.popinsFamily,
+                  fontFamily: AppFonts.popinsFamily,
                   color: AppColors.kPrimaryColor,
                   fontWeight: FontWeight.w600),
             ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../common_widgets/VsizedBox.dart';
@@ -10,7 +10,7 @@ import '../../../common_widgets/customMainButton.dart';
 
 class CheckOutAlertDialog extends StatelessWidget {
   const CheckOutAlertDialog({super.key, this.onPressed});
- final void Function()? onPressed;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -44,7 +44,7 @@ class CheckOutAlertDialog extends StatelessWidget {
                 style: Txtstyle.style20(context: context).copyWith(
                     color: AppColors.kFontColor,
                     fontWeight: FontWeight.w500,
-                    fontFamily: Constants.relwayFamily),
+                    fontFamily: AppFonts.relwayFamily),
               ),
             ),
             const VsizedBox(height: 20),
@@ -52,7 +52,7 @@ class CheckOutAlertDialog extends StatelessWidget {
               color: AppColors.kPrimaryColor,
               txt: "Back To Shopping",
               fcolorWhite: true,
-              onPressed:onPressed,
+              onPressed: onPressed,
             )
           ],
         ),

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
 import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/CustomTextFormField.dart';
@@ -53,7 +53,7 @@ class ProfileScreenBody extends StatelessWidget {
             style: Txtstyle.style16(context: context).copyWith(
                 color: AppColors.kGreyColorB81,
                 fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
@@ -70,7 +70,7 @@ class ProfileScreenBody extends StatelessWidget {
             style: Txtstyle.style16(context: context).copyWith(
                 color: AppColors.kGreyColorB81,
                 fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
@@ -87,7 +87,7 @@ class ProfileScreenBody extends StatelessWidget {
             style: Txtstyle.style16(context: context).copyWith(
                 color: AppColors.kGreyColorB81,
                 fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(

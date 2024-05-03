@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:nike_store_app/app/core/constants.dart';
+import 'package:nike_store_app/app/core/utils/AppFonts.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import '../../../../data/models/Products_Model.dart';
 import 'AddToCartBlocListenerDetailsScreen.dart';
@@ -38,7 +38,7 @@ class DetailsScreenBody extends StatelessWidget {
                         "Men's Shoes",
                         style: Txtstyle.style16(context: context).copyWith(
                             color: AppColors.kGreyColorB81,
-                            fontFamily: Constants.relwayFamily),
+                            fontFamily: AppFonts.relwayFamily),
                       ),
                     ),
                     const VsizedBox(height: 7),
@@ -46,7 +46,7 @@ class DetailsScreenBody extends StatelessWidget {
                       "\$ ${productsModel.price}",
                       style: Txtstyle.style20(context: context).copyWith(
                           color: AppColors.kFontColor,
-                          fontFamily: Constants.popinsFamily),
+                          fontFamily: AppFonts.popinsFamily),
                     ),
                     const VsizedBox(height: 35),
                     Align(
@@ -85,7 +85,7 @@ class DetailsScreenBody extends StatelessWidget {
                       "Discover Similar Styles by This Vendor",
                       style: Txtstyle.style14(context: context).copyWith(
                           color: AppColors.kFontColor.withOpacity(0.7),
-                          fontFamily: Constants.popinsFamily),
+                          fontFamily: AppFonts.popinsFamily),
                     ),
                     const VsizedBox(height: 20),
                     MorerelevantShoesListViewInDetailsScreen(
@@ -96,7 +96,7 @@ class DetailsScreenBody extends StatelessWidget {
                       productsModel.description!,
                       style: Txtstyle.style14(context: context).copyWith(
                           color: AppColors.kGreyColorB81.withOpacity(0.8),
-                          fontFamily: Constants.popinsFamily),
+                          fontFamily: AppFonts.popinsFamily),
                     ),
                   ],
                 ),

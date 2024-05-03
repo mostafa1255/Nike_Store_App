@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
@@ -33,7 +33,7 @@ class CheckOutPhoneListTile extends StatelessWidget {
                 style: Txtstyle.style14(context: context).copyWith(
                     fontWeight: FontWeight.w500,
                     color: AppColors.kSecondFontColor,
-                    fontFamily: Constants.popinsFamily),
+                    fontFamily: AppFonts.popinsFamily),
               );
             } else {
               return const Text("There is no Phone number");
@@ -45,7 +45,7 @@ class CheckOutPhoneListTile extends StatelessWidget {
           style: Txtstyle.style12(context: context).copyWith(
               fontWeight: FontWeight.w500,
               color: AppColors.kDeepGreyColorA6A,
-              fontFamily: Constants.popinsFamily),
+              fontFamily: AppFonts.popinsFamily),
         ),
       ),
     );

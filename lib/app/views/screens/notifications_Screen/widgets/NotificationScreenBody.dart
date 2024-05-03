@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import 'RecentListViewInNotificationScreen.dart';
@@ -24,7 +24,7 @@ class NotificationScreenBody extends StatelessWidget {
             style: Txtstyle.style18(context: context).copyWith(
                 color: AppColors.kFontColor,
                 fontWeight: FontWeight.w600,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 15),
           const RecentListViewInNotificationScreen(),

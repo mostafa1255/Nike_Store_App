@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../data/models/Products_Model.dart';
 import '../../../common_widgets/HsizedBox.dart';
@@ -47,7 +47,7 @@ class AddToCartBlocListenerDetailsScreen extends StatelessWidget {
               "Add to Cart",
               style: Txtstyle.style14(context: context).copyWith(
                 color: Colors.white,
-                fontFamily: Constants.relwayFamily,
+                fontFamily: AppFonts.relwayFamily,
               ),
             ),
             const HsizedBox(width: 5),

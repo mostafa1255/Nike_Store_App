@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/data/manager/fcm_cubit/fcm_cubit.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
@@ -72,7 +72,7 @@ class RecentListViewInNotificationScreen extends StatelessWidget {
                                         .copyWith(
                                       color: AppColors.kGreyColorB81,
                                       fontWeight: FontWeight.w600,
-                                      fontFamily: Constants.popinsFamily,
+                                      fontFamily: AppFonts.popinsFamily,
                                     ),
                                   ),
                                 ),
@@ -87,7 +87,7 @@ class RecentListViewInNotificationScreen extends StatelessWidget {
                                       .copyWith(
                                     color: AppColors.kPrimaryColor,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: Constants.relwayFamily,
+                                    fontFamily: AppFonts.relwayFamily,
                                   ),
                                 ),
                               ),
@@ -100,7 +100,7 @@ class RecentListViewInNotificationScreen extends StatelessWidget {
                                       .copyWith(
                                     color: AppColors.kFontColor,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: Constants.popinsFamily,
+                                    fontFamily: AppFonts.popinsFamily,
                                   ),
                                 ),
                               ),

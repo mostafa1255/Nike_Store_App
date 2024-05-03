@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/constants.dart';
+import '../../../core/utils/AppFonts.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
@@ -22,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
           style: Txtstyle.style20(context: context).copyWith(
               color: AppColors.kFontColor,
               fontWeight: FontWeight.w600,
-              fontFamily: Constants.relwayFamily),
+              fontFamily: AppFonts.relwayFamily),
         ),
       ),
       body: const ProfileScreenBody(),

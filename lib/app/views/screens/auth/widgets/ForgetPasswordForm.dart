@@ -1,6 +1,6 @@
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
-import '../../../../core/tools/App_Regex.dart';
-import '../../../../core/tools/global_keys.dart';
+import '../../../../core/utils/App_Regex.dart';
+import '../../../../core/utils/global_keys.dart';
 import '../../../../data/manager/auth cubits/login_Cubit/login_cubit.dart';
 import '../../../common_widgets/CustomTextFormField.dart';
 

@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/tools/reg_imp.dart';
 import '../../../../data/models/Products_Model.dart';
 import 'dart:async';
@@ -84,13 +84,13 @@ class _NewArrivalsAndOffersHomeListViewState
                             "Summer Sale",
                             style: Txtstyle.style12(context: context).copyWith(
                                 color: AppColors.kFontColor,
-                                fontFamily: Constants.relwayFamily),
+                                fontFamily: AppFonts.relwayFamily),
                           ),
                           Text(
                             "15 % OFF",
                             style: Txtstyle.style34(context: context).copyWith(
                               color: AppColors.kpurpleColor,
-                              fontFamily: Constants.alfaSlabOne,
+                              fontFamily: AppFonts.alfaSlabOne,
                             ),
                           ),
                         ],

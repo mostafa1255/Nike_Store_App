@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/data/manager/favorite_cubit/favorite_cubit.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../../data/repos/home_rep/home_repo_impl.dart';
@@ -83,7 +83,7 @@ class FavoriteGridView extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     style: Txtstyle.style18(context: context)
                                         .copyWith(
-                                            fontFamily: Constants.relwayFamily,
+                                            fontFamily: AppFonts.relwayFamily,
                                             color: AppColors.kFontColor,
                                             fontWeight: FontWeight.w600),
                                   ),
@@ -99,7 +99,7 @@ class FavoriteGridView extends StatelessWidget {
                                                 context: context)
                                             .copyWith(
                                                 fontFamily:
-                                                    Constants.popinsFamily,
+                                                    AppFonts.popinsFamily,
                                                 color: AppColors.kFontColor,
                                                 fontWeight: FontWeight.w600),
                                       ),

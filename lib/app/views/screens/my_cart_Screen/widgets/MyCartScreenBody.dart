@@ -10,7 +10,7 @@ import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
 import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
 import 'package:nike_store_app/app/views/common_widgets/Lottie_Loading_Animation.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 
 class MyCartScreenBody extends StatefulWidget {
@@ -44,7 +44,7 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
                   "${state.products.length} Item",
                   style: Txtstyle.style16(context: context).copyWith(
                       color: AppColors.kFontColor,
-                      fontFamily: Constants.popinsFamily,
+                      fontFamily: AppFonts.popinsFamily,
                       fontWeight: FontWeight.w600),
                 ),
                 const VsizedBox(height: 15),
@@ -72,13 +72,12 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
                                       children: [
                                         IconButton(
                                             onPressed: () {
-                                              cartCubit
-                                                  .updateQuantityofProduct(
-                                                      id: state.products[index]
-                                                          .productsModel.id!,
-                                                      quantity: ++state
-                                                          .products[index]
-                                                          .quantity);
+                                              cartCubit.updateQuantityofProduct(
+                                                  id: state.products[index]
+                                                      .productsModel.id!,
+                                                  quantity: ++state
+                                                      .products[index]
+                                                      .quantity);
                                               setState(() {});
                                             },
                                             icon: Icon(
@@ -95,8 +94,7 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
                                             style: Txtstyle.style14(
                                                     context: context)
                                                 .copyWith(
-                                              fontFamily:
-                                                  Constants.relwayFamily,
+                                              fontFamily: AppFonts.relwayFamily,
                                               color:
                                                   Colors.white.withOpacity(0.7),
                                             ),
@@ -195,7 +193,7 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
                                                     .copyWith(
                                                   color: AppColors.kFontColor,
                                                   fontFamily:
-                                                      Constants.relwayFamily,
+                                                      AppFonts.relwayFamily,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
@@ -212,7 +210,7 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
                                                     .copyWith(
                                                   color: AppColors.kFontColor,
                                                   fontFamily:
-                                                      Constants.relwayFamily,
+                                                      AppFonts.relwayFamily,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
@@ -227,7 +225,7 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     fontFamily:
-                                                        Constants.popinsFamily,
+                                                        AppFonts.popinsFamily,
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
@@ -251,7 +249,7 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
               heightFactor: 20.h,
               child: Text(state.errMessage,
                   style: Txtstyle.style22(context: context).copyWith(
-                      fontFamily: Constants.relwayFamily,
+                      fontFamily: AppFonts.relwayFamily,
                       color: AppColors.kFontColor,
                       fontWeight: FontWeight.bold)),
             );
@@ -259,7 +257,7 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
             return Center(
               child: Text(state.errMessage,
                   style: Txtstyle.style22(context: context).copyWith(
-                      fontFamily: Constants.relwayFamily,
+                      fontFamily: AppFonts.relwayFamily,
                       fontWeight: FontWeight.w600)),
             );
           default:

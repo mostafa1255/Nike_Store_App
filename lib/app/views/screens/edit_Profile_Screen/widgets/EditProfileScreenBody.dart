@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/Functions/changePhotoBottomSheet.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../common_widgets/CustomTextFormField.dart';
@@ -32,7 +32,7 @@ class EditProfileScreenBody extends StatelessWidget {
                   style: Txtstyle.style20(context: context).copyWith(
                       fontWeight: FontWeight.w600,
                       color: AppColors.kFontColor,
-                      fontFamily: Constants.relwayFamily),
+                      fontFamily: AppFonts.relwayFamily),
                 ),
                 const VsizedBox(height: 4),
                 GestureDetector(
@@ -44,7 +44,7 @@ class EditProfileScreenBody extends StatelessWidget {
                     style: Txtstyle.style12(context: context).copyWith(
                         fontWeight: FontWeight.w700,
                         color: AppColors.kPrimaryColor,
-                        fontFamily: Constants.relwayFamily),
+                        fontFamily: AppFonts.relwayFamily),
                   ),
                 ),
               ],
@@ -56,7 +56,7 @@ class EditProfileScreenBody extends StatelessWidget {
             style: Txtstyle.style16(context: context).copyWith(
                 color: AppColors.kGreyColorB81,
                 fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
@@ -72,7 +72,7 @@ class EditProfileScreenBody extends StatelessWidget {
             style: Txtstyle.style16(context: context).copyWith(
                 color: AppColors.kGreyColorB81,
                 fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(
@@ -88,7 +88,7 @@ class EditProfileScreenBody extends StatelessWidget {
             style: Txtstyle.style16(context: context).copyWith(
                 color: AppColors.kGreyColorB81,
                 fontWeight: FontWeight.w500,
-                fontFamily: Constants.relwayFamily),
+                fontFamily: AppFonts.relwayFamily),
           ),
           const VsizedBox(height: 8),
           CustomTextFormField(

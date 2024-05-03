@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nike_store_app/app/core/tools/global_keys.dart';
-import '../../../../core/constants.dart';
+import 'package:nike_store_app/app/core/utils/global_keys.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../../core/tools/App_Regex.dart';
+import '../../../../core/utils/App_Regex.dart';
 import '../../../../data/manager/auth cubits/register_Cubit/register_cubit.dart';
 import '../../../common_widgets/CustomTextFormField.dart';
 import '../../../common_widgets/SecurePasswordTextField.dart';
@@ -33,7 +33,7 @@ class _RegisterFormFieldState extends State<RegisterFormField> {
               style: Txtstyle.style16(context: context).copyWith(
                   color: AppColors.kFontColor,
                   fontWeight: FontWeight.w500,
-                  fontFamily: Constants.relwayFamily),
+                  fontFamily: AppFonts.relwayFamily),
             ),
             const VsizedBox(height: 8),
             CustomTextFormField(
@@ -55,7 +55,7 @@ class _RegisterFormFieldState extends State<RegisterFormField> {
               style: Txtstyle.style16(context: context).copyWith(
                   color: AppColors.kFontColor,
                   fontWeight: FontWeight.w500,
-                  fontFamily: Constants.relwayFamily),
+                  fontFamily: AppFonts.relwayFamily),
             ),
             const VsizedBox(height: 8),
             CustomTextFormField(
@@ -78,7 +78,7 @@ class _RegisterFormFieldState extends State<RegisterFormField> {
               style: Txtstyle.style16(context: context).copyWith(
                   color: AppColors.kFontColor,
                   fontWeight: FontWeight.w500,
-                  fontFamily: Constants.relwayFamily),
+                  fontFamily: AppFonts.relwayFamily),
             ),
             const VsizedBox(height: 8),
             CustomTextFormField(
@@ -101,7 +101,7 @@ class _RegisterFormFieldState extends State<RegisterFormField> {
               style: Txtstyle.style16(context: context).copyWith(
                   color: AppColors.kFontColor,
                   fontWeight: FontWeight.w500,
-                  fontFamily: Constants.relwayFamily),
+                  fontFamily: AppFonts.relwayFamily),
             ),
             const VsizedBox(height: 8),
             SecurePasswordTextField(

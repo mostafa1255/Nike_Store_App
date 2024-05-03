@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:nike_store_app/app/core/tools/enums.dart';
+import 'package:nike_store_app/app/core/utils/enums.dart';
 import 'package:nike_store_app/app/data/models/Products_Model.dart';
 import '../../../core/errors/faliure.dart';
 

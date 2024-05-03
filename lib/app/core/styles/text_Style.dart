@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nike_store_app/app/core/constants.dart';
+import 'package:nike_store_app/app/core/utils/AppFonts.dart';
 
 class Txtstyle {
   static TextStyle style34({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         fontSize: 34.sp,
         color: Colors.white);
   }
 
   static TextStyle style32({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         fontSize: 32.sp,
         color: Colors.white);
   }
 
   static TextStyle style30({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         fontSize: 30.sp,
         color: Colors.white);
   }
 
   static TextStyle style26({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         fontSize: 26.sp,
         color: Colors.white,
         fontWeight: FontWeight.bold);
@@ -34,7 +34,7 @@ class Txtstyle {
 
   static TextStyle style25({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         fontSize: 25.sp,
         color: Colors.white,
         fontWeight: FontWeight.bold);
@@ -42,7 +42,7 @@ class Txtstyle {
 
   static TextStyle style24({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         fontSize: 24.sp,
         color: Colors.white,
         fontWeight: FontWeight.bold);
@@ -50,7 +50,7 @@ class Txtstyle {
 
   static TextStyle style22({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         color: Colors.white,
         fontSize: 22.sp,
         fontWeight: FontWeight.bold);
@@ -58,7 +58,7 @@ class Txtstyle {
 
   static TextStyle style20({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         color: Colors.white,
         fontSize: 20.sp,
         fontWeight: FontWeight.bold);
@@ -66,7 +66,7 @@ class Txtstyle {
 
   static TextStyle style18({required BuildContext context}) {
     return TextStyle(
-        fontFamily: Constants.relwayFamily,
+        fontFamily: AppFonts.relwayFamily,
         color: Colors.white,
         fontSize: 18.sp,
         fontWeight: FontWeight.bold);
@@ -75,14 +75,14 @@ class Txtstyle {
   static TextStyle style16({required BuildContext context}) {
     return TextStyle(
         fontSize: 16.sp,
-        fontFamily: Constants.popinsFamily,
+        fontFamily: AppFonts.popinsFamily,
         color: Colors.white);
   }
 
   static TextStyle style15({required BuildContext context}) {
     return TextStyle(
         fontSize: 15.sp,
-        fontFamily: Constants.popinsFamily,
+        fontFamily: AppFonts.popinsFamily,
         fontWeight: FontWeight.bold,
         color: Colors.white);
   }
@@ -90,7 +90,7 @@ class Txtstyle {
   static TextStyle style14({required BuildContext context}) {
     return TextStyle(
         fontSize: 14.sp,
-        fontFamily: Constants.popinsFamily,
+        fontFamily: AppFonts.popinsFamily,
         fontWeight: FontWeight.bold,
         color: Colors.white);
   }
@@ -98,14 +98,12 @@ class Txtstyle {
   static TextStyle style12({required BuildContext context}) {
     return TextStyle(
         fontSize: 12.sp,
-        fontFamily: Constants.popinsFamily,
+        fontFamily: AppFonts.popinsFamily,
         color: Colors.white);
   }
 
   static TextStyle style8({required BuildContext context}) {
     return TextStyle(
-        fontSize: 8.sp,
-        fontFamily: Constants.popinsFamily,
-        color: Colors.white);
+        fontSize: 8.sp, fontFamily: AppFonts.popinsFamily, color: Colors.white);
   }
 }

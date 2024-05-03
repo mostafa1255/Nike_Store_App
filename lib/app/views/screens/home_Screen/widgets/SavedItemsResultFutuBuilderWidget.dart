@@ -1,4 +1,4 @@
-import 'package:nike_store_app/app/core/constants.dart';
+import 'package:nike_store_app/app/core/utils/AppFonts.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import '../../../../core/tools/save_Items_InSerach.dart';
 
@@ -28,7 +28,7 @@ class SavedItemsResultFutuBuilderWidget extends StatelessWidget {
                 title: Text(
                   savedItems[index],
                   style: Txtstyle.style14(context: context).copyWith(
-                    fontFamily: Constants.popinsFamily,
+                    fontFamily: AppFonts.popinsFamily,
                     color: AppColors.kGreyColorB81,
                   ),
                 ),

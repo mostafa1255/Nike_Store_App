@@ -1,5 +1,5 @@
-import 'package:nike_store_app/app/core/constants.dart';
-import 'package:nike_store_app/app/core/tools/global_keys.dart';
+import 'package:nike_store_app/app/core/utils/AppFonts.dart';
+import 'package:nike_store_app/app/core/utils/global_keys.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
 import 'package:nike_store_app/app/views/common_widgets/Lottie_Loading_Animation.dart';
@@ -75,7 +75,7 @@ class LoginScreenBody extends StatelessWidget {
                       style: Txtstyle.style12(context: context).copyWith(
                           color: AppColors.kGreyColorB81,
                           fontWeight: FontWeight.w500,
-                          fontFamily: Constants.popinsFamily),
+                          fontFamily: AppFonts.popinsFamily),
                     ),
                   )),
               const VsizedBox(height: 25),
@@ -110,7 +110,7 @@ class LoginScreenBody extends StatelessWidget {
                     Text(
                       "Sign In with Google ",
                       style: Txtstyle.style14(context: context).copyWith(
-                          fontFamily: Constants.relwayFamily,
+                          fontFamily: AppFonts.relwayFamily,
                           color: AppColors.kFontColor),
                     )
                   ],

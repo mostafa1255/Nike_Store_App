@@ -7,7 +7,7 @@ import 'package:nike_store_app/app/data/models/Products_Model.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
 import 'package:nike_store_app/app/views/common_widgets/FavoriteIconAction.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/widgets/AddToCartButton.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../../router/app_router.dart';
@@ -70,7 +70,7 @@ class CustomHomeCardListView extends StatelessWidget {
                           Text(
                             "BEST SELLER",
                             style: Txtstyle.style12(context: context).copyWith(
-                                fontFamily: Constants.popinsFamily,
+                                fontFamily: AppFonts.popinsFamily,
                                 color: AppColors.kPrimaryColor,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -81,7 +81,7 @@ class CustomHomeCardListView extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               style: Txtstyle.style16(context: context)
                                   .copyWith(
-                                      fontFamily: Constants.relwayFamily,
+                                      fontFamily: AppFonts.relwayFamily,
                                       color: AppColors.kDeepGreyColorA6A,
                                       fontWeight: FontWeight.w600),
                             ),
@@ -96,7 +96,7 @@ class CustomHomeCardListView extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   style: Txtstyle.style14(context: context)
                                       .copyWith(
-                                          fontFamily: Constants.popinsFamily,
+                                          fontFamily: AppFonts.popinsFamily,
                                           color: AppColors.kFontColor,
                                           fontWeight: FontWeight.w600),
                                 ),

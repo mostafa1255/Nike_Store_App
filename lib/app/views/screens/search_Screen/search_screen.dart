@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nike_store_app/app/views/common_widgets/HsizedBox.dart';
 
-import '../../../core/constants.dart';
+import '../../../core/utils/AppFonts.dart';
 import '../../../core/styles/App_Colors.dart';
 import '../../../core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
@@ -26,7 +26,7 @@ class SerachScreen extends StatelessWidget {
               style: Txtstyle.style15(context: context).copyWith(
                   color: AppColors.kPrimaryColor,
                   fontWeight: FontWeight.w700,
-                  fontFamily: Constants.relwayFamily),
+                  fontFamily: AppFonts.relwayFamily),
             ),
           ),
           HsizedBox(width: 10)
@@ -37,7 +37,7 @@ class SerachScreen extends StatelessWidget {
           style: Txtstyle.style20(context: context).copyWith(
               color: AppColors.kFontColor,
               fontWeight: FontWeight.w600,
-              fontFamily: Constants.relwayFamily),
+              fontFamily: AppFonts.relwayFamily),
         ),
       ),
       body: const SerachScreenBody(),

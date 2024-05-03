@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import '../../../../router/app_router.dart';
@@ -20,7 +20,7 @@ PreferredSizeWidget profileScreenAppBar(BuildContext context) {
       style: Txtstyle.style20(context: context).copyWith(
           color: AppColors.kFontColor,
           fontWeight: FontWeight.w600,
-          fontFamily: Constants.relwayFamily),
+          fontFamily: AppFonts.relwayFamily),
     ),
     actions: [
       GestureDetector(
@@ -32,7 +32,7 @@ PreferredSizeWidget profileScreenAppBar(BuildContext context) {
           style: Txtstyle.style16(context: context).copyWith(
               color: AppColors.kPrimaryColor,
               fontWeight: FontWeight.w600,
-              fontFamily: Constants.relwayFamily),
+              fontFamily: AppFonts.relwayFamily),
         ),
       ),
       const HsizedBox(width: 15)

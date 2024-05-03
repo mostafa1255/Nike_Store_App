@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/App_Image.dart';
 import '../../../../core/styles/text_Style.dart';
@@ -31,7 +31,7 @@ class CustomForgetPasswordAlertDialog extends StatelessWidget {
               style: Txtstyle.style16(context: context).copyWith(
                   color: AppColors.kFontColor,
                   fontWeight: FontWeight.bold,
-                  fontFamily: Constants.relwayFamily),
+                  fontFamily: AppFonts.relwayFamily),
             ),
             const VsizedBox(height: 10),
             SizedBox(
@@ -42,7 +42,7 @@ class CustomForgetPasswordAlertDialog extends StatelessWidget {
                 style: Txtstyle.style16(context: context).copyWith(
                     color: AppColors.kGreyColorB81,
                     fontWeight: FontWeight.w400,
-                    fontFamily: Constants.popinsFamily),
+                    fontFamily: AppFonts.popinsFamily),
               ),
             ),
           ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nike_store_app/app/core/constants.dart';
+import 'package:nike_store_app/app/core/utils/AppFonts.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 
@@ -37,7 +37,7 @@ class CustomMainButton extends StatelessWidget {
               style: Txtstyle.style14(context: context).copyWith(
                   color:
                       fcolorWhite == true ? Colors.white : AppColors.kFontColor,
-                  fontFamily: Constants.relwayFamily),
+                  fontFamily: AppFonts.relwayFamily),
             ));
   }
 }

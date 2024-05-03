@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nike_store_app/app/core/constants.dart';
+import 'package:nike_store_app/app/core/utils/AppFonts.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
 import '../../../../core/styles/App_Colors.dart';
@@ -39,7 +39,7 @@ class CheckOutScreenBody extends StatelessWidget {
                     style: Txtstyle.style14(context: context).copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppColors.kSecondFontColor,
-                        fontFamily: Constants.relwayFamily),
+                        fontFamily: AppFonts.relwayFamily),
                   ),
                   const CheckOutEmailListTile(),
                   const CheckOutPhoneListTile(),
@@ -48,7 +48,7 @@ class CheckOutScreenBody extends StatelessWidget {
                     style: Txtstyle.style14(context: context).copyWith(
                         fontWeight: FontWeight.w600,
                         color: AppColors.kSecondFontColor,
-                        fontFamily: Constants.relwayFamily),
+                        fontFamily: AppFonts.relwayFamily),
                   ),
                   const VsizedBox(height: 10),
                   const DetemineUserLocationWidget(),
@@ -60,7 +60,7 @@ class CheckOutScreenBody extends StatelessWidget {
                     style: Txtstyle.style14(context: context).copyWith(
                         fontWeight: FontWeight.w600,
                         color: AppColors.kSecondFontColor,
-                        fontFamily: Constants.relwayFamily),
+                        fontFamily: AppFonts.relwayFamily),
                   ),
                 ],
               ),

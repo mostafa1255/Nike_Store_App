@@ -7,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/map_cubit/map_cubit.dart';
 import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
-import '../../../../core/constants.dart';
+import '../../../../core/utils/AppFonts.dart';
 import '../../../common_widgets/customMainButton.dart';
 
 class MapUserScreenBody extends StatefulWidget {
@@ -131,7 +131,7 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
                         style: Txtstyle.style18(context: context).copyWith(
                             color: AppColors.kOfWhiteColor,
                             fontWeight: FontWeight.bold,
-                            fontFamily: Constants.relwayFamily),
+                            fontFamily: AppFonts.relwayFamily),
                       ),
                     ],
                   ),
