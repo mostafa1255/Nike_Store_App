@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:nike_store_app/app/core/Functions/save_products_to_hive.dart';
+import 'package:nike_store_app/app/core/utils/global_variable.dart';
 import '../../../models/Products_Model.dart';
 import '../../../repos/home_rep/home_repo.dart';
 part 'tennis_state.dart';
@@ -19,6 +21,7 @@ class TennisCubit extends Cubit<TennisState> {
           tennisProducts.add(products[i]);
         }
       }
+      saveProductsToHive(products: tennisProducts, boxName: GloblaVariable.kTennisProducts);
       emit(FetchTennisProductsSuccess(products: tennisProducts));
     });
   }
