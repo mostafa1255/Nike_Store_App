@@ -1,12 +1,21 @@
-// ignore_for_file: file_names
+import 'package:hive_flutter/adapters.dart';
+part 'Products_Model.g.dart';
 
+@HiveType(typeId: 0)
 class ProductsModel {
+  @HiveField(0)
   String? id;
-  String vendorId;
+  @HiveField(1)
+  String? vendorId;
+  @HiveField(2)
   String? brand;
+  @HiveField(3)
   String? name;
+  @HiveField(4)
   String? imageUrl;
+  @HiveField(5)
   String? description;
+  @HiveField(6)
   String? price;
 
   ProductsModel({

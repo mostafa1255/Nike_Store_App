@@ -89,7 +89,7 @@ class DetailsScreenBody extends StatelessWidget {
                     ),
                     const VsizedBox(height: 20),
                     MorerelevantShoesListViewInDetailsScreen(
-                      vendorId: productsModel.vendorId,
+                      vendorId: productsModel.vendorId!,
                     ),
                     const VsizedBox(height: 50),
                     Text(

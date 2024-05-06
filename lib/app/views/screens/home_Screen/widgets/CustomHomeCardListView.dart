@@ -86,7 +86,7 @@ class CustomHomeCardListView extends StatelessWidget {
                                       fontWeight: FontWeight.w600),
                             ),
                           ),
-                          const VsizedBox(height: 5),
+                          const VsizedBox(height: 18),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
