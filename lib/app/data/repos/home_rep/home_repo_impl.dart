@@ -98,14 +98,6 @@ class HomeRepoImpl extends HomeRepo {
           .doc(auth.currentUser!.uid)
           .collection("products")
           .doc(productsModel.id);
-      productsModel = ProductsModel(
-          id: productsModel.id,
-          brand: productsModel.brand,
-          name: productsModel.name,
-          price: productsModel.price,
-          imageUrl: productsModel.imageUrl,
-          vendorId: productsModel.vendorId,
-          description: productsModel.description);
       await productDoc.set(productsModel.toJson());
       return right(Appstate.productsUploaded);
     } on FirebaseException catch (e) {
