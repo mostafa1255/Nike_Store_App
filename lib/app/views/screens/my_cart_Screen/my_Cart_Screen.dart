@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nike_store_app/app/core/Functions/setUp_Service_Locator.dart';
 import 'package:nike_store_app/app/data/manager/cart_Quantity_cubit/cart_Quantity_cubit.dart';
 import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
@@ -18,7 +19,7 @@ class MyCartScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              CartCubit(cartRepo: CartRepoImpl(), homeRepo: HomeRepoImpl())
+              CartCubit(cartRepo: CartRepoImpl(), homeRepo:  getIt.get<HomeRepoImpl>())
                 ..getCartProducts(),
         ),
         BlocProvider(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nested/nested.dart';
+import 'package:nike_store_app/app/core/Functions/setUp_Service_Locator.dart';
 import 'package:nike_store_app/app/core/styles/App_Colors.dart';
 import 'package:nike_store_app/app/data/manager/cart_Cubit/cart_cubit.dart';
 import 'package:nike_store_app/app/data/manager/home_cubits/OutDoor_cubit/out_door_cubit.dart';
@@ -33,20 +34,21 @@ class HomeScreen extends StatelessWidget {
     return [
       BlocProvider(
         create: (context) =>
-            HomeCubit(homeRepo: HomeRepoImpl())..getAllProducts(),
+            HomeCubit(homeRepo: getIt.get<HomeRepoImpl>())..getAllProducts(),
       ),
       BlocProvider(
-          create: (context) =>
-              CartCubit(cartRepo: CartRepoImpl(), homeRepo: HomeRepoImpl())),
-      BlocProvider(
-          create: (context) => NewArrivalsCubit(homeRepo: HomeRepoImpl())
-            ..newArrivalsProducts()),
+          create: (context) => CartCubit(
+              cartRepo: CartRepoImpl(), homeRepo: getIt.get<HomeRepoImpl>())),
       BlocProvider(
           create: (context) =>
-              TennisCubit(homeRepo: HomeRepoImpl())..fetchTennisProducts()),
+              NewArrivalsCubit(homeRepo: getIt.get<HomeRepoImpl>())
+                ..newArrivalsProducts()),
       BlocProvider(
-          create: (context) =>
-              OutDoorCubit(homeRepo: HomeRepoImpl())..outDoorProducts()),
+          create: (context) => TennisCubit(homeRepo: getIt.get<HomeRepoImpl>())
+            ..fetchTennisProducts()),
+      BlocProvider(
+          create: (context) => OutDoorCubit(homeRepo: getIt.get<HomeRepoImpl>())
+            ..outDoorProducts()),
     ];
   }
 }

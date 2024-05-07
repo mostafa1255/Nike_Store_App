@@ -21,7 +21,6 @@ class TennisCubit extends Cubit<TennisState> {
           tennisProducts.add(products[i]);
         }
       }
-      saveProductsToHive(products: tennisProducts, boxName: GloblaVariable.kTennisProducts);
       emit(FetchTennisProductsSuccess(products: tennisProducts));
     });
   }

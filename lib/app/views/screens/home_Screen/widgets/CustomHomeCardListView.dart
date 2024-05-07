@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/core/Functions/setUp_Service_Locator.dart';
 import 'package:nike_store_app/app/data/manager/favorite_cubit/favorite_cubit.dart';
 import 'package:nike_store_app/app/data/models/Products_Model.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo_impl.dart';
@@ -54,8 +56,8 @@ class CustomHomeCardListView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           BlocProvider(
-                            create: (context) =>
-                                FavoriteCubit(homeRepo: HomeRepoImpl()),
+                            create: (context) => FavoriteCubit(
+                                homeRepo: getIt.get<HomeRepoImpl>()),
                             child: FavoriteIconAction(
                               favProduct: products[index],
                             ),
@@ -63,8 +65,11 @@ class CustomHomeCardListView extends StatelessWidget {
                           SizedBox(
                               width: 160.w,
                               height: 110.h,
-                              child: Image.network(
-                                products[index].imageUrl!,
+                              child: CachedNetworkImage(
+                                errorWidget: (context, url, error) {
+                                  return const Icon(Icons.error);
+                                },
+                                imageUrl: products[index].imageUrl!,
                                 fit: BoxFit.cover,
                               )),
                           Text(

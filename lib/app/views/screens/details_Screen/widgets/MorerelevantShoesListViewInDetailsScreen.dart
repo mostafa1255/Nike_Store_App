@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:nike_store_app/app/core/Functions/setUp_Service_Locator.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/details_cubit/details_cubit.dart';
 import '../../../../data/repos/home_rep/home_repo_impl.dart';
@@ -12,7 +13,7 @@ class MorerelevantShoesListViewInDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DetailsCubit(homeRepo: HomeRepoImpl())
+      create: (context) => DetailsCubit(homeRepo: getIt.get<HomeRepoImpl>())
         ..getRelevantProduct(vendorId: vendorId),
       child: BlocBuilder<DetailsCubit, DetailsState>(
         builder: (context, state) {

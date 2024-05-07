@@ -23,8 +23,7 @@ class OutDoorCubit extends Cubit<OutDoorState> {
         int randomIndex = random.nextInt(products.length);
         randomProducts.add(products[randomIndex]);
       }
-      saveProductsToHive(
-          products: randomProducts, boxName: GloblaVariable.kOutDoorProducts);
+      
       emit(OutDoorProductsSuccess(products: randomProducts));
     });
   }

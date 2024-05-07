@@ -32,7 +32,7 @@ class CartCubit extends Cubit<CartState> {
     result.fold(
       (l) {
         print("Cart Products to failure");
-
+        print(l.errmessage);
         emit(AddtoCartProductsFailure(errMessage: l.errmessage));
       },
       (r) {

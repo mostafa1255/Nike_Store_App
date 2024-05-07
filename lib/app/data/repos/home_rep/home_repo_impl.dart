@@ -4,29 +4,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/core/errors/firebase_faliure.dart';
 import 'package:nike_store_app/app/core/utils/enums.dart';
+import 'package:nike_store_app/app/data/data_source/home_local_data_source/home_local_data_source.dart';
+import 'package:nike_store_app/app/data/data_source/home_remote_data_source/home_remote_data_source.dart';
 import 'package:nike_store_app/app/data/models/Products_Model.dart';
 import 'package:nike_store_app/app/data/models/vendors_Model.dart';
 import 'package:nike_store_app/app/data/repos/home_rep/home_repo.dart';
 
 class HomeRepoImpl extends HomeRepo {
+  HomeRepoImpl(
+      {required this.homeRemoteDataSource, required this.homeLocalDataSource});
+
+  HomeRemoteDataSource homeRemoteDataSource;
+  HomeLocalDataSource homeLocalDataSource;
   final dataBase = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance;
   VendorModel? vendorModel;
   ProductsModel? productsModel;
-
-  Future<List<String>> getAllUserUIDs() async {
-    List<String> uids = [];
-    try {
-      QuerySnapshot querySnapshot = await dataBase.collection('users').get();
-      for (QueryDocumentSnapshot doc in querySnapshot.docs) {
-        uids.add(doc.id);
-      }
-      return uids;
-    } catch (e) {
-      print('Error getting user UIDs: $e');
-      return [];
-    }
-  }
 
   @override
   Future<Either<Faliures, List<ProductsModel>>> getProductsFromCollection(
@@ -44,7 +37,6 @@ class HomeRepoImpl extends HomeRepo {
         }
         return right(productsList);
       } else {
-        print("There are no products in $collectionName");
         return left(
             FirebaseFailure("There are no products in $collectionName"));
       }
@@ -56,14 +48,17 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Faliures, List<ProductsModel>>> getAllProducts() async {
     try {
-      final product = await dataBase.collection("products").get();
-      List<ProductsModel> productsList = [];
-      for (var element in product.docs) {
-        productsList.add(ProductsModel.fromJson(map: element.data()));
+      final productsListlocal = homeLocalDataSource.getAllProducts();
+      if (productsListlocal.isNotEmpty) {
+        print(
+            "productsListlocal ===============================================");
+        return right(productsListlocal);
+      } else {
+        final productsListremote = await homeRemoteDataSource.getAllProducts();
+        return right(productsListremote);
       }
-      print(productsList);
-      return right(productsList);
     } catch (e) {
+      print("$e======================================");
       return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
     }
   }

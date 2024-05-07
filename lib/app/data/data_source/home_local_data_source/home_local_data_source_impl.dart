@@ -9,16 +9,4 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
     var box = Hive.box<ProductsModel>(GloblaVariable.kAllProducts);
     return box.values.toList();
   }
-
-  @override
-  List<ProductsModel> getOutdoorProducts() {
-    var box = Hive.box<ProductsModel>(GloblaVariable.kOutDoorProducts);
-    return box.values.toList();
-  }
-
-  @override
-  List<ProductsModel> getTennisProducts() {
-    var box = Hive.box<ProductsModel>(GloblaVariable.kTennisProducts);
-    return box.values.toList();
-  }
 }

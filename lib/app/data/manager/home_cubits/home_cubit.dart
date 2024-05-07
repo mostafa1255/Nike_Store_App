@@ -15,7 +15,6 @@ class HomeCubit extends Cubit<HomeState> {
       final result = await homeRepo.getAllProducts();
       result.fold((l) => emit(MainProductsFailure(errMessage: l.errmessage)),
           (r) {
-        saveProductsToHive(products: r, boxName: GloblaVariable.kAllProducts);
         emit(MainProductsSuccess(products: r));
       });
     });

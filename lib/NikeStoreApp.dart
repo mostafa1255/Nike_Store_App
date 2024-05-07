@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nike_store_app/app/core/Functions/setUp_Service_Locator.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/login_Cubit/login_cubit.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
 import 'package:nike_store_app/app/data/manager/home_cubits/filter_cubit/filter_cubit.dart';
@@ -21,7 +22,7 @@ class NikeStoreApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => RegisterCubit(RegisterRepoImpl())),
         BlocProvider(create: (_) => LoginCubit(LoginRepoImpl())),
-        BlocProvider(create: (_) => FilterCubit(homeRepo: HomeRepoImpl())),
+        BlocProvider(create: (_) => FilterCubit(homeRepo:  getIt.get<HomeRepoImpl>())),
         BlocProvider(create: (_) => UserCubit(userRepo: UserRepoImpl())),
         BlocProvider(create: (_) => MapCubit()..determineUserPosition()),
       ],

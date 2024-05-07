@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nike_store_app/app/core/Functions/setUp_Service_Locator.dart';
 import 'package:nike_store_app/app/data/manager/favorite_cubit/favorite_cubit.dart';
 import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
@@ -20,7 +21,7 @@ class FavoriteGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) =>
-            FavoriteCubit(homeRepo: HomeRepoImpl())..getFavoriteProducts(),
+            FavoriteCubit(homeRepo:  getIt.get<HomeRepoImpl>())..getFavoriteProducts(),
         child: BlocBuilder<FavoriteCubit, FavoriteState>(
           builder: (context, state) {
             if (state is FavoriteLoadedSuccess) {
