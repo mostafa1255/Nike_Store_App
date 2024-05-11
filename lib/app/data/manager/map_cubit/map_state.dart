@@ -9,7 +9,9 @@ class MapLoading extends MapState {}
 
 final class MapUpdated extends MapState {
   final String streetName;
-  MapUpdated({required this.streetName});
+  final double latitude;
+  final double longitude;
+  MapUpdated({required this.latitude,required this.longitude, required this.streetName});
 }
 
 class MapError extends MapState {

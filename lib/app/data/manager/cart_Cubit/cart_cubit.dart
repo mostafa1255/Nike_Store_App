@@ -51,17 +51,20 @@ class CartCubit extends Cubit<CartState> {
       },
       (r) {
         emit(GetFromCartSuccsesswithProducts(
-            products: r, totalPrice: getTotalPrice(r)));
+            products: r, totalPriceForProduct: getTotalPrice(r)));
       },
     );
   }
 
-  double getTotalPrice(List<CartModel> products) {
-    double totalPrice = 0.0;
-    for (CartModel product in products) {
-      totalPrice += num.parse(product.productsModel.price!);
+  List<num> getTotalPrice(List<CartModel> products) {
+    List<num> subTotalPrice = [];
+
+    for (var product in products) {
+      subTotalPrice
+          .add(num.parse(product.productsModel.price!) * product.quantity);
     }
-    return totalPrice;
+
+    return subTotalPrice;
   }
 
   Future<void> deleteCartItem({required String productId}) async {

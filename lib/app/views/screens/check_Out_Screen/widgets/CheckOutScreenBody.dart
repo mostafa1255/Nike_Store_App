@@ -9,8 +9,15 @@ import 'CheckOutPhoneListTile.dart';
 import 'DetemineUserLocationWidget.dart';
 import 'ViewUserLocationMap.dart';
 
-class CheckOutScreenBody extends StatelessWidget {
+class CheckOutScreenBody extends StatefulWidget {
   const CheckOutScreenBody({super.key});
+
+  @override
+  State<CheckOutScreenBody> createState() => _CheckOutScreenBodyState();
+}
+
+class _CheckOutScreenBodyState extends State<CheckOutScreenBody> {
+  String? _selectedPaymentMethod;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +30,7 @@ class CheckOutScreenBody extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 500.h,
+            height: 550.h,
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(15.r)),
             child: Padding(
@@ -61,6 +68,48 @@ class CheckOutScreenBody extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: AppColors.kSecondFontColor,
                         fontFamily: AppFonts.relwayFamily),
+                  ),
+                  RadioListTile(
+                    title: Text(
+                      'Credit Card',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    activeColor: AppColors.kPrimaryColor,
+                    value: "credit_card",
+                    groupValue: _selectedPaymentMethod,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedPaymentMethod = value;
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity.trailing,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                  RadioListTile(
+                    title: Text(
+                      'Cash',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    activeColor: AppColors.kPrimaryColor,
+                    value: "cash",
+                    groupValue: _selectedPaymentMethod,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedPaymentMethod = value;
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity.trailing,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
                   ),
                 ],
               ),

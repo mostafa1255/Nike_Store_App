@@ -1,31 +1,34 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
+import 'package:nike_store_app/app/core/utils/paymob_Keys.dart';
 import 'package:nike_store_app/app/data/manager/map_cubit/map_cubit.dart';
 import 'package:nike_store_app/app/views/common_widgets/CustomBackIcon.dart';
 import '../../../../core/utils/AppFonts.dart';
 import '../../../common_widgets/customMainButton.dart';
 
 class MapUserScreenBody extends StatefulWidget {
-  const MapUserScreenBody({super.key});
-
+  const MapUserScreenBody({super.key, this.lat, this.lng});
+  final String? lat;
+  final String? lng;
   @override
   State<MapUserScreenBody> createState() => _MapUserScreenBodyState();
 }
 
 class _MapUserScreenBodyState extends State<MapUserScreenBody> {
-  CameraPosition kGooglePlex = const CameraPosition(
-    target: LatLng(31.20176, 29.91582),
-    zoom: 13.2,
-  );
+  late CameraPosition kGooglePlex;
+
   GoogleMapController? gmc;
   List<Placemark>? placemarks;
-  String id = "1";
+  String sourceId = "1";
   Set<Marker> markers = {};
+
+  List<LatLng> polylineCoordinates = [];
 
   StreamSubscription<Position>? positionStream;
   _determinePosition() async {
@@ -50,7 +53,7 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
       positionStream =
           Geolocator.getPositionStream().listen((Position? position) async {
         markers.add(Marker(
-          markerId: MarkerId(id),
+          markerId: MarkerId(sourceId),
           position: LatLng(position!.latitude, position.longitude),
         ));
 
@@ -61,6 +64,10 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
 
   @override
   void initState() {
+    kGooglePlex = CameraPosition(
+      target: LatLng(double.parse(widget.lat!), double.parse(widget.lng!)),
+      zoom: 13.2,
+    );
     _determinePosition();
     super.initState();
   }
@@ -68,6 +75,7 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
   @override
   void dispose() {
     if (positionStream != null) {
+      //gmc?.dispose();
       positionStream?.cancel();
     }
     super.dispose();
@@ -78,7 +86,7 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
     return BlocProvider(
       create: (context) => MapCubit(),
       child: SizedBox(
-          height: 880,
+          height: 880.h,
           child: Stack(
             children: [
               GoogleMap(
@@ -98,7 +106,7 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
                 onTap: (LatLng latLng) async {
                   setState(() {
                     markers.add(Marker(
-                        markerId: MarkerId(id),
+                        markerId: MarkerId(sourceId),
                         position: LatLng(latLng.latitude, latLng.longitude)));
                   });
                   await BlocProvider.of<MapCubit>(context).changeUserPosition(
@@ -138,8 +146,8 @@ class _MapUserScreenBodyState extends State<MapUserScreenBody> {
                 ),
               ),
               Positioned(
-                bottom: 20,
-                left: 5,
+                bottom: 20.h,
+                left: 5.w,
                 width: 300.w,
                 child: CustomMainButton(
                     fcolorWhite: true,

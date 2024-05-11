@@ -56,7 +56,8 @@ class MapCubit extends Cubit<MapState> {
       print(placemarks[0].street);
       if (placemarks.isNotEmpty) {
         String streetName = placemarks[0].street ?? 'Unknown Street';
-        emit(MapUpdated(streetName: streetName));
+        emit(MapUpdated(
+            streetName: streetName, latitude: latitude, longitude: longitude));
       } else {
         emit(MapError(error: 'No placemark found for the given coordinates'));
       }

@@ -216,7 +216,7 @@ class _MyCartScreenBodyState extends State<MyCartScreenBody> {
                                               ),
                                               Expanded(
                                                 child: AutoSizeText(
-                                                  "\$${(state.products[index].productsModel.price! * state.products[index].quantity).toString()}",
+                                                  "\$${(state.totalPriceForProduct[index])}",
                                                   maxLines: 3,
                                                   style: Txtstyle.style14(
                                                           context: context)

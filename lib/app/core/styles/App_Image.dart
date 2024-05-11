@@ -42,4 +42,8 @@ class AppImages {
       "assets/images/checkOutSucsess.png";
   static const String lottieLoadingAnimation =
       "assets/jsons/Animation - 1708977162147.json";
+
+  static const String lottieSuccessAnimation =
+      "assets/jsons/Animation - 1713816234661 (1).json";
+  static const String markerGoogleMapIcon = "assets/icons/location.png";
 }

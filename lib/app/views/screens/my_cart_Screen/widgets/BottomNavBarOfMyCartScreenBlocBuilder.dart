@@ -1,7 +1,7 @@
 import '../../../../core/Functions/calculateSubTotalPrice.dart';
 import '../../../../core/tools/reg_imp.dart';
 import '../../../../data/manager/cart_Cubit/cart_cubit.dart';
-import 'BottomNavBarOfMyCartScreen.dart';
+import 'BottomNavBarOfMyCheckOutScreen.dart';
 
 class BottomNavBarOfMyCartScreenBlocBuilder extends StatelessWidget {
   const BottomNavBarOfMyCartScreenBlocBuilder({
@@ -14,12 +14,12 @@ class BottomNavBarOfMyCartScreenBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         if (state is GetFromCartSuccsesswithProducts) {
           return BottomNavBarOfMyCartScreen(
-            subTotalPrice:
-                calculateSubTotalPrice(state.products, state.totalPrice),
+            subTotalPrice: calculateSubTotalPrice(state.products),
             onPressed: () {
-              GoRouter.of(context).push(Approuter.checkoutscreen,
-                  extra:
-                      calculateSubTotalPrice(state.products, state.totalPrice));
+              GoRouter.of(context).push(Approuter.checkoutscreen, extra: {
+                "total": calculateSubTotalPrice(state.products),
+                "products": state.products
+              });
             },
           );
         } else {

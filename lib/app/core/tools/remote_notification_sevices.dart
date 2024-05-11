@@ -84,7 +84,7 @@ class RemoteNotificationService {
       required String body,
       required String image}) async {
     try {
-      await apiServices.post(
+      await apiServices.dioPost(
         url: 'https://fcm.googleapis.com/fcm/send',
         data: {
           "to": "/topics/products",

@@ -19,9 +19,9 @@ final class GetFromCartLoading extends CartState {}
 
 final class GetFromCartSuccsesswithProducts extends CartState {
   final List<CartModel> products;
-  final num totalPrice;
+  final List<num> totalPriceForProduct;
   GetFromCartSuccsesswithProducts(
-      {required this.products, required this.totalPrice});
+      {required this.products, required this.totalPriceForProduct});
 }
 
 final class GetFromCartFailure extends CartState {

@@ -23,8 +23,6 @@ class FcmCubit extends Cubit<FcmState> {
         DateTime currentDateTime = DateTime.now();
         DateTime otherDateTime = DateTime.parse(product.data()["date"]);
         Duration difference = currentDateTime.difference(otherDateTime);
-        print("0" * 20);
-        print(difference.inMinutes);
         productsList.add(FcmModel(
             productsModel:
                 ProductsModel.fromJson(map: product.data()["productsModel"]),

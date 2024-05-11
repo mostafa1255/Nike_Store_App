@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/data/manager/fcm_cubit/fcm_cubit.dart';
 import 'package:nike_store_app/app/data/manager/user_cubit/user_cubit.dart';
+import 'package:nike_store_app/app/data/models/cart_Model.dart';
 import 'package:nike_store_app/app/views/screens/Splash_Screen/splash_Screen.dart';
 import 'package:nike_store_app/app/views/screens/auth/forget_password_Screen.dart';
 import 'package:nike_store_app/app/views/screens/auth/login_screen.dart';
@@ -11,9 +12,11 @@ import 'package:nike_store_app/app/views/screens/details_Screen/details_screen.d
 import 'package:nike_store_app/app/views/screens/edit_Profile_Screen/edit_profile_screen.dart';
 import 'package:nike_store_app/app/views/screens/favorite_Screen/favorite_screen.dart';
 import 'package:nike_store_app/app/views/screens/home_Screen/home_screen.dart';
+import 'package:nike_store_app/app/views/screens/map_Screen/map_screen.dart';
 import 'package:nike_store_app/app/views/screens/my_cart_Screen/my_Cart_Screen.dart';
 import 'package:nike_store_app/app/views/screens/notifications_Screen/notifications_screen.dart';
 import 'package:nike_store_app/app/views/screens/profile_Screen/profile_screen.dart';
+import 'package:nike_store_app/app/views/screens/success_screen/success_screen.dart';
 import '../data/models/Products_Model.dart';
 import '../data/repos/user_repo/user_repo_Impl.dart';
 import '../views/common_widgets/DotcontrollerOnBoarding.dart';
@@ -32,10 +35,11 @@ abstract class Approuter {
   static const notificationscreen = "/notificationscreen";
   static const favoritescreen = "/favoritescreen";
   static const checkoutscreen = "/checkoutscreen";
+  static const mapscreen = "/mapscreen";
 
   static final router = GoRouter(
     routes: [
-      GoRoute(path: initial, builder: (context, state) => LoginScreen()),
+      GoRoute(path: initial, builder: (context, state) => MyCartScreen()),
       GoRoute(
         path: pageview,
         builder: (context, state) => DotcontrollerOnBoarding(),
@@ -51,6 +55,19 @@ abstract class Approuter {
       GoRoute(
         path: forgetpasswordscreen,
         builder: (context, state) => ForgetPasswordScreen(),
+      ),
+      GoRoute(
+        path: mapscreen,
+        builder: (context, state) {
+          final Map<String, dynamic>? extraData =
+              state.extra as Map<String, dynamic>?;
+          String lat = extraData!["lat"];
+          String long = extraData["long"];
+          return MapUserScreen(
+            lat: lat,
+            long: long,
+          );
+        },
       ),
       GoRoute(
         path: homescreen,
@@ -86,11 +103,17 @@ abstract class Approuter {
         builder: (context, state) => FavoriteScreen(),
       ),
       GoRoute(
-        path: checkoutscreen,
-        builder: (context, state) => CheckOutScreen(
-          subTotalPrice: state.extra as num,
-        ),
-      ),
+          path: checkoutscreen,
+          builder: (context, state) {
+            final Map<String, dynamic>? extraData =
+                state.extra as Map<String, dynamic>?;
+            List<CartModel> cartModel = extraData!["products"];
+            num total = extraData["total"];
+            return CheckOutScreen(
+              subTotalPrice: total,
+              cartModel: cartModel,
+            );
+          }),
     ],
   );
 }
