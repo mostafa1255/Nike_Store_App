@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:nike_store_app/app/data/models/User_Model.dart';
 import 'package:nike_store_app/app/data/models/cart_Model.dart';
 import 'package:nike_store_app/app/data/models/order_Model.dart';
 import 'package:nike_store_app/app/data/repos/order_repo/order_repo.dart';
@@ -32,7 +31,8 @@ class OrderCubit extends Cubit<OrderState> {
       required String total,
       required String lat,
       required String long,
-      required UserModel userModel,
+      required String userName,
+      required String userPhone,
       required String paymentMethod}) async {
     emit(OrderLoading());
     var result = await orderRepo.addProductsToOrder(
@@ -41,7 +41,8 @@ class OrderCubit extends Cubit<OrderState> {
             orderStatus: "In Way",
             paymentMethod: paymentMethod,
             total: total,
-            user: userModel,
+            userName: userName,
+            userPhoneNumber: userPhone,
             longitude: long,
             latitude: lat,
             date: DateTime.now().toString(),

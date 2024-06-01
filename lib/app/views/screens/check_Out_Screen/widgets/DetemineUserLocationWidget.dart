@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nike_store_app/app/core/tools/save_user_info.dart';
 import 'package:nike_store_app/app/data/manager/map_cubit/map_cubit.dart';
 
 class DetemineUserLocationWidget extends StatelessWidget {
@@ -18,6 +19,9 @@ class DetemineUserLocationWidget extends StatelessWidget {
             ),
           );
         } else if (state is MapUpdated) {
+          SaveUserInfo.saveUserLatitude(state.latitude.toString());
+          SaveUserInfo.saveUserLongitude(state.longitude.toString());
+          print("${state.latitude} ${state.longitude}");
           return Text(
             state.streetName,
             style: TextStyle(

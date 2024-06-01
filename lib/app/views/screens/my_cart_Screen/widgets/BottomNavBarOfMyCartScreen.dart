@@ -1,27 +1,23 @@
-import 'package:nike_store_app/app/core/tools/reg_imp.dart';
-import 'package:nike_store_app/app/core/utils/global_variable.dart';
-import 'package:nike_store_app/app/data/manager/order_cubit/order_cubit.dart';
-import 'package:nike_store_app/app/data/manager/paymob_cubit/paymob_cubit.dart';
-import 'package:nike_store_app/app/data/models/cart_Model.dart';
-import 'package:nike_store_app/app/data/repos/order_repo/order_repo_impl.dart';
-import 'package:nike_store_app/app/views/screens/check_Out_Screen/widgets/PaymobWebView.dart';
-import '../../../../core/utils/AppFonts.dart';
-import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nike_store_app/app/core/styles/text_Style.dart';
 
-class BottomNavBarOfMyCheckOutScreen extends StatelessWidget {
-  const BottomNavBarOfMyCheckOutScreen({
+import '../../../../core/styles/App_Colors.dart';
+import '../../../../core/utils/AppFonts.dart';
+import '../../../common_widgets/VsizedBox.dart';
+import '../../../common_widgets/customMainButton.dart';
+
+class BottomNavBarOfMyCartScreen extends StatelessWidget {
+  const BottomNavBarOfMyCartScreen({
     super.key,
     this.onPressed,
     required this.subTotalPrice,
-    required this.cartModel,
   });
   final void Function()? onPressed;
-  final List<CartModel> cartModel;
 
   final num subTotalPrice;
   @override
   Widget build(BuildContext context) {
-    var paymentCubit = BlocProvider.of<PaymobCubit>(context);
     return Container(
       height: 280.h,
       decoration: BoxDecoration(
@@ -91,28 +87,7 @@ class BottomNavBarOfMyCheckOutScreen extends StatelessWidget {
             width: 350.w,
             color: AppColors.kPrimaryColor,
             fcolorWhite: true,
-            onPressed: () async {
-              double totalAmount = subTotalPrice + 60.20;
-              int totals = totalAmount.toInt();
-              String paymentId = await paymentCubit.payWithPaymob(
-                  products: cartModel, totalAmount: "$totals");
-              if (paymentId != null) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return BlocProvider(
-                    create: (context) => OrderCubit(orderRepo: OrderRepoImpl()),
-                    child: PaymobWebView(
-                      paymentMethod: GloblaVariable.kOnlinePayment,
-                      total: paymentCubit.paymentMethod ==
-                              GloblaVariable.kCashPayment
-                          ? "${subTotalPrice + 60.20}"
-                          : "60.20",
-                      paymentToken: paymentId,
-                      cartModel: cartModel,
-                    ),
-                  );
-                }));
-              }
-            },
+            onPressed: onPressed,
             txt: "Checkout",
           )
         ],
@@ -120,4 +95,3 @@ class BottomNavBarOfMyCheckOutScreen extends StatelessWidget {
     );
   }
 }
-

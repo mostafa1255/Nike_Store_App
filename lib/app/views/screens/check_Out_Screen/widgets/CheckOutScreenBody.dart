@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/core/utils/AppFonts.dart';
 import 'package:nike_store_app/app/core/styles/text_Style.dart';
+import 'package:nike_store_app/app/core/utils/global_variable.dart';
+import 'package:nike_store_app/app/data/manager/paymob_cubit/paymob_cubit.dart';
 import 'package:nike_store_app/app/views/common_widgets/VsizedBox.dart';
 import '../../../../core/styles/App_Colors.dart';
 import 'CheckOutEmailListTile.dart';
@@ -70,7 +74,7 @@ class _CheckOutScreenBodyState extends State<CheckOutScreenBody> {
                         fontFamily: AppFonts.relwayFamily),
                   ),
                   RadioListTile(
-                    title: Text(
+                    title: const Text(
                       'Credit Card',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -82,6 +86,8 @@ class _CheckOutScreenBodyState extends State<CheckOutScreenBody> {
                     groupValue: _selectedPaymentMethod,
                     onChanged: (value) {
                       setState(() {
+                        BlocProvider.of<PaymobCubit>(context).paymentMethod =
+                            GloblaVariable.kOnlinePayment;
                         _selectedPaymentMethod = value;
                       });
                     },
@@ -91,7 +97,7 @@ class _CheckOutScreenBodyState extends State<CheckOutScreenBody> {
                     ),
                   ),
                   RadioListTile(
-                    title: Text(
+                    title: const Text(
                       'Cash',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -103,6 +109,8 @@ class _CheckOutScreenBodyState extends State<CheckOutScreenBody> {
                     groupValue: _selectedPaymentMethod,
                     onChanged: (value) {
                       setState(() {
+                        BlocProvider.of<PaymobCubit>(context).paymentMethod =
+                            GloblaVariable.kCashPayment;
                         _selectedPaymentMethod = value;
                       });
                     },

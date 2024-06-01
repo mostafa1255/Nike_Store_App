@@ -4,8 +4,12 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/core/tools/api_Services.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
+import 'package:nike_store_app/app/core/tools/save_user_info.dart';
+import 'package:nike_store_app/app/data/manager/order_cubit/order_cubit.dart';
 import 'package:nike_store_app/app/data/manager/paymob_cubit/paymob_cubit.dart';
+import 'package:nike_store_app/app/data/models/User_Model.dart';
 import 'package:nike_store_app/app/data/models/cart_Model.dart';
+import 'package:nike_store_app/app/data/repos/order_repo/order_repo_impl.dart';
 import 'package:nike_store_app/app/router/app_router.dart';
 import '../../../core/utils/AppFonts.dart';
 import '../../../core/styles/App_Colors.dart';
@@ -16,8 +20,11 @@ import 'widgets/CheckOutAlertDialog.dart';
 import 'widgets/CheckOutScreenBody.dart';
 
 class CheckOutScreen extends StatelessWidget {
-  const CheckOutScreen(
-      {super.key, required this.subTotalPrice, required this.cartModel});
+  const CheckOutScreen({
+    super.key,
+    required this.subTotalPrice,
+    required this.cartModel,
+  });
   final num subTotalPrice;
   final List<CartModel> cartModel;
   @override
@@ -63,49 +70,3 @@ class CheckOutScreen extends StatelessWidget {
   }
 }
 
-class PaymobWebView extends StatefulWidget {
-  const PaymobWebView({super.key, required this.paymentToken});
-  final String paymentToken;
-  @override
-  State<PaymobWebView> createState() => _PaymobWebViewState();
-}
-
-class _PaymobWebViewState extends State<PaymobWebView> {
-  InAppWebViewController? webViewController;
-  void startPayment() {
-    webViewController?.loadUrl(
-      urlRequest: URLRequest(
-        url: WebUri(
-            "https://accept.paymob.com/api/acceptance/iframes/844444?payment_token=${widget.paymentToken}"),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: InAppWebView(
-        initialOptions: InAppWebViewGroupOptions(
-            crossPlatform: InAppWebViewOptions(javaScriptEnabled: true)),
-        onWebViewCreated: (controller) {
-          webViewController = controller;
-          startPayment();
-        },
-        onLoadStop: (controller, url) {
-          if (url != null &&
-              url.queryParameters.containsKey("success") &&
-              url.queryParameters["success"] == "true") {
-            print("\$" * 30);
-            print("success");
-          } else if (url != null &&
-              url.queryParameters.containsKey("success") &&
-              url.queryParameters["success"] == "false") {
-            print("\$" * 30);
-            print("error");
-          }
-        },
-      ),
-    );
-  }
-}

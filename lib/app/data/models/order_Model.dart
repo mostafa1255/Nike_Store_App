@@ -2,7 +2,8 @@ import 'package:nike_store_app/app/data/models/User_Model.dart';
 import 'package:nike_store_app/app/data/models/cart_Model.dart';
 
 class OrderModel {
-  UserModel? user;
+  String? userName;
+  String? userPhoneNumber;
   String? orderId;
   List<CartModel>? cartModel;
   String? orderStatus;
@@ -19,8 +20,9 @@ class OrderModel {
     required this.paymentMethod,
     required this.orderStatus,
     required this.orderId,
-    required this.user,
     required this.date,
+    required this.userName,
+    required this.userPhoneNumber,
   });
 
   Map<String, dynamic> toJson() {
@@ -28,7 +30,8 @@ class OrderModel {
       'total': total,
       'longitude': longitude,
       'latitude': latitude,
-      'user': user?.toJcon(),
+      'userName': userName,
+      'userPhoneNumber': userPhoneNumber,
       'orderId': orderId,
       'paymentMethod': paymentMethod,
       'cartModel': cartModel
@@ -41,10 +44,11 @@ class OrderModel {
 
   factory OrderModel.fromJson(Map<String, dynamic> map) {
     return OrderModel(
+      userName: map['userName'] ?? '',
+      userPhoneNumber: map['userPhoneNumber'] ?? '',
       total: map['total'] ?? '',
       longitude: map['longitude'] ?? '',
       latitude: map['latitude'] ?? '',
-      user: UserModel.fromJcon(data: map['user']),
       paymentMethod: map['paymentMethod'] ?? '',
       orderId: map['orderId'] ?? '',
       cartModel: List<CartModel>.from((map['cartModel'] as List).map(

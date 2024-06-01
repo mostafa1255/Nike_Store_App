@@ -1,7 +1,7 @@
 import '../../../../core/Functions/calculateSubTotalPrice.dart';
 import '../../../../core/tools/reg_imp.dart';
 import '../../../../data/manager/cart_Cubit/cart_cubit.dart';
-import 'BottomNavBarOfMyCheckOutScreen.dart';
+import 'BottomNavBarOfMyCartScreen.dart';
 
 class BottomNavBarOfMyCartScreenBlocBuilder extends StatelessWidget {
   const BottomNavBarOfMyCartScreenBlocBuilder({

@@ -91,14 +91,12 @@ class _MapUserScreenBodyState extends State<TrackOrdersScreenBody> {
         position: LatLng(widget.dlat, widget.dlng),
       ));
       setState(() {});
-      double distance = await Geolocator.distanceBetween(
+      double distance = Geolocator.distanceBetween(
         position!.latitude,
         position.longitude,
         widget.dlat,
         widget.dlng,
       );
-      print("#" * 30);
-      print(distance);
       if (distance <= 10) {
         //Action to Tell The User Delivery Is Done Send Notification
         // Destination reached, stop tracking
@@ -179,9 +177,9 @@ class _MapUserScreenBodyState extends State<TrackOrdersScreenBody> {
                           }
                         },
                       ),
-                      const HsizedBox(width: 90),
+                      const HsizedBox(width: 80),
                       Text(
-                        "My Location",
+                        "Track My Order",
                         style: Txtstyle.style18(context: context).copyWith(
                             color: AppColors.kOfWhiteColor,
                             fontWeight: FontWeight.bold,

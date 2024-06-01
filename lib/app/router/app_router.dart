@@ -39,7 +39,7 @@ abstract class Approuter {
 
   static final router = GoRouter(
     routes: [
-      GoRoute(path: initial, builder: (context, state) => MyCartScreen()),
+      GoRoute(path: initial, builder: (context, state) => SplashScreen()),
       GoRoute(
         path: pageview,
         builder: (context, state) => DotcontrollerOnBoarding(),

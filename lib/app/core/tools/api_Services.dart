@@ -7,6 +7,8 @@ class ApiServices {
   static const String orderPaymobUrl = "$_baseurl/ecommerce/orders";
   static const String getPaymobPaymentTokenUrl =
       "$_baseurl/acceptance/payment_keys";
+  static const String paymobFrameUrl =
+      "$_baseurl/acceptance/iframes/844444?payment_token=";
   final Dio dio;
   ApiServices({required this.dio});
 

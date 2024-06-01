@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:nike_store_app/app/core/tools/api_Services.dart';
 import 'package:nike_store_app/app/core/tools/save_user_info.dart';
+import 'package:nike_store_app/app/core/utils/global_variable.dart';
 import 'package:nike_store_app/app/core/utils/paymob_Keys.dart';
 import 'package:nike_store_app/app/data/models/paymob_model.dart';
 import '../../models/cart_Model.dart';
@@ -10,7 +11,7 @@ part 'paymob_state.dart';
 class PaymobCubit extends Cubit<PaymobState> {
   PaymobCubit({required this.apiServices}) : super(PaymobInitial());
   ApiServices apiServices;
-
+  String paymentMethod = GloblaVariable.kCashPayment;
   Future<String> payWithPaymob({
     required List<CartModel> products,
     required String totalAmount,

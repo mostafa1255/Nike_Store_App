@@ -16,9 +16,7 @@ class UserRepoImpl extends UserRepo {
       final userData =
           await dataBase.collection("users").doc(auth.currentUser!.uid).get();
       UserModel userModel = UserModel.fromJcon(data: userData.data()!);
-
       print("/" * 30);
-      print(userModel.phoneNumber.toString());
       SaveUserInfo.saveUserEmail(userModel.email!);
       SaveUserInfo.saveUserName(userModel.name!);
       SaveUserInfo.saveUserPhone(userModel.phoneNumber.toString());

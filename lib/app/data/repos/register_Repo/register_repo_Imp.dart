@@ -7,7 +7,6 @@ import 'package:nike_store_app/app/core/Functions/ensureNotVendorEmail.dart';
 import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/core/errors/firebase_faliure.dart';
 import 'package:nike_store_app/app/data/repos/register_Repo/register_repo.dart';
-import '../../../core/Functions/googleCredential.dart';
 import '../../models/User_Model.dart';
 
 class RegisterRepoImpl extends Registerrepo {
@@ -55,12 +54,10 @@ class RegisterRepoImpl extends Registerrepo {
           await FirebaseAuth.instance.signInWithCredential(credential);
       final isNewUser = userCredential.additionalUserInfo!.isNewUser;
       if (isNewUser) {
-        print("user is new");
         await googleSignIn.disconnect();
         return right(userCredential);
       } else {
         //user not new
-        print("user is not new");
         final query =
             await ensureNotVendorEmail(email: userCredential.user!.email!);
         if (query.docs.isEmpty) {
@@ -74,7 +71,6 @@ class RegisterRepoImpl extends Registerrepo {
       }
     } on Exception catch (e) {
       if (e is FirebaseAuthException) {
-        print("error code : ${e.code}");
         return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
       } else {
         return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));

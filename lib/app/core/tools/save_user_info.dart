@@ -1,6 +1,26 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SaveUserInfo {
+  static Future<void> saveUserLatitude(String lat) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("lat", lat);
+  }
+
+  static Future<String?> getUserLatitude() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString("lat");
+  }
+
+  static Future<void> saveUserLongitude(String long) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("long", long);
+  }
+
+  static Future<String?> getUserLongitude() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString("long") ?? "";
+  }
+
   static Future<void> saveUserEmail(String email) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString("email", email);
@@ -9,7 +29,7 @@ class SaveUserInfo {
   // Get user email from shared preferences
   static Future<String?> getUserEmail() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString("email");
+    return prefs.getString("email") ?? "";
   }
 
   // Save user phone to shared preferences
@@ -53,5 +73,7 @@ class SaveUserInfo {
     await prefs.remove("phone");
     await prefs.remove("name");
     await prefs.remove("uid");
+    await prefs.remove("lat");
+    await prefs.remove("long");
   }
 }
