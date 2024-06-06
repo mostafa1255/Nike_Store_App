@@ -16,3 +16,8 @@ final class FetchUserDataFailure extends UserState {
   final String errMessage;
   FetchUserDataFailure({required this.errMessage});
 }
+
+final class UpdateUserDataFailure extends UserState {
+  final String errMessage;
+  UpdateUserDataFailure({required this.errMessage});
+}

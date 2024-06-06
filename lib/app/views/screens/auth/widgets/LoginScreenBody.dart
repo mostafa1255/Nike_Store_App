@@ -86,17 +86,15 @@ class LoginScreenBody extends StatelessWidget {
                 color: AppColors.kPrimaryColor,
                 onPressed: () async {
                   if (GlobalKeys.riKey1.currentState!.validate()) {
+                    print("+++++++++++++++++++++++++++++++++++");
+                    print("sign in button pressed");
                     await logCubit.signInwithEmailandPassword(
                       context: context,
                       email: logCubit.emailController.text,
                       password: logCubit.passController.text,
                     );
-                    RemoteNotificationService
-                        .actionWhenFcmMessageReceivedInBackground(
-                            context: context);
-                    RemoteNotificationService
-                        .actionWhenFcmMessageReceivedInTerminated(
-                            context: context);
+
+               
                   }
                 },
               ),

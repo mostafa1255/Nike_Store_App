@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_store_app/app/data/manager/fcm_cubit/fcm_cubit.dart';
 import 'package:nike_store_app/app/data/manager/user_cubit/user_cubit.dart';
+import 'package:nike_store_app/app/data/models/User_Model.dart';
 import 'package:nike_store_app/app/data/models/cart_Model.dart';
 import 'package:nike_store_app/app/views/screens/Splash_Screen/splash_Screen.dart';
 import 'package:nike_store_app/app/views/screens/auth/forget_password_Screen.dart';
@@ -15,10 +16,10 @@ import 'package:nike_store_app/app/views/screens/home_Screen/home_screen.dart';
 import 'package:nike_store_app/app/views/screens/map_Screen/map_screen.dart';
 import 'package:nike_store_app/app/views/screens/my_cart_Screen/my_Cart_Screen.dart';
 import 'package:nike_store_app/app/views/screens/notifications_Screen/notifications_screen.dart';
+import 'package:nike_store_app/app/views/screens/orders_screen/orders_screen.dart';
 import 'package:nike_store_app/app/views/screens/profile_Screen/profile_screen.dart';
 import 'package:nike_store_app/app/views/screens/success_screen/success_screen.dart';
 import '../data/models/Products_Model.dart';
-import '../data/repos/user_repo/user_repo_Impl.dart';
 import '../views/common_widgets/DotcontrollerOnBoarding.dart';
 
 abstract class Approuter {
@@ -36,10 +37,11 @@ abstract class Approuter {
   static const favoritescreen = "/favoritescreen";
   static const checkoutscreen = "/checkoutscreen";
   static const mapscreen = "/mapscreen";
-
+  static const successscreen = "/successscreen";
+  static const orderscreen = "/orderscreen";
   static final router = GoRouter(
     routes: [
-      GoRoute(path: initial, builder: (context, state) => SplashScreen()),
+      GoRoute(path: initial, builder: (context, state) => HomeScreen()),
       GoRoute(
         path: pageview,
         builder: (context, state) => DotcontrollerOnBoarding(),
@@ -49,8 +51,16 @@ abstract class Approuter {
         builder: (context, state) => LoginScreen(),
       ),
       GoRoute(
+        path: orderscreen,
+        builder: (context, state) => OrderScreen(),
+      ),
+      GoRoute(
         path: registerscreen,
         builder: (context, state) => RegisterScreen(),
+      ),
+      GoRoute(
+        path: successscreen,
+        builder: (context, state) => const SuccessScreen(),
       ),
       GoRoute(
         path: forgetpasswordscreen,
@@ -85,11 +95,15 @@ abstract class Approuter {
       ),
       GoRoute(
         path: profilescreen,
-        builder: (context, state) => ProfileScreen(),
+        builder: (context, state) => ProfileScreen(
+          userModel: state.extra as UserModel,
+        ),
       ),
       GoRoute(
         path: editprofilescreen,
-        builder: (context, state) => EditProfileScreen(),
+        builder: (context, state) => EditProfileScreen(
+          userModel: state.extra as UserModel,
+        ),
       ),
       GoRoute(
         path: notificationscreen,

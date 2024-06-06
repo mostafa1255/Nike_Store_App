@@ -18,9 +18,9 @@ class MyCartScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              CartCubit(cartRepo: CartRepoImpl(), homeRepo:  getIt.get<HomeRepoImpl>())
-                ..getCartProducts(),
+          create: (context) => CartCubit(
+              cartRepo: CartRepoImpl(), homeRepo: getIt.get<HomeRepoImpl>())
+            ..getCartProducts(),
         ),
         BlocProvider(
           create: (context) => CartQuantityCubit(cartRepo: CartRepoImpl()),
@@ -35,4 +35,3 @@ class MyCartScreen extends StatelessWidget {
     );
   }
 }
-

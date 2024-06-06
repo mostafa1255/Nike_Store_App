@@ -50,6 +50,16 @@ class SaveUserInfo {
     await prefs.setString("name", name);
   }
 
+  static Future<void> saveUserImageUrl(String imageUrl) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("imageUrl", imageUrl);
+  }
+
+  static Future<String?> getUserImageUrl() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString("imageUrl");
+  }
+
   // Get user name from shared preferences
   static Future<String?> getUserName() async {
     final prefs = await SharedPreferences.getInstance();

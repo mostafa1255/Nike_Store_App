@@ -1,6 +1,5 @@
 import 'package:nike_store_app/app/core/utils/AppFonts.dart';
 import 'package:nike_store_app/app/core/utils/global_keys.dart';
-import 'package:nike_store_app/app/core/tools/remote_notification_sevices.dart';
 import 'package:nike_store_app/app/data/manager/auth%20cubits/register_Cubit/register_cubit.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/views/common_widgets/customMainButton.dart';
@@ -72,12 +71,6 @@ class RegisterScreenBody extends StatelessWidget {
                 color: AppColors.kPrimaryColor,
                 onPressed: () async {
                   if (GlobalKeys.riKey2.currentState!.validate()) {
-                    RemoteNotificationService
-                        .actionWhenFcmMessageReceivedInBackground(
-                            context: context);
-                    RemoteNotificationService
-                        .actionWhenFcmMessageReceivedInTerminated(
-                            context: context);
                     await BlocProvider.of<RegisterCubit>(context)
                         .signUpwithEmailandPassword(
                       phoneNumber: int.parse(cubitRead.phoneController.text),

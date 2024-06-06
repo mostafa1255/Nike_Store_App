@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,9 +10,11 @@ import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
 import 'package:nike_store_app/app/views/common_widgets/CustomTextFormField.dart';
+import '../../../../data/models/User_Model.dart';
 
 class ProfileScreenBody extends StatelessWidget {
-  const ProfileScreenBody({super.key});
+  const ProfileScreenBody({super.key, required this.userModel});
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +28,25 @@ class ProfileScreenBody extends StatelessWidget {
           Center(
               child: Stack(
             children: [
-              CircleAvatar(
-                radius: 50.r,
-              ),
+              userModel.imageUrl == null
+                  ? CircleAvatar(
+                      radius: 50.r,
+                    )
+                  : CircleAvatar(
+                      radius: 50.r,
+                      backgroundImage:
+                          CachedNetworkImageProvider(userModel.imageUrl!),
+                    ),
               Positioned(
                 bottom: 0,
                 right: 0,
                 child: CircleAvatar(
-                  radius: 13.r,
+                  radius: 15.r,
                   backgroundColor: AppColors.kPrimaryColor,
                   child: IconButton(
                       onPressed: () {
-                        GoRouter.of(context).push(Approuter.editprofilescreen);
+                        GoRouter.of(context).push(Approuter.editprofilescreen,
+                            extra: userModel);
                       },
                       icon: Icon(
                         FontAwesomeIcons.pen,
@@ -58,7 +68,7 @@ class ProfileScreenBody extends StatelessWidget {
           const VsizedBox(height: 8),
           CustomTextFormField(
             enableWriting: false,
-            hinttext: "Mostafa Yasser",
+            hinttext: userModel.name,
             fontcolor: AppColors.kFontColor,
             securPass: false,
             width: double.infinity,
@@ -75,7 +85,7 @@ class ProfileScreenBody extends StatelessWidget {
           const VsizedBox(height: 8),
           CustomTextFormField(
             enableWriting: false,
-            hinttext: "XYZ@gmail.com",
+            hinttext: userModel.email,
             fontcolor: AppColors.kFontColor,
             securPass: false,
             width: double.infinity,
@@ -92,7 +102,7 @@ class ProfileScreenBody extends StatelessWidget {
           const VsizedBox(height: 8),
           CustomTextFormField(
             enableWriting: false,
-            hinttext: "01289880177",
+            hinttext: userModel.phoneNumber.toString(),
             securPass: false,
             fontcolor: AppColors.kFontColor,
             width: double.infinity,
@@ -104,7 +114,9 @@ class ProfileScreenBody extends StatelessWidget {
             fcolorWhite: true,
             width: 375.w,
             txt: "Save Now",
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
           ),
         ],
       )),

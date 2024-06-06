@@ -43,7 +43,9 @@ class SuccessScreen extends StatelessWidget {
                 txt: 'Continue Shopping',
                 fcolorWhite: true,
                 width: 300.w,
-                onPressed: () {}),
+                onPressed: () {
+                  GoRouter.of(context).push(Approuter.homescreen);
+                }),
           ],
         ),
       ),

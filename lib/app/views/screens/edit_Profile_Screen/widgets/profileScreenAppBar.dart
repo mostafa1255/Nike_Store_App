@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/AppFonts.dart';
 import '../../../../core/styles/App_Colors.dart';
 import '../../../../core/styles/text_Style.dart';
-import '../../../../router/app_router.dart';
 import '../../../common_widgets/CustomBackIcon.dart';
 import '../../../common_widgets/HsizedBox.dart';
 
@@ -12,7 +11,7 @@ PreferredSizeWidget profileScreenAppBar(BuildContext context) {
     surfaceTintColor: Colors.transparent,
     backgroundColor: AppColors.kOfWhiteColor,
     leading: CustomBackAndFavIcon(onPressed: () {
-      GoRouter.of(context).push(Approuter.profilescreen);
+      GoRouter.of(context).pop();
     }),
     centerTitle: true,
     title: Text(
@@ -25,7 +24,9 @@ PreferredSizeWidget profileScreenAppBar(BuildContext context) {
     actions: [
       GestureDetector(
         onTap: () {
-          GoRouter.of(context).pop();
+          if (GoRouter.of(context).canPop()) {
+            GoRouter.of(context).pop();
+          }
         },
         child: Text(
           "Done",

@@ -1,4 +1,5 @@
 {
     "git.ignoreLimitWarning": true,
-    "cmake.sourceDirectory": "C:/Users/mostafa/Desktop/My_Project_flutter/nike_store_app/linux/flutter"
+    "cmake.sourceDirectory": "C:/Users/mostafa/Desktop/My_Project_flutter/nike_store_app/linux/flutter",
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }

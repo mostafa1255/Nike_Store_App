@@ -17,4 +17,12 @@ class UserCubit extends Cubit<UserState> {
       (r) => emit(FetchUserDataSuccess(userModel: r)),
     );
   }
+
+  Future<void> updateUserImageUrl({required String userImage}) async {
+    final result = await userRepo.updateImageUrl(imageUrl: userImage);
+    result.fold(
+      (l) => emit(UpdateUserDataFailure(errMessage: l.errmessage)),
+      (r) {},
+    );
+  }
 }

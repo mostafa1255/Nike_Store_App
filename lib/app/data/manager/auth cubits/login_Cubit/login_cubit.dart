@@ -22,14 +22,17 @@ class LoginCubit extends Cubit<LoginState> {
       {required String email,
       required String password,
       required BuildContext context}) async {
+    print("in login function");
     emit(LoginLoading());
     var result = await loginRepo.signInwithEmailandPassword(
         email: email, password: password, context: context);
     result.fold((faliure) {
+      print("in login function ${faliure.errmessage}");
       emit(LoginFailure(errMessage: faliure.errmessage));
     }, (usercredential) {
       if (auth.currentUser!.emailVerified) {
         userCredential = usercredential;
+
         emit(LoginSuccess());
       } else {
         emit(LoginFailure(errMessage: "Please Verify Your Email"));

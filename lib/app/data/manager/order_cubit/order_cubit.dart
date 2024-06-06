@@ -1,15 +1,18 @@
-import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:nike_store_app/app/core/utils/global_variable.dart';
 import 'package:nike_store_app/app/data/models/cart_Model.dart';
 import 'package:nike_store_app/app/data/models/order_Model.dart';
+import 'package:nike_store_app/app/data/repos/home_rep/home_repo.dart';
 import 'package:nike_store_app/app/data/repos/order_repo/order_repo.dart';
+import '../../../core/Functions/generate_Random_UniqueId.dart';
 part 'order_state.dart';
 
 class OrderCubit extends Cubit<OrderState> {
-  OrderCubit({required this.orderRepo}) : super(OrderInitial());
+  OrderCubit({required this.orderRepo, required this.homeRepo})
+      : super(OrderInitial());
   OrderRepo orderRepo;
-
+  HomeRepo homeRepo;
   Future<void> deleteOrder({required String orderId}) async {
     emit(OrderLoading());
     var result = await orderRepo.deleteOrder(orderId: orderId);
@@ -38,7 +41,7 @@ class OrderCubit extends Cubit<OrderState> {
     var result = await orderRepo.addProductsToOrder(
         orderModel: OrderModel(
             cartModel: products,
-            orderStatus: "In Way",
+            orderStatus: GloblaVariable.kInWay,
             paymentMethod: paymentMethod,
             total: total,
             userName: userName,
@@ -56,21 +59,31 @@ class OrderCubit extends Cubit<OrderState> {
     emit(OrderLoading());
     var result = await orderRepo.getProductsFromOrder();
     result.fold(
-        (l) => emit(OrderGetAllProductsFailure(errMessage: l.errmessage)), (r) {
-      emit(OrderGetAllProductsSuccsess(products: r));
-    });
+      (l) => emit(OrderGetAllProductsFailure(errMessage: l.errmessage)),
+      (r) {
+        r.sort((a, b) {
+          if (a.orderStatus == GloblaVariable.kInWay &&
+              b.orderStatus != GloblaVariable.kInWay) {
+            return -1;
+          } else if (a.orderStatus != GloblaVariable.kInWay &&
+              b.orderStatus == GloblaVariable.kInWay) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        emit(OrderGetAllProductsSuccsess(products: r));
+      },
+    );
   }
 
-  String generateUniqueOrderId() {
-    String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-    String randomString = _getRandomString(6);
-    return '$timestamp$randomString';
-  }
-
-  String _getRandomString(int length) {
-    const charset = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    Random random = Random();
-    return List.generate(
-        length, (index) => charset[random.nextInt(charset.length)]).join();
+  Future<void> deleteCartItem({required List<CartModel> products}) async {
+    for (var element in products) {
+      await homeRepo.deleteProductFromCollection(
+        collectionName: "cart",
+        productId: element.productsModel.id!,
+        subCollectionName: "quantity",
+      );
+    }
   }
 }

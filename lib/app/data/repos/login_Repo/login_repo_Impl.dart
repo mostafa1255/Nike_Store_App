@@ -28,8 +28,8 @@ class LoginRepoImpl extends LoginRepo {
         if (auth.currentUser!.emailVerified) {
           return right(userCredential);
         } else {
-          return left(FirebaseFailure.fromFirebaseError(
-              errorCode: "Email Not Verified , Please Verify Email"));
+          return left(
+              FirebaseFailure("Email Not Verified , Please Verify Email"));
         }
       } on Exception catch (e) {
         if (e is FirebaseAuthException) {
@@ -45,6 +45,7 @@ class LoginRepoImpl extends LoginRepo {
               "This Email Register in Vendor App, Please Login With User Email"));
     }
   }
+
   @override
   Future<Either<Faliures, UserCredential>> signInwithGoogle() async {
     try {
@@ -84,6 +85,7 @@ class LoginRepoImpl extends LoginRepo {
       return left(FirebaseFailure.fromFirebaseError(errorCode: e.toString()));
     }
   }
+
 // reset password
   @override
   Future<Either<Faliures, void>> resetPassword({required String email}) async {

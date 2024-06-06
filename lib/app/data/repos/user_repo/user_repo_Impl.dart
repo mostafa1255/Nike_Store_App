@@ -16,14 +16,30 @@ class UserRepoImpl extends UserRepo {
       final userData =
           await dataBase.collection("users").doc(auth.currentUser!.uid).get();
       UserModel userModel = UserModel.fromJcon(data: userData.data()!);
-      print("/" * 30);
       SaveUserInfo.saveUserEmail(userModel.email!);
       SaveUserInfo.saveUserName(userModel.name!);
       SaveUserInfo.saveUserPhone(userModel.phoneNumber.toString());
       SaveUserInfo.saveUserUid(auth.currentUser!.uid);
+      userModel.imageUrl == null || userModel.imageUrl!.isEmpty
+          ? null
+          : SaveUserInfo.saveUserImageUrl(userModel.imageUrl!);
       return right(userModel);
     } on FirebaseException catch (e) {
       return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
+    }
+  }
+
+  @override
+  Future<Either<Faliures, void>> updateImageUrl(
+      {required String imageUrl}) async {
+    try {
+      dataBase
+          .collection("users")
+          .doc(auth.currentUser!.uid)
+          .update({"imageUrl": imageUrl});
+      return right(null);
+    } catch (e) {
+      return left(FirebaseFailure("Failed to update image Url"));
     }
   }
 }

@@ -41,11 +41,7 @@ class PaymobCubit extends Cubit<PaymobState> {
     required String totalAmount,
   }) async {
     List<PaymobModel> paymobModelList = [];
-    print("*" * 20);
     for (var element in products) {
-      print("*" * 20);
-      print(element.quantity);
-      print((int.parse(element.productsModel.price!) * 100).toString());
       paymobModelList.add(PaymobModel(
         name: element.productsModel.name!,
         description: element.productsModel.description!,
@@ -64,8 +60,6 @@ class PaymobCubit extends Cubit<PaymobState> {
       });
       return response.data["id"].toString();
     } catch (e) {
-      print(e);
-
       rethrow;
     }
   }
