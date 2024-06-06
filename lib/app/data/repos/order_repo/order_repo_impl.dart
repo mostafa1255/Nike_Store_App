@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nike_store_app/app/core/errors/faliure.dart';
 import 'package:nike_store_app/app/core/errors/firebase_faliure.dart';
 import 'package:nike_store_app/app/core/utils/enums.dart';
-import 'package:nike_store_app/app/data/models/cart_Model.dart';
 import 'package:nike_store_app/app/data/models/order_Model.dart';
 import 'package:nike_store_app/app/data/repos/order_repo/order_repo.dart';
 
@@ -28,31 +27,26 @@ class OrderRepoImpl extends OrderRepo {
   }
 
   @override
-Future<Either<Faliures, List<OrderModel>>> getProductsFromOrder() async {
-  try {
-    final QuerySnapshot<Map<String, dynamic>> snapshot = await dataBase
-        .collection("orders")
-        .doc(auth.currentUser!.uid)
-        .collection("products")
-        .get();
-    
-    if (snapshot.docs.isNotEmpty) {
-      List<OrderModel> orderList = [];
-      
-      for (var doc in snapshot.docs) {
-        orderList.add(OrderModel.fromJson(doc.data()));
+  Future<Either<Faliures, List<OrderModel>>> getProductsFromOrder() async {
+    try {
+      final QuerySnapshot<Map<String, dynamic>> snapshot = await dataBase
+          .collection("orders")
+          .doc(auth.currentUser!.uid)
+          .collection("products")
+          .get();
+      if (snapshot.docs.isNotEmpty) {
+        List<OrderModel> orderList = [];
+        for (var doc in snapshot.docs) {
+          orderList.add(OrderModel.fromJson(doc.data()));
+        }
+        return right(orderList);
+      } else {
+        return left(FirebaseFailure("You haven't ordered yet"));
       }
-      
-      return right(orderList);
-    } else {
-      return left(FirebaseFailure("You haven't ordered yet"));
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
     }
-  } on FirebaseException catch (e) {
-    return left(FirebaseFailure.fromFirebaseError(errorCode: e.code));
   }
-}
-
-
 
   @override
   Future<Either<Faliures, void>> deleteOrder({required String orderId}) async {

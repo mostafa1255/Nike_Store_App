@@ -1,6 +1,6 @@
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/data/manager/map_cubit/map_cubit.dart';
-import 'package:nike_store_app/app/views/screens/track_orders/track_order.dart';
+import '../../../../core/tools/save_user_info.dart';
 import '../../../../core/utils/AppFonts.dart';
 
 class ViewUserLocationMap extends StatelessWidget {
@@ -41,21 +41,10 @@ class ViewUserLocationMap extends StatelessWidget {
                 if (state is MapUpdated) {
                   return IconButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return TrackOrdersScreen(
-                              slat: 31.2098923916176,
-                              slng: 29.927169866859916,
-                              dlat: 31.22756305471722,
-                              dlng: 29.95859295129776,
-                            );
-                          },
-                        ));
-                        /*   GoRouter.of(context).push(Approuter.mapscreen, extra: {
+                        GoRouter.of(context).push(Approuter.mapscreen, extra: {
                           "lat": state.latitude.toString(),
                           "long": state.longitude.toString()
                         });
-                        */
                       },
                       icon: Icon(
                         Icons.location_on_rounded,
@@ -64,17 +53,13 @@ class ViewUserLocationMap extends StatelessWidget {
                       ));
                 }
                 return IconButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return TrackOrdersScreen(
-                            slat: 31.2098923916176,
-                            slng: 29.927169866859916,
-                            dlat: 31.22756305471722,
-                            dlng: 29.95859295129776,
-                          );
-                        },
-                      ));
+                    onPressed: () async {
+                      String? lat = await SaveUserInfo.getUserLatitude();
+                      String? long = await SaveUserInfo.getUserLongitude();
+                      if (context.mounted) {
+                        GoRouter.of(context).push(Approuter.mapscreen,
+                            extra: {"lat": lat, "long": long});
+                      }
                     },
                     icon: Icon(
                       Icons.location_on_rounded,

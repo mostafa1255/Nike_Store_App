@@ -1,9 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:nike_store_app/app/core/tools/api_Services.dart';
 import 'package:nike_store_app/app/core/tools/reg_imp.dart';
 import 'package:nike_store_app/app/core/utils/paymob_Keys.dart';
 import 'package:nike_store_app/app/data/manager/map_cubit/map_cubit.dart';
@@ -129,7 +131,7 @@ class _MapUserScreenBodyState extends State<TrackOrdersScreenBody> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MapCubit(),
+      create: (context) => MapCubit(apiServices: ApiServices(dio: Dio())),
       child: SizedBox(
           height: 880.h,
           child: Stack(

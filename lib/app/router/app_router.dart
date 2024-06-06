@@ -19,6 +19,7 @@ import 'package:nike_store_app/app/views/screens/notifications_Screen/notificati
 import 'package:nike_store_app/app/views/screens/orders_screen/orders_screen.dart';
 import 'package:nike_store_app/app/views/screens/profile_Screen/profile_screen.dart';
 import 'package:nike_store_app/app/views/screens/success_screen/success_screen.dart';
+import 'package:nike_store_app/app/views/screens/track_orders/track_order.dart';
 import '../data/models/Products_Model.dart';
 import '../views/common_widgets/DotcontrollerOnBoarding.dart';
 
@@ -39,6 +40,7 @@ abstract class Approuter {
   static const mapscreen = "/mapscreen";
   static const successscreen = "/successscreen";
   static const orderscreen = "/orderscreen";
+  static const trackorderscreen = "/trackordersscreen";
   static final router = GoRouter(
     routes: [
       GoRoute(path: initial, builder: (context, state) => HomeScreen()),
@@ -58,6 +60,18 @@ abstract class Approuter {
         path: registerscreen,
         builder: (context, state) => RegisterScreen(),
       ),
+      GoRoute(
+          path: trackorderscreen,
+          builder: (context, state) {
+            final Map<String, dynamic>? extraData =
+                state.extra as Map<String, dynamic>?;
+            return TrackOrdersScreen(
+              slat: extraData!["slat"],
+              slng: extraData["slng"],
+              dlat: extraData["dlat"],
+              dlng: extraData["dlong"],
+            );
+          }),
       GoRoute(
         path: successscreen,
         builder: (context, state) => const SuccessScreen(),
